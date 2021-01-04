@@ -1,0 +1,22 @@
+R	1920	1080		(identifiant-taille X-taille Y)
+
+NO	./pathNo_texture	(identifiant-chemin vers texture Nord)
+SO	./pathSo_texture	(identifiant-chemin vers texture Su)
+WE	./pathWe_texture	(identifiant-chemin vers texture Ouest)
+EA	./pathEa_texture	(identifiant-chemin vers texture Est)
+
+S	./path_text			(identifiant-chemin vers texture sprite)
+
+F	255,255,255			(identifiant-couleur sol)
+C	255,255,255			(identifiant-couleur plafond)
+
+11111111
+10000001
+10020001
+10000001
+100000N1
+11111111
+
+(1 = mur)
+(2 = obj)
+(N/W/E/S = position de depart + orientation)
