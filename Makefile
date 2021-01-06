@@ -1,4 +1,5 @@
 SRCNAME	=	srcs/parsing/main.c		\
+			srcs/parsing/parsing.c	\
 
 SRCS	= ${SRCNAME}
 

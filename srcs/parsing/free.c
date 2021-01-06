@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 16:14:22 by namenega         ###   ########.fr       */
+/*   Created: 2021/01/06 16:34:37 by namenega          #+#    #+#             */
+/*   Updated: 2021/01/06 16:38:11 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "cub3d.h"
 
-typedef struct	s_list
+void	ft_free_data(t_data *data, char *str)
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
-
-/*
-** LIBFT FUNCTIONS
-*/
-
-void		ft_putchar_fd(char c, int fd);
-void		ft_putstr_fd(char *s, int fd);
-int			ft_isspace(int c);
-void		ft_bzero(void *b, size_t len);
-
-#endif
+	ft_putstr_fd(str, 1);
+	ft_putchar_fd("\n", 1);
+}

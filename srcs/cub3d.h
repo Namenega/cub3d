@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/04 17:59:42 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/06 16:39:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,30 @@ typedef struct	s_data
 	int		r;
 	int		g;
 	int		b;
+	char	*path;
+	void	*mlx_ptr;
+	void	*mlx_win;
 }				t_data;
 
-int		main(void);
+/*
+** MAIN.C
+*/
+
+int		main(int ac, char const **av);
+int		ft_error_msg(char *s);
+
+/*
+** PARSING.C
+*/
+
+t_data	*ft_data(char *file, int ac);
+int		ft_get_data(t_data *data, char *file);
+int		ft_parsing_data(char *line, t_data *data);
+
+/*
+** FREE.C
+*/
+
+void	ft_free_data(t_data *data, char *str);
 
 #endif

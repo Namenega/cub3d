@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/04 18:26:36 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/06 17:28:56 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
 int		ft_parsing_data(char *line, t_data *data)
 {
@@ -21,15 +21,20 @@ int		ft_parsing_data(char *line, t_data *data)
 	if (line[0] == 0)
 		return (1);
 	if (line[0] == 'R' && ft_isspace(line[1]))
-		return ();
+		return (ft_resolution(data, &line[1]));
 	if (line[0] == 'N' && line[1] == 'O' && ft_isspace(line[2]))
-		return ();
+		return (ft_north(data, &line[2]));
 	if (line[0] == 'S' && line[1] == 'O' && ft_isspace(line[2]))
-		return ();
+		return (ft_south(data, &line[2]));
 	if (line[0] == 'W' && line[1] == 'E' && ft_isspace(line[2]))
-		return ();
-	if (line[0] == 'S' && line[1] == 'O' && ft_isspace(line[2]))
-		return ();
+		return (ft_west(data, &line[2]));
+	if (line[0] == 'E' && line[1] == 'A' && ft_isspace(line[2]))
+		return (ft_east(data, &line[2]));
+	if (line[0] == 'S' && ft_isspace(line[1]))
+		return (ft_sprite(data, &line[1]));
+	if ((line[0] == 'F' || line[0] == 'C') && ft_isspace(line[1]))
+		return (ft_color_groundsky(data, &line[1]));
+	return (1);
 }
 
 int		ft_get_data(t_data *data, char *file)
@@ -46,7 +51,7 @@ int		ft_get_data(t_data *data, char *file)
 		ft_putstr_fd("Error\nTask - Reading File : Fail!", 1);
 		return (0);
 	}
-	while (get_net_line(fd, &line))
+	while (get_next_line(fd, &line))
 	{
 		ft_parsing_data(line, data);
 		free(line);
@@ -57,4 +62,24 @@ int		ft_get_data(t_data *data, char *file)
 		return (1);
 	else
 		return (0);
+}
+
+t_data	*ft_data(char *file, int ac)
+{
+	t_data	*data;
+
+	data = (t_data*)malloc(sizeof(t_data));
+	if (!data)
+		return (0);
+	ft_bzero(data, sizeof(t_data));
+	if (ac == 1)
+		if ((data->mlx_ptr = mlx_init()) == NULL)
+			return (0);
+	if (!(ft_get_data(data, file)))
+		ft_free_data(data, "Error\nTask - parsing : Fail !");
+	if (ac == 1)
+		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
+			data->height, file)) == NULL)
+			ft_free_data(data, "Error\nTask - parsing : Fail !");
+	return (data);
 }
