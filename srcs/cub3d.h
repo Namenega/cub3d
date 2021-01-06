@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 16:39:01 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:07:41 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../includes/mlx/mlx.h"
-# include "utils.h"
+# include "get_next_line.h"
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
@@ -37,6 +37,8 @@ typedef struct	s_data
 	void	*mlx_win;
 }				t_data;
 
+#include "utils.h"
+
 /*
 ** MAIN.C
 */
@@ -51,6 +53,12 @@ int		ft_error_msg(char *s);
 t_data	*ft_data(char *file, int ac);
 int		ft_get_data(t_data *data, char *file);
 int		ft_parsing_data(char *line, t_data *data);
+
+/*
+** GETTING_DATA.C
+*/
+
+int		ft_resolution(t_data *data, char *line);
 
 /*
 ** FREE.C

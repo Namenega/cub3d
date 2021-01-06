@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 17:28:56 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/06 18:09:29 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ int		ft_parsing_data(char *line, t_data *data)
 		return (1);
 	if (line[0] == 'R' && ft_isspace(line[1]))
 		return (ft_resolution(data, &line[1]));
-	if (line[0] == 'N' && line[1] == 'O' && ft_isspace(line[2]))
-		return (ft_north(data, &line[2]));
-	if (line[0] == 'S' && line[1] == 'O' && ft_isspace(line[2]))
-		return (ft_south(data, &line[2]));
-	if (line[0] == 'W' && line[1] == 'E' && ft_isspace(line[2]))
-		return (ft_west(data, &line[2]));
-	if (line[0] == 'E' && line[1] == 'A' && ft_isspace(line[2]))
-		return (ft_east(data, &line[2]));
-	if (line[0] == 'S' && ft_isspace(line[1]))
-		return (ft_sprite(data, &line[1]));
-	if ((line[0] == 'F' || line[0] == 'C') && ft_isspace(line[1]))
-		return (ft_color_groundsky(data, &line[1]));
+	// if (line[0] == 'N' && line[1] == 'O' && ft_isspace(line[2]))
+	// 	return (ft_north(data, &line[2]));
+	// if (line[0] == 'S' && line[1] == 'O' && ft_isspace(line[2]))
+	// 	return (ft_south(data, &line[2]));
+	// if (line[0] == 'W' && line[1] == 'E' && ft_isspace(line[2]))
+	// 	return (ft_west(data, &line[2]));
+	// if (line[0] == 'E' && line[1] == 'A' && ft_isspace(line[2]))
+	// 	return (ft_east(data, &line[2]));
+	// if (line[0] == 'S' && ft_isspace(line[1]))
+	// 	return (ft_sprite(data, &line[1]));
+	// if ((line[0] == 'F' || line[0] == 'C') && ft_isspace(line[1]))
+	// 	return (ft_color_groundsky(data, &line[1]));
 	return (1);
 }
 

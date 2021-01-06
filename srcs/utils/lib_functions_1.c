@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 17:29:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/06 17:47:44 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,32 @@ void		ft_bzero(void *b, size_t len)
 	c = (char*)b;
 	while (len > 0)
 		c[--len] = 0;
+}
+
+int			ft_atoi(const char *s)
+{
+	int					i;
+	int					compteur;
+	unsigned long int	result;
+
+	i = 0;
+	compteur = 1;
+	result = 0;
+	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\f' ||
+			s[i] == '\r' || s[i] == ' ' || s[i] == '\v')
+		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			compteur *= -1;
+		i++;
+	}
+	while (s[i] != '\0' && s[i] >= '0' && s[i] <= '9')
+	{
+		result = result * 10 + (s[i] - '0');
+		i++;
+	}
+	if (result > 2147483648)
+		return (compteur == -1 ? 0 : -1);
+	return (result * compteur);
 }
