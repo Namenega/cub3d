@@ -1,6 +1,7 @@
 SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
-			srcs/parsing/getting_data.c					\
+			srcs/parsing/sprites_path/getting_data.c	\
+			srcs/parsing/sprites_path/directions.c		\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/utils/lib_functions_2.c				\
@@ -11,7 +12,7 @@ SRCS	= ${SRCNAME}
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= Cub3D
+NAME	= cub3D
 
 CC		= gcc
 RM		= rm -f
