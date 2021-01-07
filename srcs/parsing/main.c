@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 17:54:35 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/07 16:01:39 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(int ac, char const **av)
 	if (!(ac == 2 || ac == 3))
 		return (ft_error_msg("Error\nTask - arguments : Wrong Number !"));
 	if (!(data = ft_data((char*)av[1], (ac == 2))))
-		return (ft_error_msg("Error\nTask - parsing : Fail !"));
+		return (ft_error_msg("Error\nTask - parsing : Fail_3 !"));
 	/* if (ac == 2)
 	{
 

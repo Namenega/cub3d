@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 17:46:58 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 18:17:08 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:17:25 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,24 @@ int			ft_next_arg(char *l)
 	while (l && (ft_isdigit(l[i]) || ft_intinchar(l[i], ".,-")))
 		i++;
 	return (i);
+}
+
+size_t		ft_strlen(const char *s)
+{
+	size_t		i;
+
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
+}
+
+void		*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*tab;
+
+	if (!(tab = malloc(size * nmemb)))
+		return (NULL);
+	ft_bzero(tab, (nmemb * size));
+	return (tab);
 }

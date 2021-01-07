@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 18:18:16 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/07 17:17:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int			ft_atoi(const char *s);
 int			ft_intinchar(int c, char *set);
 int			ft_isdigit(int c);
 int			ft_next_arg(char *l);
+size_t		ft_strlen(const char *s);
+void		*ft_calloc(size_t nmemb, size_t size);
 
 #endif

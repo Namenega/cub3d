@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 18:07:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/07 16:26:04 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct	s_data
 	char	*path;
 	void	*mlx_ptr;
 	void	*mlx_win;
+	char	*sprite;
 }				t_data;
 
 #include "utils.h"
@@ -59,6 +60,7 @@ int		ft_parsing_data(char *line, t_data *data);
 */
 
 int		ft_resolution(t_data *data, char *line);
+int		ft_sprite(t_data *data, char *line);
 
 /*
 ** FREE.C
