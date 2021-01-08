@@ -6,13 +6,13 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 17:46:58 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/07 17:17:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:01:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int			ft_intinchar(int c, char *set)
+int			ft_inset(int c, char *set)
 {
 	while (set && *set)
 	{
@@ -37,7 +37,7 @@ int			ft_next_arg(char *l)
 	i = 0;
 	while (l && ft_isspace(l[i]))
 		i++;
-	while (l && (ft_isdigit(l[i]) || ft_intinchar(l[i], ".,-")))
+	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".,-")))
 		i++;
 	return (i);
 }

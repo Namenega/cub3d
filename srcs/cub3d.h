@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/07 18:14:18 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/08 16:56:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_data
 	char		*path;
 	void		*mlx_ptr;
 	void		*mlx_win;
-	char		*sprite;
+	//char		*sprite;
 }				t_data;
 
 #include "utils.h"
@@ -61,12 +61,16 @@ int		ft_parsing_data(char *line, t_data *data);
 
 int		ft_resolution(t_data *data, char *line);
 int		ft_sprite(t_data *data, char *line);
+int		ft_color_groundsky(t_data *data, char *line);
 
 /*
 ** DIRECTIONS.C
 */
 
 int		ft_north(t_data *data, char *line);
+int		ft_south(t_data *data, char *line);
+int		ft_west(t_data *data, char *line);
+int		ft_east(t_data *data, char *line);
 
 /*
 ** FREE.C
