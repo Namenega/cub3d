@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 17:15:27 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:53:44 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(int ac, char const **av)
 		return (ft_error_msg("Error\nTask - parsing : Fail_4 !"));
 	if (ac == 2)
 	{
-		ft_show(data);
+		ft_event(data);
 	}
 	/*if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
 		ft_save(data, (char*)av[1]);*/

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 16:56:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:41:59 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,26 @@ typedef struct	s_data
 	int			r;
 	int			g;
 	int			b;
-	char		*path;
+	char		*path_sprite;
+	char		*path_north;
+	char		*path_south;
+	char		*path_east;
+	char		*path_west;
 	void		*mlx_ptr;
 	void		*mlx_win;
-	//char		*sprite;
 }				t_data;
 
 #include "utils.h"
 
 /*
-** MAIN.C
+** PARSING/MAIN.C
 */
 
 int		main(int ac, char const **av);
 int		ft_error_msg(char *s);
 
 /*
-** PARSING.C
+** PARSING/PARSING.C
 */
 
 t_data	*ft_data(char *file, int ac);
@@ -56,7 +59,7 @@ int		ft_get_data(t_data *data, char *file);
 int		ft_parsing_data(char *line, t_data *data);
 
 /*
-** GETTING_DATA.C
+** PARSING/SPRITES_PATH/GETTING_DATA.C
 */
 
 int		ft_resolution(t_data *data, char *line);
@@ -64,7 +67,7 @@ int		ft_sprite(t_data *data, char *line);
 int		ft_color_groundsky(t_data *data, char *line);
 
 /*
-** DIRECTIONS.C
+** PARSING/SPRITES_PATH/DIRECTIONS.C
 */
 
 int		ft_north(t_data *data, char *line);
@@ -73,7 +76,14 @@ int		ft_west(t_data *data, char *line);
 int		ft_east(t_data *data, char *line);
 
 /*
-** FREE.C
+** PARSING/EVENT.C
+*/
+
+int		ft_event(t_data *data);
+int		ft_exit_hook(void *x);
+
+/*
+** PARSING/FREE.C
 */
 
 void	ft_free_data(t_data *data, char *str);

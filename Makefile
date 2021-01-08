@@ -1,5 +1,6 @@
 SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
+			srcs/parsing/event.c						\
 			srcs/parsing/sprites_path/getting_data.c	\
 			srcs/parsing/sprites_path/directions.c		\
 			srcs/parsing/free.c							\

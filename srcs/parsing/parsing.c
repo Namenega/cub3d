@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 17:14:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/08 18:14:36 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		ft_parsing_data(char *line, t_data *data)
 {
-	//t_list		*lst;
-
 	if (!line)
 		return (0);
 	if (line[0] == 0)
@@ -53,6 +51,7 @@ int		ft_get_data(t_data *data, char *file)
 	}
 	while (get_next_line(fd, &line))
 	{
+		res = 1;
 		ft_parsing_data(line, data);
 		free(line);
 	}
@@ -78,8 +77,9 @@ t_data	*ft_data(char *file, int ac)
 	if (!(ft_get_data(data, file)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
-		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
-			data->height, file)) == NULL)
+		if ((data->mlx_win = 
+			mlx_new_window(data->mlx_ptr, data->width,
+			data->height, "cowboy")) == NULL)
 			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
 	return (data);
 }
