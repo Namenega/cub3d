@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 17:41:59 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/12 18:57:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,12 @@ typedef struct	s_data
 {
 	int			width;
 	int			height;
-	int			r;
-	int			g;
-	int			b;
+	int			r_sky;
+	int			g_sky;
+	int			b_sky;
+	int			r_ground;
+	int			g_ground;
+	int			b_ground;
 	char		*path_sprite;
 	char		*path_north;
 	char		*path_south;
@@ -49,6 +52,7 @@ typedef struct	s_data
 
 int		main(int ac, char const **av);
 int		ft_error_msg(char *s);
+void	ft_error_exit(char *s);
 
 /*
 ** PARSING/PARSING.C
@@ -59,12 +63,31 @@ int		ft_get_data(t_data *data, char *file);
 int		ft_parsing_data(char *line, t_data *data);
 
 /*
-** PARSING/SPRITES_PATH/GETTING_DATA.C
+** PARSING/SPRITES_PATH/RESOLUTION.C
 */
 
 int		ft_resolution(t_data *data, char *line);
+void	ft_error_resolution_1(char *line);
+void	ft_error_resolution_2(char *line);
+void	ft_error_resolution_3(char *line);
+
+/*
+** PARSING/SPRITES_PATH/OBSTACLE.C
+*/
+
 int		ft_sprite(t_data *data, char *line);
-int		ft_color_groundsky(t_data *data, char *line);
+
+/*
+** PARSING/SPRITES_PATH/SKY.C
+*/
+
+int		ft_color_sky(t_data *data, char *line);
+
+/*
+** PARSING/SPRITES_PATH/GROUND.C
+*/
+
+int		ft_color_ground(t_data *data, char *line);
 
 /*
 ** PARSING/SPRITES_PATH/DIRECTIONS.C

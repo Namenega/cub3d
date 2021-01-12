@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 18:14:36 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/12 15:36:56 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int		ft_parsing_data(char *line, t_data *data)
 		return (ft_east(data, &line[2]));
 	if (line[0] == 'S' && ft_isspace(line[1]))
 		return (ft_sprite(data, &line[1]));
-	if ((line[0] == 'F' || line[0] == 'C') && ft_isspace(line[1]))
-		return (ft_color_groundsky(data, &line[1]));
+	if ((line[0] == 'F') && ft_isspace(line[1]))
+		return (ft_color_ground(data, &line[1]));
+	if ((line[0] == 'C') && ft_isspace(line[1]))
+		return (ft_color_sky(data, &line[1]));
 	return (1);
 }
 
@@ -77,9 +79,8 @@ t_data	*ft_data(char *file, int ac)
 	if (!(ft_get_data(data, file)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
-		if ((data->mlx_win = 
-			mlx_new_window(data->mlx_ptr, data->width,
-			data->height, "cowboy")) == NULL)
+		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
+			data->height, "CUB3D")) == NULL)
 			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
 	return (data);
 }

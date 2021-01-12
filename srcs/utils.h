@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/08 17:01:06 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/12 16:26:55 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,11 @@ int			ft_isdigit(int c);
 int			ft_next_arg(char *l);
 size_t		ft_strlen(const char *s);
 void		*ft_calloc(size_t nmemb, size_t size);
+
+/*
+** LIBFT FUNCTIONS_3
+*/
+
+int			ft_next_arg_2(char *l);
 
 #endif

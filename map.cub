@@ -1,4 +1,4 @@
-R	13000	5000		(identifiant-taille X-taille Y)
+R	1920 1080
 
 S	../../sprites/pillar.png
 
@@ -7,8 +7,8 @@ SO	../../sprites/colorstone.png
 WE	../../sprites/greystone.png
 EA	../../sprites/purplestone.png
 
-F	255,255,0			(identifiant-couleur sol)
-C	255,0,255			(identifiant-couleur plafond)
+F	101,102,103			(identifiant-couleur sol)
+C	201,202,203, 514
 
 11111111
 10000001

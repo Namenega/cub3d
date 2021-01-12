@@ -1,11 +1,15 @@
 SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
 			srcs/parsing/event.c						\
-			srcs/parsing/sprites_path/getting_data.c	\
+			srcs/parsing/sprites_path/resolution.c	\
+			srcs/parsing/sprites_path/obstacle.c	\
+			srcs/parsing/sprites_path/sky.c	\
+			srcs/parsing/sprites_path/ground.c	\
 			srcs/parsing/sprites_path/directions.c		\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/utils/lib_functions_2.c				\
+			srcs/utils/lib_functions_3.c				\
 			srcs/get_next_line/get_next_line.c			\
 			srcs/get_next_line/get_next_line_utils.c	\
 
