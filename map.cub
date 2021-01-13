@@ -1,4 +1,4 @@
-R	1920 1080
+R 18446744073709551616 1080
 
 S	../../sprites/pillar.png
 
@@ -8,7 +8,7 @@ WE	../../sprites/greystone.png
 EA	../../sprites/purplestone.png
 
 F	101,102,103			(identifiant-couleur sol)
-C	201,202,203, 514
+C	201,202,203
 
 11111111
 10000001

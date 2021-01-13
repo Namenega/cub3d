@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 17:47:44 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:50:04 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,29 @@ void		ft_bzero(void *b, size_t len)
 		c[--len] = 0;
 }
 
+unsigned long int	ft_uli_error(const char *line)
+{
+	int	i;
+	unsigned long int result;
+
+	i = 0;
+	result = 0;
+	while (ft_isdigit(line[i]))
+		i++;
+	if (i >= 11)
+		result = 2147483647;
+	else
+	{
+		i = 0;
+		while (line[i] != '\0' && line[i] >= '0' && line[i] <= '9')
+		{
+				result = result * 10 + (line[i] - '0');
+			i++;
+		}
+	}
+	return (result);
+}
+
 int			ft_atoi(const char *s)
 {
 	int					i;
@@ -63,12 +86,13 @@ int			ft_atoi(const char *s)
 			compteur *= -1;
 		i++;
 	}
-	while (s[i] != '\0' && s[i] >= '0' && s[i] <= '9')
+	result = ft_uli_error(s + i);
+	if (result > 2147483647)
 	{
-		result = result * 10 + (s[i] - '0');
-		i++;
+		if (compteur == -1)
+		 	return (0);
+		else
+			ft_error_exit("Error\nNumber too big(R).\nMaximum is 2147483647");
 	}
-	if (result > 2147483648)
-		return (compteur == -1 ? 0 : -1);
 	return (result * compteur);
 }
