@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/13 16:50:04 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/13 17:41:50 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,29 +43,6 @@ void		ft_bzero(void *b, size_t len)
 	c = (char*)b;
 	while (len > 0)
 		c[--len] = 0;
-}
-
-unsigned long int	ft_uli_error(const char *line)
-{
-	int	i;
-	unsigned long int result;
-
-	i = 0;
-	result = 0;
-	while (ft_isdigit(line[i]))
-		i++;
-	if (i >= 11)
-		result = 2147483647;
-	else
-	{
-		i = 0;
-		while (line[i] != '\0' && line[i] >= '0' && line[i] <= '9')
-		{
-				result = result * 10 + (line[i] - '0');
-			i++;
-		}
-	}
-	return (result);
 }
 
 int			ft_atoi(const char *s)

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/12 17:21:53 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/13 16:58:51 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
-	exit (0);
+	exit(0);
 }
 
 int		ft_error_msg(char *s)

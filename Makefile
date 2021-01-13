@@ -1,7 +1,7 @@
 SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
 			srcs/parsing/event.c						\
-			srcs/parsing/sprites_path/resolution.c	\
+			srcs/parsing/resolution.c	\
 			srcs/parsing/sprites_path/obstacle.c	\
 			srcs/parsing/sprites_path/sky.c	\
 			srcs/parsing/sprites_path/ground.c	\
