@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/13 18:36:17 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/13 19:05:22 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void				ft_error_resolution_4(char *line);
 */
 
 int					ft_sprite(t_data *data, char *line);
-void				ft_error_sprite_2(char *line);
-void				ft_error_sprite_1(char *line);
+void				ft_error_sprite_path_2(char *line);
+void				ft_error_sprite_path_1(char *line);
 int					ft_next_arg_sprite(char *l);
 
 /*
