@@ -6,7 +6,7 @@
 /*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 17:31:11 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/14 18:13:40 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int		ft_parsing_data(char *line, t_data *data)
 
 	/*
 	** if 'SO' = 'S O' -> conflit avec 'S'-> error 'S'
+	** si tout n'existe qu'une seule fois ok
+	**		si il manque un truc pas ok
+	**		si il y a 2x un truc pas ok
 	*/
 	return (1);
 }

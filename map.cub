@@ -7,5 +7,5 @@ SO	../../sprites/colorstone.png
 WE	../../sprites/greystone.png
 EA	../../sprites/purplestone.png
 
-F	101,102,103			(identifiant-couleur sol)
-C				201,202,203
+F	101,102,103
+C	201,202,203

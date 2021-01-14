@@ -6,7 +6,7 @@
 /*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 17:12:55 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/14 18:11:07 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,9 @@ int					ft_sprite(t_data *data, char *line);
 */
 
 int					ft_color_sky(t_data *data, char *line);
-void				ft_error_sky_1(char *line);
-void				ft_error_sky_2(char *line);
-void				ft_error_sky_4(char *line);
+void				ft_error_skyground_1(char *line);
+void				ft_error_skyground_3(char *line);
+void				ft_error_skyground_4(char *line);
 
 /*
 ** PARSING/SPRITES_PATH/GROUND.C
