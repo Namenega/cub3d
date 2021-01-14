@@ -3,69 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   obstacle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/13 19:33:22 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:48:14 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void		ft_error_sprite_path_2(char *line)
-{
-	if (!line)
-		return ;
-	while (line && ft_isspace(*line))
-		line++;
-	if (*line)
-		ft_error_exit("Error\nToo many arguments(S).\nExit Program");
-}
-
-int			ft_next_arg_sprite(char *l)
-{
-	int	i;
-
-	i = 0;
-	while (l && ft_isspace(l[i]))
-		i++;
-	while (l && (!ft_isspace(l[i])))
-		i++;
-	if (l == '\0')
-		return (0);
-	else
-		return (i);
-}
-
-void		ft_error_sprite_path_1(char *line)
-{
-	while (ft_isspace(*line))
-		line++;
-	if (*line != '.')
-		ft_error_exit("Error\n1st argument is wrong(S).\nExit Program");
-}
-
 int			ft_sprite(t_data *data, char *line)
 {
 	int		i;
-	int		j;
 
-	i = 1;
-	j = 0;
-	printf("-----------\n\n*line = [%s]\n\n\n", line);
-	ft_error_sprite_path_1(line);
-	data->path_sprite = ft_calloc(sizeof(char), (ft_strlen(line) + 1));
-	while (line[i] >= 33 && line[i] <= 126)
-		data->path_sprite[j++] = line[i++];
-	data->path_sprite[j] = '\0';
+	i = 0;
+	data->path_sprite = ft_strtrim(line, " \t\v\r\f");
 	/*
 	** il faut open(../../sprites/pillar.png, O_RDONLY)
 	*/
-	printf("data->path_sprite = [%s]\n\n\n", data->path_sprite);
-	line += ft_next_arg_sprite(line);
-	printf("-----------\n\n*line = [%c]\n\n\n", *line);
-	if (line)
-		ft_error_sprite_path_2(line);
+	while (data->path_sprite[i])
+	{
+		if (ft_isspace(data->path_sprite[i]))
+			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
+		i++;
+	}
 	if (data->path_sprite == NULL)
 		return (0);
 	else

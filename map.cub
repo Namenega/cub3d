@@ -1,6 +1,6 @@
 R	1920	1080
 
-S	../../sprites/pillar.png
+S	../../sprites/pillar.png 
 
 NO	../../sprites/eagle.png
 SO	../../sprites/colorstone.png
@@ -8,15 +8,4 @@ WE	../../sprites/greystone.png
 EA	../../sprites/purplestone.png
 
 F	101,102,103			(identifiant-couleur sol)
-C	201,202,203
-
-11111111
-10000001
-10020001
-10000001
-100000N1
-11111111
-
-(1 = mur)
-(2 = obj)
-(N/W/E/S = position de depart + orientation)
+C				201,202,203

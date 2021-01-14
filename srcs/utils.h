@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/12 16:26:55 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/14 15:10:49 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 */
 
 int			ft_next_arg_2(char *l);
+
+char		*ft_strtrim(char const *s1, char const *set);
 
 #endif
