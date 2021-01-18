@@ -6,11 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:06:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:35:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:07:35 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+/*
+** We get here the string of north_sprite's path
+*/
 
 int		ft_north(t_data *data, char *line)
 {
@@ -22,9 +26,6 @@ int		ft_north(t_data *data, char *line)
 Exit Program");
 	data->path_north_verif++;
 	data->path_north = ft_strtrim(line, " \t\v\r\f");
-	/*
-	** il faut open(../../sprites/eagle.png, O_RDONLY)
-	*/
 	while (data->path_north[i])
 	{
 		if (ft_isspace(data->path_north[i]))
@@ -37,6 +38,10 @@ Exit Program");
 		return (1);
 }
 
+/*
+** We get here the string of south_sprite's path
+*/
+
 int		ft_south(t_data *data, char *line)
 {
 	int		i;
@@ -47,9 +52,6 @@ int		ft_south(t_data *data, char *line)
 Exit Program");
 	data->path_south_verif++;
 	data->path_south = ft_strtrim(line, " \t\v\r\f");
-	/*
-	** il faut open(../../sprites/eagle.png, O_RDONLY)
-	*/
 	while (data->path_south[i])
 	{
 		if (ft_isspace(data->path_south[i]))
@@ -62,6 +64,10 @@ Exit Program");
 		return (1);
 }
 
+/*
+** We get here the string of west_sprite's path
+*/
+
 int		ft_west(t_data *data, char *line)
 {
 	int		i;
@@ -72,9 +78,6 @@ int		ft_west(t_data *data, char *line)
 Exit Program");
 	data->path_west_verif++;
 	data->path_west = ft_strtrim(line, " \t\v\r\f");
-	/*
-	** il faut open(../../sprites/eagle.png, O_RDONLY)
-	*/
 	while (data->path_west[i])
 	{
 		if (ft_isspace(data->path_west[i]))
@@ -87,6 +90,10 @@ Exit Program");
 		return (1);
 }
 
+/*
+** We get here the string of east_sprite's path
+*/
+
 int		ft_east(t_data *data, char *line)
 {
 	int		i;
@@ -97,9 +104,6 @@ int		ft_east(t_data *data, char *line)
 Exit Program");
 	data->path_east_verif++;
 	data->path_east = ft_strtrim(line, " \t\v\r\f");
-	/*
-	** il faut open(../../sprites/eagle.png, O_RDONLY)
-	*/
 	while (data->path_east[i])
 	{
 		if (ft_isspace(data->path_east[i]))

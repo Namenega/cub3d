@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:41:43 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:57:42 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:08:35 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,10 @@ Exit Program");
 		i++;
 	}
 }
+
+/*
+** We get RGB of the Cellar
+*/
 
 int			ft_color_sky(t_data *data, char *line)
 {

@@ -6,11 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:38:23 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:10:02 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+/*
+** We get here the string of obstacle_sprite's path
+*/
 
 int			ft_sprite(t_data *data, char *line)
 {
@@ -22,9 +26,6 @@ int			ft_sprite(t_data *data, char *line)
 Exit Program");
 	data->path_sprite_verif++;
 	data->path_sprite = ft_strtrim(line, " \t\v\r\f");
-	/*
-	** il faut open(../../sprites/pillar.png, O_RDONLY)
-	*/
 	while (data->path_sprite[i])
 	{
 		if (ft_isspace(data->path_sprite[i]))

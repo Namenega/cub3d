@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:42:59 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:44:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:10:46 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,10 @@ Exit Program");
 		i++;
 	}
 }
+
+/*
+** We get the width & the height of the window's resolution
+*/
 
 int					ft_resolution(t_data *data, char *line)
 {

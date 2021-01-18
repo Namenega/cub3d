@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:57:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:09:12 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ Exit Program");
 	return (data);
 }
 
-int		ft_color_ground(t_data *data, char *line)
+/*
+** We get RGB of the Floor
+*/
+
+int			ft_color_ground(t_data *data, char *line)
 {
 	ft_error_skyground_1(line);
 	ft_error_ground(data);

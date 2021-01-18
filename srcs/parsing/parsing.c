@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 14:53:45 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 16:03:30 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ int		ft_parsing_data(char *line, t_data *data)
 		return (ft_color_sky(data, &line[1]));
 	else
 		ft_error_exit("Error\nA line is wrong in the .cub\nExit Program");
-
-	/*
-	** if 'SO' = 'S O' -> conflit avec 'S'-> error 'S'
-	** si tout n'existe qu'une seule fois ok
-	**		si il manque un truc pas ok
-	**		si il y a 2x un truc pas ok
-	*/
 	return (1);
 }
 
@@ -75,12 +68,6 @@ int		ft_get_data(t_data *data, char *file)
 		return (0);
 	}
 	res = ft_gnl(fd, line, data);
-	/* while (get_next_line(fd, &line))
-	{
-		res = 1;
-		ft_parsing_data(line, data);
-		free(line);
-	} */
 	free(line);
 	close(fd);
 	if (fd > 0 && res)
@@ -108,13 +95,3 @@ t_data	*ft_data(char *file, int ac)
 			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
 	return (data);
 }
-
-	// printf("no error here (1)\n");
-	// printf("no error here (2)\n");
-	// printf("no error here (3)\n");
-	// printf("no error here (4)\n");
-	// printf("no error here (5)\n");
-	// printf("no error here (6)\n");
-	// printf("no error here (7)\n");
-	// printf("no error here (8)\n");
-	// printf("no error here (9)\n");
