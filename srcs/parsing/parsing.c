@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 19:00:07 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/18 14:53:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,23 +49,8 @@ int		ft_parsing_data(char *line, t_data *data)
 int		ft_gnl(int fd, char *line, t_data *data)
 {
 	int		res;
-	int		compteur;
 
 	res = 0;
-	compteur = 0;
-	printf("\ndata->width = [%d]\n", data->width);
-	printf("\ndata->height = [%d]\n", data->height);
-	printf("\ndata->path_sprite = [%s]\n", data->path_sprite);
-	printf("\ndata->path_north = [%s]\n", data->path_north);
-	printf("\ndata->path_south = [%s]\n", data->path_south);
-	printf("\ndata->path_west = [%s]\n", data->path_west);
-	printf("\ndata->path_east = [%s]\n", data->path_east);
-	printf("\ndata->r_ground = [%d]\n", data->r_ground);
-	printf("\ndata->g_ground = [%d]\n", data->g_ground);
-	printf("\ndata->b_ground = [%d]\n", data->b_ground);
-	printf("\ndata->r_sky = [%d]\n", data->r_sky);
-	printf("\ndata->g_sky = [%d]\n", data->g_sky);
-	printf("\ndata->b_sky = [%d]\n", data->b_ground);
 	while (get_next_line(fd, &line))
 	{
 		res = 1;

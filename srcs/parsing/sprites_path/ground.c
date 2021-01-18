@@ -3,18 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ground.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 18:20:12 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:57:09 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+t_data		*ft_error_ground(t_data *data)
+{
+	if (data->r_ground_verif != 0 || data->g_ground_verif != 0 ||
+data->b_ground_verif != 0)
+		ft_error_exit("Error\nThis data (F) exists twice or more\n\
+Exit Program");
+	data->r_ground_verif++;
+	data->g_ground_verif++;
+	data->b_ground_verif++;
+	return (data);
+}
+
 int		ft_color_ground(t_data *data, char *line)
 {
 	ft_error_skyground_1(line);
+	ft_error_ground(data);
 	data->r_ground = ft_atoi(line);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_3(line);

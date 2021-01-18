@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:42:59 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/13 17:41:45 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 15:44:33 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,11 @@ int					ft_resolution(t_data *data, char *line)
 
 	mlx_get_screen_size(data->mlx_ptr, &x, &y);
 	ft_error_resolution_1(line);
+	if (data->width_verif != 0 || data->height_verif != 0)
+		ft_error_exit("Error\nThis data (R) exists twice or more\n\
+Exit Program");
+	data->width_verif++;
+	data->height_verif++;
 	data->width = ft_atoi(line);
 	if (data->width > x)
 		data->width = x;

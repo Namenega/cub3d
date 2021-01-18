@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sky.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:41:43 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 18:06:50 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:57:42 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,18 @@ void		ft_error_skyground_3(char *line)
 		ft_error_exit("Error\nMissing an argument(C).\nExit Program");
 }
 
+t_data		*ft_error_sky_2(t_data *data)
+{
+	if (data->r_sky_verif != 0 || data->g_sky_verif != 0 ||
+data->b_sky_verif != 0)
+		ft_error_exit("Error\nThis data (C) exists twice or more\n\
+Exit Program");
+	data->r_sky_verif++;
+	data->g_sky_verif++;
+	data->b_sky_verif++;
+	return (data);
+}
+
 void		ft_error_skyground_1(char *line)
 {
 	int	i;
@@ -55,6 +67,7 @@ Exit Program");
 int			ft_color_sky(t_data *data, char *line)
 {
 	ft_error_skyground_1(line);
+	ft_error_sky_2(data);
 	data->r_sky = ft_atoi(line);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_3(line);

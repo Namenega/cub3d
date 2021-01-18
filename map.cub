@@ -1,6 +1,6 @@
 R	1920	1080
 
-S	../../sprites/pillar.png 
+S	../../sprites/pillar.png
 
 NO	../../sprites/eagle.png
 SO	../../sprites/colorstone.png
@@ -9,5 +9,3 @@ EA	../../sprites/purplestone.png
 
 F	101,102,103
 C	201,202,203
-
-SO	../../sprites/colorstone_2.png

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 18:27:52 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:55:25 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef struct	s_data
 {
 	int			width;
 	int			height;
+	int			width_verif;
+	int			height_verif;
 	int			r_sky;
 	int			g_sky;
 	int			b_sky;
@@ -40,6 +42,17 @@ typedef struct	s_data
 	char		*path_south;
 	char		*path_east;
 	char		*path_west;
+	int			r_sky_verif;
+	int			g_sky_verif;
+	int			b_sky_verif;
+	int			r_ground_verif;
+	int			g_ground_verif;
+	int			b_ground_verif;
+	int			path_sprite_verif;
+	int			path_north_verif;
+	int			path_south_verif;
+	int			path_east_verif;
+	int			path_west_verif;
 	void		*mlx_ptr;
 	void		*mlx_win;
 }				t_data;
@@ -87,12 +100,14 @@ int					ft_color_sky(t_data *data, char *line);
 void				ft_error_skyground_1(char *line);
 void				ft_error_skyground_3(char *line);
 void				ft_error_skyground_4(char *line);
+t_data				*ft_error_skyg_2(t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/GROUND.C
 */
 
 int					ft_color_ground(t_data *data, char *line);
+t_data				*ft_error_ground(t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/DIRECTIONS.C

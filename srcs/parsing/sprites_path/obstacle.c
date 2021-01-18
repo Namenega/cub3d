@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   obstacle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 15:48:14 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/18 15:38:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int			ft_sprite(t_data *data, char *line)
 	int		i;
 
 	i = 0;
+	if (data->path_sprite_verif != 0)
+		ft_error_exit("Error\nThis data (S) exists twice or more\n\
+Exit Program");
+	data->path_sprite_verif++;
 	data->path_sprite = ft_strtrim(line, " \t\v\r\f");
 	/*
 	** il faut open(../../sprites/pillar.png, O_RDONLY)
