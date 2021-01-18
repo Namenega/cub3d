@@ -20,7 +20,7 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= cub3D
 
-CC		= gcc
+CC		= gcc -g -fsanitize=address
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -I.
 

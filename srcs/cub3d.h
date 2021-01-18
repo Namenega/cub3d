@@ -6,7 +6,7 @@
 /*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 18:11:07 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/14 18:27:52 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void				ft_error_exit(char *s);
 
 t_data				*ft_data(char *file, int ac);
 int					ft_get_data(t_data *data, char *file);
+int					ft_gnl(int fd, char *line, t_data *data);
 int					ft_parsing_data(char *line, t_data *data);
 
 /*

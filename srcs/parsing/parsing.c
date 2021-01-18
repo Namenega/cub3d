@@ -6,7 +6,7 @@
 /*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/14 18:13:40 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/01/14 19:00:07 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,35 @@ int		ft_parsing_data(char *line, t_data *data)
 	return (1);
 }
 
+int		ft_gnl(int fd, char *line, t_data *data)
+{
+	int		res;
+	int		compteur;
+
+	res = 0;
+	compteur = 0;
+	printf("\ndata->width = [%d]\n", data->width);
+	printf("\ndata->height = [%d]\n", data->height);
+	printf("\ndata->path_sprite = [%s]\n", data->path_sprite);
+	printf("\ndata->path_north = [%s]\n", data->path_north);
+	printf("\ndata->path_south = [%s]\n", data->path_south);
+	printf("\ndata->path_west = [%s]\n", data->path_west);
+	printf("\ndata->path_east = [%s]\n", data->path_east);
+	printf("\ndata->r_ground = [%d]\n", data->r_ground);
+	printf("\ndata->g_ground = [%d]\n", data->g_ground);
+	printf("\ndata->b_ground = [%d]\n", data->b_ground);
+	printf("\ndata->r_sky = [%d]\n", data->r_sky);
+	printf("\ndata->g_sky = [%d]\n", data->g_sky);
+	printf("\ndata->b_sky = [%d]\n", data->b_ground);
+	while (get_next_line(fd, &line))
+	{
+		res = 1;
+		ft_parsing_data(line, data);
+		free(line);
+	}
+	return (res);
+}
+
 int		ft_get_data(t_data *data, char *file)
 {
 	int		fd;
@@ -60,12 +89,13 @@ int		ft_get_data(t_data *data, char *file)
 		ft_putstr_fd("Error\nTask - Reading File : Fail_1!", 1);
 		return (0);
 	}
-	while (get_next_line(fd, &line))
+	res = ft_gnl(fd, line, data);
+	/* while (get_next_line(fd, &line))
 	{
 		res = 1;
 		ft_parsing_data(line, data);
 		free(line);
-	}
+	} */
 	free(line);
 	close(fd);
 	if (fd > 0 && res)
