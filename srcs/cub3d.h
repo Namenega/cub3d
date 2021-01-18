@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 15:55:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/18 17:46:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,27 @@ typedef struct	s_data
 	void		*mlx_ptr;
 	void		*mlx_win;
 }				t_data;
+
+typedef struct	s_vec
+{
+	double	x;
+	double	y;
+}				t_vec;
+
+typedef struct	s_pos
+{
+	t_vec	pos;
+	t_vec	dir;
+	t_vec	plane_cam;
+	t_vec	camera;
+	double	ttime;
+	double	oldtime;
+}				t_pos;
+
+typedef struct	s_ray
+{
+	t_vec	dir;
+}				t_ray;
 
 #include "utils.h"
 
@@ -117,6 +138,12 @@ int					ft_north(t_data *data, char *line);
 int					ft_south(t_data *data, char *line);
 int					ft_west(t_data *data, char *line);
 int					ft_east(t_data *data, char *line);
+
+/*
+** PARSING/AFFICHAGE.C
+*/
+
+int					ft_affichage(t_data *data);
 
 /*
 ** PARSING/EVENT.C

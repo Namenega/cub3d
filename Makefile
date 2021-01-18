@@ -1,5 +1,6 @@
 SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
+			srcs/parsing/affichage.c					\
 			srcs/parsing/event.c						\
 			srcs/parsing/resolution.c					\
 			srcs/parsing/sprites_path/obstacle.c		\
@@ -10,9 +11,9 @@ SRCNAME	=	srcs/parsing/main.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/utils/lib_functions_2.c				\
 			srcs/utils/lib_functions_3.c				\
+			srcs/utils/ft_strtrim.c						\
 			srcs/get_next_line/get_next_line.c			\
 			srcs/get_next_line/get_next_line_utils.c	\
-			srcs/utils/ft_strtrim.c						\
 
 SRCS	= ${SRCNAME}
 
