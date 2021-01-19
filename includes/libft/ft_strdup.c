@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:50:09 by namenega         ###   ########.fr       */
+/*   Created: 2020/01/06 17:10:16 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/10 14:56:39 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "libft.h"
 
-# include "cub3d.h"
-# include "get_next_line.h"
-# include "../includes/libft/libft.h"
+char	*ft_strdup(const char *s)
+{
+	char	*dst;
+	int		i;
+
+	i = 0;
+	dst = ((char *)malloc(sizeof(char) * (ft_strlen(s) + 1)));
+	if (dst == NULL)
+		return (0);
+	while (s[i] != '\0')
+	{
+		dst[i] = s[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}
 
 /*
-** LIBFT FUNCTIONS_1
+** malloc new chain et rempli avec premiere
 */
-
-
-int			ft_isspace(int c);
-int			ft_atoi_2(const char *s);
-int			ft_inset(int c, char *set);
-int			ft_next_arg(char *l);
-int			ft_next_arg_2(char *l);
-
-/*
-** LIBFT FUNCTIONS_2
-*/
-
-
-#endif

@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:50:09 by namenega         ###   ########.fr       */
+/*   Created: 2020/01/07 15:40:45 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/10 15:24:09 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "libft.h"
 
-# include "cub3d.h"
-# include "get_next_line.h"
-# include "../includes/libft/libft.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	str = (char *)s;
+	i = 0;
+	j = -5;
+	if (c == '\0')
+		return (str + ft_strlen(s));
+	while (str[i] != 0)
+	{
+		if (str[i] == c)
+			j = i;
+		i++;
+	}
+	if (j == -5)
+		return (NULL);
+	return (str + j);
+}
 
 /*
-** LIBFT FUNCTIONS_1
+** return un pointeur sur last occurrence de c ds s
 */
-
-
-int			ft_isspace(int c);
-int			ft_atoi_2(const char *s);
-int			ft_inset(int c, char *set);
-int			ft_next_arg(char *l);
-int			ft_next_arg_2(char *l);
-
-/*
-** LIBFT FUNCTIONS_2
-*/
-
-
-#endif

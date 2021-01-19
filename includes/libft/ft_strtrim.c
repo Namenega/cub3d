@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/14 15:07:55 by Nathan            #+#    #+#             */
-/*   Updated: 2021/01/14 15:11:44 by Nathan           ###   ########.fr       */
+/*   Created: 2020/01/08 19:26:47 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/14 15:34:51 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
-#include <stdlib.h>
+#include "libft.h"
 
 /*
 ** check si char set = celui ds str

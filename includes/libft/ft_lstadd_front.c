@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_functions_3.c                                  :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/12 16:26:06 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/12 16:27:10 by namenega         ###   ########.fr       */
+/*   Created: 2020/01/13 15:48:42 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/13 17:16:47 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "libft.h"
 
-int			ft_next_arg_2(char *l)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	int	i;
-
-	i = 0;
-	while (l && ft_isspace(l[i]))
-		i++;
-	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".-")))
-		i++;
-	return (i);
+	if (!alst || !new)
+		return ;
+	new->next = *alst;
+	*alst = new;
 }
+
+/*
+** ajoute l'element new au debut de la list
+*/

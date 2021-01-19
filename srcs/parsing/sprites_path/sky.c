@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:41:43 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 16:08:35 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:46:15 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,17 +72,17 @@ int			ft_color_sky(t_data *data, char *line)
 {
 	ft_error_skyground_1(line);
 	ft_error_sky_2(data);
-	data->r_sky = ft_atoi(line);
+	data->r_sky = ft_atoi_2(line);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_3(line);
 	while ((*line == ft_isspace(*line)) || *line == ',')
 		line++;
-	data->g_sky = ft_atoi(line);
+	data->g_sky = ft_atoi_2(line);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_3(line);
 	while ((*line == ft_isspace(*line)) || *line == ',')
 		line++;
-	data->b_sky = ft_atoi(line);
+	data->b_sky = ft_atoi_2(line);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_4(line);
 	if (!data->r_sky || !data->g_sky || !data->b_sky)

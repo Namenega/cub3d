@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:50:09 by namenega         ###   ########.fr       */
+/*   Created: 2020/01/13 14:46:31 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/13 15:48:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "libft.h"
 
-# include "cub3d.h"
-# include "get_next_line.h"
-# include "../includes/libft/libft.h"
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
 
-/*
-** LIBFT FUNCTIONS_1
-*/
-
-
-int			ft_isspace(int c);
-int			ft_atoi_2(const char *s);
-int			ft_inset(int c, char *set);
-int			ft_next_arg(char *l);
-int			ft_next_arg_2(char *l);
+	if (!(new = malloc(sizeof(t_list))))
+		return (NULL);
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}
 
 /*
-** LIBFT FUNCTIONS_2
+** malloc et renvoie un nouvel element
+** content initialisee a l'aide de la valeur du param content
+** next initialisee a NULL
 */
-
-
-#endif

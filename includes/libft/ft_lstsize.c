@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:50:09 by namenega         ###   ########.fr       */
+/*   Created: 2020/01/13 16:33:39 by namenega          #+#    #+#             */
+/*   Updated: 2020/01/13 17:12:16 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "libft.h"
 
-# include "cub3d.h"
-# include "get_next_line.h"
-# include "../includes/libft/libft.h"
+int	ft_lstsize(t_list *lst)
+{
+	int i;
+
+	i = 0;
+	if (!lst)
+		return (0);
+	while (lst)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
 
 /*
-** LIBFT FUNCTIONS_1
+** compter le nbr d'element de la liste
 */
-
-
-int			ft_isspace(int c);
-int			ft_atoi_2(const char *s);
-int			ft_inset(int c, char *set);
-int			ft_next_arg(char *l);
-int			ft_next_arg_2(char *l);
-
-/*
-** LIBFT FUNCTIONS_2
-*/
-
-
-#endif

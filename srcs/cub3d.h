@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 17:46:01 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:41:37 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../includes/mlx/mlx.h"
+# include "../includes/libft/libft.h"
 # include "get_next_line.h"
 # define R 0x00FF0000
 # define G 0x0000FF00

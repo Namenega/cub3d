@@ -6,27 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/13 17:41:50 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 16:52:21 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void		ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void		ft_putstr_fd(char *s, int fd)
-{
-	if (!s)
-		return ;
-	while (s && *s)
-	{
-		ft_putchar_fd(*s, fd);
-		s++;
-	}
-}
 
 int			ft_isspace(int c)
 {
@@ -36,16 +20,7 @@ int			ft_isspace(int c)
 	return (0);
 }
 
-void		ft_bzero(void *b, size_t len)
-{
-	char *c;
-
-	c = (char*)b;
-	while (len > 0)
-		c[--len] = 0;
-}
-
-int			ft_atoi(const char *s)
+int			ft_atoi_2(const char *s)
 {
 	int					i;
 	int					compteur;
@@ -67,9 +42,44 @@ int			ft_atoi(const char *s)
 	if (result > 2147483647)
 	{
 		if (compteur == -1)
-		 	return (0);
+			return (0);
 		else
 			ft_error_exit("Error\nNumber too big(R).\nMaximum is 2147483647");
 	}
 	return (result * compteur);
+}
+
+int			ft_inset(int c, char *set)
+{
+	while (set && *set)
+	{
+		if (c == *set)
+			return (1);
+		set++;
+	}
+	return (0);
+}
+
+int			ft_next_arg(char *l)
+{
+	int	i;
+
+	i = 0;
+	while (l && ft_isspace(l[i]))
+		i++;
+	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".,-")))
+		i++;
+	return (i);
+}
+
+int			ft_next_arg_2(char *l)
+{
+	int	i;
+
+	i = 0;
+	while (l && ft_isspace(l[i]))
+		i++;
+	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".-")))
+		i++;
+	return (i);
 }

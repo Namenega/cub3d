@@ -11,7 +11,6 @@ SRCNAME	=	srcs/parsing/main.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/utils/lib_functions_2.c				\
 			srcs/utils/lib_functions_3.c				\
-			srcs/utils/ft_strtrim.c						\
 			srcs/get_next_line/get_next_line.c			\
 			srcs/get_next_line/get_next_line_utils.c	\
 
@@ -23,15 +22,16 @@ NAME	= cub3D
 
 CC		= gcc -g -fsanitize=address
 RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror -I.
+CFLAGS	= -Wall -Wextra -Werror -I. -I./includes/libft
 
 .c.o:
 			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 		make -C includes/mlx
+		make -C includes/libft
 		cp includes/mlx/libmlx.dylib .
-		${CC} -o ${NAME} ${OBJS} -L. -lmlx -framework OpenGL -framework AppKit
+		${CC} -o ${NAME} ${OBJS} -L./includes/libft -lft -L. -lmlx -framework OpenGL -framework AppKit
 
 all: 		${NAME}
 
