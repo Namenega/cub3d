@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:41:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:51:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ t_data				*ft_error_skyg_2(t_data *data);
 
 int					ft_color_ground(t_data *data, char *line);
 t_data				*ft_error_ground(t_data *data);
+void				ft_error_skyground_5(t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/DIRECTIONS.C

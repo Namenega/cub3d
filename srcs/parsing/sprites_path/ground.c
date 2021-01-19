@@ -6,11 +6,27 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:46:04 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 17:50:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void		ft_error_skyground_5(t_data *data)
+{
+	if (data->r_sky > 255 || data->r_sky < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (C).\nExit Program");
+	if (data->g_sky > 255 || data->g_sky < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (C).\nExit Program");
+	if (data->b_sky > 255 || data->b_sky < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (C).\nExit Program");
+	if (data->r_ground > 255 || data->r_ground < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (F).\nExit Program");
+	if (data->g_ground > 255 || data->g_ground < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (F).\nExit Program");
+	if (data->b_ground > 255 || data->b_ground < 0)
+		ft_error_exit("Error\nRGB must be between 0 & 255 (F).\nExit Program");
+}
 
 t_data		*ft_error_ground(t_data *data)
 {
