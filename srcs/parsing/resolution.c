@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:42:59 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 16:45:38 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:40:35 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int					ft_resolution(t_data *data, char *line)
 	int		x;
 	int		y;
 
+	data->parsed++;
 	mlx_get_screen_size(data->mlx_ptr, &x, &y);
 	ft_error_resolution_1(line);
 	if (data->width_verif != 0 || data->height_verif != 0)

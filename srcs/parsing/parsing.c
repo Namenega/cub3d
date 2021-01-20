@@ -6,14 +6,18 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 15:42:19 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 18:29:00 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_parsing_data(char *line, t_data *data)
+int		ft_parsing_data(t_list *el, t_data *data)
 {
+	char	*line;
+
+	line = (char *)(el->content);
+	printf("---------\n\nline = [%s]\n\n-----------\n", line);
 	if (!line)
 		return (0);
 	else if (line[0] == 0)
@@ -34,6 +38,8 @@ int		ft_parsing_data(char *line, t_data *data)
 		return (ft_color_ground(data, &line[1]));
 	else if ((line[0] == 'C') && ft_isspace(line[1]))
 		return (ft_color_sky(data, &line[1]));
+	if (data->parsed == 8)
+		return (ft_map(el));
 	else
 		ft_error_exit("Error\nA line is wrong in the .cub\nExit Program");
 	return (1);
@@ -61,7 +67,7 @@ int		ft_gnl(int fd, char *line, t_data *data)
 	each_line = data->lst_line;
 	while (each_line)
 	{
-		ft_parsing_data(each_line->content, data);
+		ft_parsing_data(each_line, data);
 		each_line = each_line->next;
 	}
 	return (res);

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 15:20:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 18:49:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,15 @@ typedef struct	s_data
 	t_list		*lst_line;
 }				t_data;
 
+typedef struct	s_map
+{
+	int		i;
+	int		j;
+	int		width;
+	int		height;
+	t_list	*parse;
+}				t_map;
+
 typedef struct	s_vec
 {
 	double		x;
@@ -99,7 +108,7 @@ void				ft_error_exit(char *s);
 t_data				*ft_data(char *file, int ac);
 int					ft_get_data(t_data *data, char *file);
 int					ft_gnl(int fd, char *line, t_data *data);
-int					ft_parsing_data(char *line, t_data *data);
+int					ft_parsing_data(t_list *el, t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/RESOLUTION.C
@@ -143,6 +152,14 @@ int					ft_north(t_data *data, char *line);
 int					ft_south(t_data *data, char *line);
 int					ft_west(t_data *data, char *line);
 int					ft_east(t_data *data, char *line);
+
+/*
+** PARSING/MAP_PARSING/MAP.C
+*/
+
+int					ft_map(t_list *el);
+t_map				*ft_get_map_hw(t_map *map, t_list *el);
+t_map				*ft_map_data(t_map *map, int **real_map);
 
 /*
 ** PARSING/AFFICHAGE.C

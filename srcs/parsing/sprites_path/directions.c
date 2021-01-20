@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:06:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 16:07:35 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 17:41:33 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_north(t_data *data, char *line)
 	int		i;
 
 	i = 0;
+	data->parsed++;
 	if (data->path_north_verif != 0)
 		ft_error_exit("Error\nThis data (NO) exists twice or more\n\
 Exit Program");
@@ -47,6 +48,7 @@ int		ft_south(t_data *data, char *line)
 	int		i;
 
 	i = 0;
+	data->parsed++;
 	if (data->path_south_verif != 0)
 		ft_error_exit("Error\nThis data (SO) exists twice or more\n\
 Exit Program");
@@ -73,6 +75,7 @@ int		ft_west(t_data *data, char *line)
 	int		i;
 
 	i = 0;
+	data->parsed++;
 	if (data->path_west_verif != 0)
 		ft_error_exit("Error\nThis data (WE) exists twice or more\n\
 Exit Program");
@@ -99,6 +102,7 @@ int		ft_east(t_data *data, char *line)
 	int		i;
 
 	i = 0;
+	data->parsed++;
 	if (data->path_east_verif != 0)
 		ft_error_exit("Error\nThis data (EA) exists twice or more\n\
 Exit Program");
