@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 17:57:18 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/19 18:01:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		ft_error_skyground_5(t_data *data)
 t_data		*ft_error_ground(t_data *data)
 {
 	if (data->r_ground_verif != 0 || data->g_ground_verif != 0 ||
-data->b_ground_verif != 0)
+		data->b_ground_verif != 0)
 		ft_error_exit("Error\nThis data (F) exists twice or more\n\
 Exit Program");
 	data->r_ground_verif++;

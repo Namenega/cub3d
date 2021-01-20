@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 17:51:10 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:20:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "utils.h"
 # include "../includes/mlx/mlx.h"
 # include "../includes/libft/libft.h"
 # include "get_next_line.h"
@@ -56,30 +57,32 @@ typedef struct	s_data
 	int			path_west_verif;
 	void		*mlx_ptr;
 	void		*mlx_win;
+	int			**map;
+	int			parsed;
+	int			line_map;
+	t_list		*lst_line;
 }				t_data;
 
 typedef struct	s_vec
 {
-	double	x;
-	double	y;
+	double		x;
+	double		y;
 }				t_vec;
 
 typedef struct	s_pos
 {
-	t_vec	pos;
-	t_vec	dir;
-	t_vec	plane_cam;
-	t_vec	camera;
-	double	ttime;
-	double	oldtime;
+	t_vec		pos;
+	t_vec		dir;
+	t_vec		plane_cam;
+	t_vec		camera;
+	double		ttime;
+	double		oldtime;
 }				t_pos;
 
 typedef struct	s_ray
 {
-	t_vec	dir;
+	t_vec		dir;
 }				t_ray;
-
-#include "utils.h"
 
 /*
 ** PARSING/MAIN.C
