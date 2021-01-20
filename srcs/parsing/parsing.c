@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 15:28:48 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/20 15:42:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,22 +43,27 @@ int		ft_gnl(int fd, char *line, t_data *data)
 {
 	int		res;
 	t_list	*tmp;
+	t_list	*each_line;
 
 	res = 0;
 	while (get_next_line(fd, &line))
 	{
 		tmp = ft_lstnew(line);
 		if (!tmp)
-			return (NULL);
+			return (0);
 		ft_lstadd_back(&data->lst_line, tmp);
 		res = 1;
-		// ft_parsing_data(line, data);
-		// free(line);
 	}
 	tmp = ft_lstnew(line);
 	if (!tmp)
-		return (NULL);
+		return (0);
 	ft_lstadd_back(&data->lst_line, tmp);
+	each_line = data->lst_line;
+	while (each_line)
+	{
+		ft_parsing_data(each_line->content, data);
+		each_line = each_line->next;
+	}
 	return (res);
 }
 
@@ -104,12 +109,3 @@ t_data	*ft_data(char *file, int ac)
 			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
 	return (data);
 }
-
-
-// t_list	*el;
-
-// el = truc->lst_line;
-// while (el) {
-// 	parsing(el->content);
-// 	el = el->next;
-// }
