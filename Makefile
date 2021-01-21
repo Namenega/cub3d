@@ -7,6 +7,7 @@ SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/sprites_path/sky.c				\
 			srcs/parsing/sprites_path/ground.c			\
 			srcs/parsing/sprites_path/directions.c		\
+			srcs/parsing/map_parsing/map.c				\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/get_next_line/get_next_line.c			\
