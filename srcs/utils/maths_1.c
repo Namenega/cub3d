@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   maths_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 17:51:21 by namenega         ###   ########.fr       */
+/*   Created: 2021/01/21 17:46:40 by namenega          #+#    #+#             */
+/*   Updated: 2021/01/21 17:55:28 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#include "../cub3d.h"
 
-# include "cub3d.h"
-# include "get_next_line.h"
-# include "../includes/libft/libft.h"
+t_vec		ft_multvec(t_vec v)
+{
+	t_vec	new;
 
-/*
-** UTILS/LIB_FUNCTIONS_1.C
-*/
+	new.x = v.x * v.x;
+	new.y = v.y * v.y;
+	return (new);
+}
 
-int			ft_isspace(int c);
-int			ft_atoi_2(const char *s);
-int			ft_inset(int c, char *set);
-int			ft_next_arg(char *l);
-int			ft_next_arg_2(char *l);
+t_vec		ft_divvec(t_vec v)
+{
+	t_vec	new;
 
-/*
-** UTILS/MATHS_1.C
-*/
-
-t_vec		ft_multvec(t_vec v);
-
-#endif
+	new.x = v.x / v.x;
+	new.y = v.y / v.y;
+	return (new);
+}

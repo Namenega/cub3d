@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/18 17:31:56 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 19:12:52 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
+	// free(data);
 	exit(0);
 }
 
@@ -29,6 +30,7 @@ int		ft_error_msg(char *s)
 int		main(int ac, char const **av)
 {
 	t_data		*data;
+	t_map		*map;
 
 	if (!(ac == 2 || ac == 3))
 		return (ft_error_msg("Error\nTask - arguments : Wrong Number !"));
@@ -36,7 +38,7 @@ int		main(int ac, char const **av)
 		return (ft_error_msg("Error\nTask - parsing : Fail_4 !"));
 	if (ac == 2)
 	{
-		ft_affichage(data);
+		ft_affichage(data, map);
 		ft_event(data);
 		ft_free_data(data, "End Of Program");
 	}

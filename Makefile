@@ -10,6 +10,7 @@ SRCNAME	=	srcs/parsing/main.c							\
 			srcs/parsing/map_parsing/map.c				\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
+			srcs/utils/maths.c							\
 			srcs/get_next_line/get_next_line.c			\
 			srcs/get_next_line/get_next_line_utils.c	\
 

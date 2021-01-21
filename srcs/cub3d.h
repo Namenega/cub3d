@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 16:52:10 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 19:13:43 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_map
 	int			j;
 	int			width;
 	int			height;
+	int			**real_map;
 }				t_map;
 
 typedef struct	s_vec
@@ -92,6 +93,17 @@ typedef struct	s_ray
 {
 	t_vec		dir;
 }				t_ray;
+
+typedef struct	s_move
+{
+	int			hit;
+	int			side;
+	double		perp_wall_dist;
+	t_vec		map;
+	t_vec		step;
+	t_vec		d_dist;
+	t_vec		side_dist;
+}				t_move;
 
 /*
 ** PARSING/MAIN.C
@@ -159,14 +171,17 @@ int					ft_east(t_data *data, char *line);
 
 int					ft_map(t_list *el, t_data *data);
 t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
-t_map				*ft_map_data(t_map *map, int **real_map, t_list *el);
-t_map				*ft_map_asign(t_list *el, t_map *map, int **real_map);
+t_map				*ft_map_data(t_map *map, t_list *el);
+t_map				*ft_map_asign(t_list *el, t_map *map);
 
 /*
 ** PARSING/AFFICHAGE.C
 */
 
-int					ft_affichage(t_data *data);
+int					ft_affichage(t_data *data, t_map *map);
+void				ft_init_posi_vec(t_pos *posi);
+void				ft_start_position(t_pos *posi, t_ray *ray, t_map *map);
+void				ft_condition_ray(t_ray *ray, t_move *move, t_pos *posi);
 
 /*
 ** PARSING/EVENT.C
