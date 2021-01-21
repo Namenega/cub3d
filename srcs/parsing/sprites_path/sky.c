@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:41:43 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 17:40:53 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 15:05:47 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,15 @@ int			ft_color_sky(t_data *data, char *line)
 	ft_error_skyground_5(data);
 	line += ft_next_arg_2(line);
 	ft_error_skyground_4(line);
+	printf("r_sky = [%d]\n", data->r_sky);
+	printf("g_sky = [%d]\n", data->g_sky);
+	printf("b_sky = [%d]\n", data->b_sky);
 	if (!data->r_sky || !data->g_sky || !data->b_sky)
 		return (0);
 	return (1);
 }
+
+/*
+** ERROR A FIX
+** si il n'y a pas de virgule - trop de virgules
+*/

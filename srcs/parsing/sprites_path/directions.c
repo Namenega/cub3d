@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:06:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 17:41:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 14:52:59 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Exit Program");
 	while (data->path_north[i])
 	{
 		if (ft_isspace(data->path_north[i]))
-			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
+			ft_error_exit("Error\nToo many arguments(NO).\nExit Program");
 		i++;
 	}
 	if (data->path_north == NULL)
@@ -57,7 +57,7 @@ Exit Program");
 	while (data->path_south[i])
 	{
 		if (ft_isspace(data->path_south[i]))
-			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
+			ft_error_exit("Error\nToo many arguments(SO).\nExit Program");
 		i++;
 	}
 	if (data->path_south == NULL)
@@ -84,7 +84,7 @@ Exit Program");
 	while (data->path_west[i])
 	{
 		if (ft_isspace(data->path_west[i]))
-			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
+			ft_error_exit("Error\nToo many arguments(WE).\nExit Program");
 		i++;
 	}
 	if (data->path_west == NULL)
@@ -111,7 +111,7 @@ Exit Program");
 	while (data->path_east[i])
 	{
 		if (ft_isspace(data->path_east[i]))
-			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
+			ft_error_exit("Error\nToo many arguments(EA).\nExit Program");
 		i++;
 	}
 	if (data->path_east == NULL)

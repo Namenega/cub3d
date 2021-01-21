@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/20 18:49:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 13:30:38 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct	s_data
 	int			parsed;
 	int			line_map;
 	t_list		*lst_line;
+	t_list		*first_token;
 }				t_data;
 
 typedef struct	s_map
@@ -157,8 +158,8 @@ int					ft_east(t_data *data, char *line);
 ** PARSING/MAP_PARSING/MAP.C
 */
 
-int					ft_map(t_list *el);
-t_map				*ft_get_map_hw(t_map *map, t_list *el);
+int					ft_map(t_list *el, t_data *data);
+t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
 t_map				*ft_map_data(t_map *map, int **real_map);
 
 /*
