@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 16:00:00 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/21 16:52:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,6 @@ int					ft_east(t_data *data, char *line);
 */
 
 int					ft_map(t_list *el, t_data *data);
-t_map				*ft_init_map(t_map *map);
 t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
 t_map				*ft_map_data(t_map *map, int **real_map, t_list *el);
 t_map				*ft_map_asign(t_list *el, t_map *map, int **real_map);
