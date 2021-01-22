@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 19:13:43 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:53:17 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,9 @@ typedef struct	s_map
 	int			width;
 	int			height;
 	int			**real_map;
+	int			color_r;
+	int			color_g;
+	int			color_b;
 }				t_map;
 
 typedef struct	s_vec
@@ -98,6 +101,9 @@ typedef struct	s_move
 {
 	int			hit;
 	int			side;
+	int			line_h;
+	int			draw_start;
+	int			draw_end;
 	double		perp_wall_dist;
 	t_vec		map;
 	t_vec		step;
@@ -155,6 +161,8 @@ t_data				*ft_error_skyg_2(t_data *data);
 int					ft_color_ground(t_data *data, char *line);
 t_data				*ft_error_ground(t_data *data);
 void				ft_error_skyground_5(t_data *data);
+char				**split_rgb_ground(char *line);
+void				ft_error_skyground_6(char **strs);
 
 /*
 ** PARSING/SPRITES_PATH/DIRECTIONS.C
@@ -175,13 +183,20 @@ t_map				*ft_map_data(t_map *map, t_list *el);
 t_map				*ft_map_asign(t_list *el, t_map *map);
 
 /*
-** PARSING/AFFICHAGE.C
+** VISUAL/AFFICHAGE.C
 */
 
 int					ft_affichage(t_data *data, t_map *map);
-void				ft_init_posi_vec(t_pos *posi);
-void				ft_start_position(t_pos *posi, t_ray *ray, t_map *map);
+void				ft_start_position(t_pos *posi, t_ray *ray, t_map *map, t_data *data);
 void				ft_condition_ray(t_ray *ray, t_move *move, t_pos *posi);
+void				ft_move_square(t_move *move);
+
+/*
+** VISUAL/INIT_STRUCT.C
+*/
+
+void				ft_init_pos_vec(t_pos *posi);
+void				ft_init_move(t_move *move, t_pos *posi, t_ray *ray);
 
 /*
 ** PARSING/EVENT.C

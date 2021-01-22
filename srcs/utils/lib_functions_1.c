@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/19 17:19:55 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:26:16 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ int			ft_atoi_2(const char *s)
 	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\f' ||
 			s[i] == '\r' || s[i] == ' ' || s[i] == '\v')
 		i++;
-	if (s[i] == '-' || s[i] == '+')
-	{
-		if (s[i] == '-')
-			compteur *= -1;
-		i++;
-	}
 	result = ft_uli_error(s + i);
 	if (result > 2147483647)
 	{

@@ -6,37 +6,37 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:41:43 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 15:36:04 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/22 18:52:07 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
-void		ft_error_skyground_4(char *line)
-{
-	int	i;
+// void		ft_error_skyground_4(char *line)
+// {
+// 	int	i;
 
-	i = 0;
-	if (line[i])
-	{
-		while (line[i])
-		{
-			if (!ft_isspace(line[i]))
-				ft_error_exit("Error\nToo many arguments(R).\nExit Program");
-			i++;
-		}
-	}
-}
+// 	i = 0;
+// 	if (line[i])
+// 	{
+// 		while (line[i])
+// 		{
+// 			if (!ft_isspace(line[i]))
+// 				ft_error_exit("Error\nToo many arguments(F/C).\nExit Program");
+// 			i++;
+// 		}
+// 	}
+// }
 
-void		ft_error_skyground_3(char *line)
-{
-	if (!(*line))
-		ft_error_exit("Error\nMissing an argument(C).\nExit Program");
-	while (ft_isspace(*line) || *line == ',')
-		line++;
-	if (!ft_isdigit(*line))
-		ft_error_exit("Error\nMissing an argument(C).\nExit Program");
-}
+// void		ft_error_skyground_3(char *line)
+// {
+// 	if (!(*line))
+// 		ft_error_exit("Error\nMissing an argument(F/C).\nExit Program");
+// 	while (ft_isspace(*line) || *line == ',')
+// 		line++;
+// 	if (!ft_isdigit(*line))
+// 		ft_error_exit("Error\nMissing an argument(F/C).\nExit Program");
+// }
 
 t_data		*ft_error_sky_2(t_data *data)
 {
@@ -70,29 +70,20 @@ Exit Program");
 
 int			ft_color_sky(t_data *data, char *line)
 {
+	char	**strs;
+
 	data->parsed++;
 	ft_error_skyground_1(line);
 	ft_error_sky_2(data);
-	data->r_sky = ft_atoi_2(line);
-	line += ft_next_arg_2(line);
-	ft_error_skyground_3(line);
-	while ((*line == ft_isspace(*line)) || *line == ',')
-		line++;
-	data->g_sky = ft_atoi_2(line);
-	line += ft_next_arg_2(line);
-	ft_error_skyground_3(line);
-	while ((*line == ft_isspace(*line)) || *line == ',')
-		line++;
-	data->b_sky = ft_atoi_2(line);
-	ft_error_skyground_5(data);
-	line += ft_next_arg_2(line);
-	ft_error_skyground_4(line);
-	if (!data->r_sky || !data->g_sky || !data->b_sky)
-		return (0);
+	strs = split_rgb_ground(line);
+	ft_error_skyground_6(strs);
+	data->r_sky = ft_atoi_2(strs[0]);
+	// ft_error_skyground_3(line);
+	data->g_sky = ft_atoi_2(strs[1]);
+	// ft_error_skyground_4(line);
+	data->b_sky = ft_atoi_2(strs[2]);
+	// printf("-----\ndata->r_sky = [%d]\n", data->r_sky);
+	// printf("-----\ndata->g_sky = [%d]\n", data->g_sky);
+	// printf("-----\ndata->b_sky = [%d]\n", data->b_sky);
 	return (1);
 }
-
-/*
-** ERROR A FIX
-** si il n'y a pas de virgule - trop de virgules
-*/
