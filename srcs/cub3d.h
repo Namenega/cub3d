@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 16:24:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 17:14:44 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ typedef struct	s_map
 {
 	int			i;
 	int			j;
+	int			x;
+	int			y;
 	int			width;
 	int			width2;
 	int			height;
@@ -78,6 +80,7 @@ typedef struct	s_map
 	int			color_g;
 	int			color_b;
 	int			position;
+	int			**actual_pos;
 }				t_map;
 
 typedef struct	s_vec
@@ -88,7 +91,6 @@ typedef struct	s_vec
 
 typedef struct	s_pos
 {
-	t_vec		pos;
 	t_vec		dir;
 	t_vec		plane_cam;
 	t_vec		camera;

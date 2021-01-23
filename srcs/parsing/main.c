@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 16:34:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 17:19:07 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		main(int ac, char const **av)
 		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
 	if (!(data = ft_data((char*)av[1], (ac == 2), map)))
 		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
-	// printf("----%d-----\n", map->height_tmp);
 	if (ac == 2)
 	{
 		ft_affichage(data, map);
