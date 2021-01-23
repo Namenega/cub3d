@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 15:48:52 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 16:30:24 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,9 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 	return (map);
 }
 
-int			ft_map(t_list *el, t_data *data)
+int			ft_map(t_list *el, t_data *data, t_map *map)
 {
-	t_map	*map;
-
 	data->parsed = 9;
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return (0);
 	map = ft_get_map_hw(map, el, data);
 	map->real_map = (int**)malloc(sizeof(int*) * map->height);
 	if (!map->real_map)

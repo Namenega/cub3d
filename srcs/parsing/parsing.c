@@ -6,13 +6,13 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/21 15:56:14 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 16:32:12 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_parsing_data(t_list *el, t_data *data)
+int		ft_parsing_data(t_list *el, t_data *data, t_map *map)
 {
 	char	*line;
 
@@ -40,14 +40,14 @@ int		ft_parsing_data(t_list *el, t_data *data)
 	if (data->parsed == 8)
 	{
 		data->first_token = el;
-		return (ft_map(el, data));
+		return (ft_map(el, data, map));
 	}
 	// else
 	// 	ft_error_exit("Error\nA line is wrong in the .cub\nExit Program");
 	return (1);
 }
 
-int		ft_gnl(int fd, char *line, t_data *data)
+int		ft_gnl(int fd, char *line, t_data *data, t_map *map)
 {
 	int		res;
 	t_list	*tmp;
@@ -69,13 +69,13 @@ int		ft_gnl(int fd, char *line, t_data *data)
 	each_line = data->lst_line;
 	while (each_line)
 	{
-		ft_parsing_data(each_line, data);
+		ft_parsing_data(each_line, data, map);
 		each_line = each_line->next;
 	}
 	return (res);
 }
 
-int		ft_get_data(t_data *data, char *file)
+int		ft_get_data(t_data *data, char *file, t_map *map)
 {
 	int		fd;
 	int		res;
@@ -89,7 +89,7 @@ int		ft_get_data(t_data *data, char *file)
 		ft_putstr_fd("Error\nTask - Reading File : Fail_1!", 1);
 		return (0);
 	}
-	res = ft_gnl(fd, line, data);
+	res = ft_gnl(fd, line, data, map);
 	free(line);
 	close(fd);
 	if (fd > 0 && res)
@@ -98,7 +98,7 @@ int		ft_get_data(t_data *data, char *file)
 		return (0);
 }
 
-t_data	*ft_data(char *file, int ac)
+t_data	*ft_data(char *file, int ac, t_map *map)
 {
 	t_data	*data;
 
@@ -109,7 +109,7 @@ t_data	*ft_data(char *file, int ac)
 	if (ac == 1)
 		if ((data->mlx_ptr = mlx_init()) == NULL)
 			return (0);
-	if (!(ft_get_data(data, file)))
+	if (!(ft_get_data(data, file, map)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
 		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
