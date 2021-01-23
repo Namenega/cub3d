@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 13:59:24 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 15:40:49 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ typedef struct	s_map
 	int			j;
 	int			width;
 	int			height;
+	int			height_tmp;
 	int			**real_map;
 	int			color_r;
 	int			color_g;
 	int			color_b;
+	int			position;
 }				t_map;
 
 typedef struct	s_vec
@@ -180,6 +182,16 @@ int					ft_map(t_list *el, t_data *data);
 t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
 t_map				*ft_map_data(t_map *map, t_list *el);
 t_map				*ft_map_asign(t_list *el, t_map *map);
+void				ft_position_asign(int c, t_map *map);
+
+/*
+** PARSING/MAP_PARSING/VERIF_MAP.C
+*/
+
+int					ft_verif_map(t_map *map);
+int					ft_verif_char(t_map *map);
+int					ft_verif_holes(t_map *map);
+void				ft_verif_holes_2(t_map *map, int i, int j);
 
 /*
 ** VISUAL/AFFICHAGE.C
