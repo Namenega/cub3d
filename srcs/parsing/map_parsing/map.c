@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 17:23:14 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:33:39 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,16 @@
 
 void		ft_position_asign(int c, t_map *map)
 {
-	map->x = 0;
-	map->y = 0;
+	t_pos	*pos;
+
+	pos = (t_pos*)malloc(sizeof(t_pos));
+	if (!pos)
+		return ;
 	map->real_map[map->i][map->j] = c;
+	map->stock_c = c;
 	map->y = map->i;
 	map->x = map->j;
-	// if (c == 3)
-	// 	ft_look_north(map);
-	// if (c == 4)
-	// 	ft_look_south(map);
-	// if (c == 5)
-	// 	ft_look_east(map);
-	// if (c == 6)
-	// 	ft_look_west(map);
+	ft_dir_to_vec(c, pos);
 	map->position++;
 }
 

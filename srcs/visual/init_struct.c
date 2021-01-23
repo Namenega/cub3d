@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 17:17:38 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:34:16 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 
 void		ft_init_pos_vec(t_pos *posi)
 {
-	posi->dir.x = -1;
-	posi->dir.y = 0;
 	posi->plane_cam.x = 0;
 	posi->plane_cam.y = 0.66;
 }

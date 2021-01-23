@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 17:21:22 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:38:24 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,13 @@ void		ft_move_square(t_move *move)
 	
 // }
 
-int			ft_affichage(t_data *data, t_map *map)
+int			ft_affichage(t_map *map)
 {
 	int			i;
 	t_pos		*posi;
 	t_ray		*ray;
 
 	i = 0;
-	printf("----------\ntest_1\n----------\n");
 	posi = (t_pos*)malloc(sizeof(t_pos));
 	if (!posi)
 		return (0);
@@ -111,8 +110,7 @@ int			ft_affichage(t_data *data, t_map *map)
 	if (!ray)
 		return (0);
 	ft_init_pos_vec(posi);
-	printf("----------\nmap->y = [%d]\n----------\n", map->y);
-	printf("----------\nmap->x = [%d]\n----------\n", map->x);
+	// printf("----------\ntest_1\n----------\n");
 	while (i < map->width)
 	{
 		posi->camera.x = 2 * (double)i / (double)map->width - 1;
@@ -121,7 +119,7 @@ int			ft_affichage(t_data *data, t_map *map)
 		i++;
 	}
 	// printf("----------\nvaleur = [%f]\n----------\n", posi->dir.x);
-	printf("----------\ntest_2\n----------\n");
+	// printf("----------\ntest_2\n----------\n");
 	// ft_start_position(posi, ray, map, data);
 	return (1);
 }

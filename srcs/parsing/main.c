@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 17:19:07 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:38:08 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		main(int ac, char const **av)
 		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
 	if (ac == 2)
 	{
-		ft_affichage(data, map);
+		ft_affichage(map);
 		ft_event(data);
 		ft_free_data(data, "End Of Program");
 	}

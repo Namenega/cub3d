@@ -6,11 +6,35 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 15:20:48 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 16:30:42 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:33:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
+
+void	ft_dir_to_vec(int c, t_pos *pos)
+{
+	if (c == 3)
+	{
+		pos->dir.x = 0;
+		pos->dir.y = -1;
+	}
+	else if (c == 4)
+	{
+		pos->dir.x = 0;
+		pos->dir.y = 1;
+	}
+	else if (c == 5)
+	{
+		pos->dir.x = 1;
+		pos->dir.y = 0;
+	}
+	else if (c == 6)
+	{
+		pos->dir.x = -1;
+		pos->dir.y = 0;
+	}
+}
 
 void	ft_verif_holes_2(t_map *map, int i, int j)
 {
