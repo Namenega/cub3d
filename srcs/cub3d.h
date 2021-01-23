@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/22 18:53:17 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 13:59:24 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,7 @@ int					ft_sprite(t_data *data, char *line);
 
 int					ft_color_sky(t_data *data, char *line);
 void				ft_error_skyground_1(char *line);
-void				ft_error_skyground_3(char *line);
-void				ft_error_skyground_4(char *line);
+void				ft_empty_line(char *strs);
 t_data				*ft_error_skyg_2(t_data *data);
 
 /*

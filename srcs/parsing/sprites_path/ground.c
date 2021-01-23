@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/22 19:13:26 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/23 14:00:32 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,32 +67,17 @@ Exit Program");
 	return (strs);
 }
 
-void	ft_error_skyground_6(char **strs)
+void			ft_error_skyground_6(char **strs)
 {
 	int	i;
 	int	j;
-	int	x;
 
 	j = 0;
 	while (strs[j])
 	{
-		i = 0;
-		x = 0;
-		printf("-----\nstrs = [%s]\n-----\n", strs[j]);
-		printf("-----\nx = [%d]\n-----\n", x);
-		while (strs[j][i] != '\0')
-		{
-			printf("-----\nstrs[j][i] = [%c]\n-----\n", strs[j][i]);
-			if (strs[j][i] >= '0' && strs[j][i] <= '9')
-				x++;
-			i++;
-		}
-		printf("-----\nx = [%d]\n-----\n-----\n", x);
-		if (x == 0)
-			ft_error_exit("Error\nMissing an argument (F/C)\nExit Program");
+		ft_empty_line(strs[j]);
 		i = 0;
 		strs[j] = ft_strtrim(strs[j], " \t\v\r\f");
-		printf("-----\nstrs = [%s]\n-----\n", strs[j]);
 		while (strs[j][i])
 		{
 			if (ft_isspace(strs[j][i]))
@@ -118,12 +103,7 @@ int				ft_color_ground(t_data *data, char *line)
 	strs = split_rgb_ground(line);
 	ft_error_skyground_6(strs);
 	data->r_ground = ft_atoi_2(strs[0]);
-	// ft_error_skyground_3(line);
 	data->g_ground = ft_atoi_2(strs[1]);
-	// ft_error_skyground_4(line);
 	data->b_ground = ft_atoi_2(strs[2]);
-	printf("-----\ndata->r_ground = [%d]\n", data->r_ground);
-	printf("-----\ndata->g_ground = [%d]\n", data->g_ground);
-	printf("-----\ndata->b_ground = [%d]\n", data->b_ground);
 	return (1);
 }
