@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 18:30:00 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/25 14:31:02 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,16 +106,16 @@ typedef struct	s_ray
 
 typedef struct	s_move
 {
-	int			hit;
-	int			side;
+	int			hit; //wall hit?
+	int			side; //hit = N/S or E/W?
 	int			line_h;
 	int			draw_start;
 	int			draw_end;
-	double		perp_wall_dist;
-	t_vec		map;
-	t_vec		step;
-	t_vec		d_dist;
-	t_vec		side_dist;
+	double		perp_wall_dist; //len of ray from one x/y to next x/y
+	t_vec		map; //wich box of the map we're in
+	t_vec		step; //direction of the step (x/y)(+1/-1)
+	t_vec		d_dist; //len of ray from one x/y to next x/y
+	t_vec		side_dist; //len of ray from current pos to next x/y-side
 }				t_move;
 
 /*
@@ -203,8 +203,8 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 ** VISUAL/AFFICHAGE.C
 */
 
-int					ft_affichage(t_map *map);
-void				ft_start_position(t_pos *posi, t_ray *ray, t_map *map, t_data *data);
+int					ft_affichage(t_map *map, t_data *data);
+void				ft_start_position(/*t_pos *posi, */t_ray *ray, t_map *map/*, t_data *data*/);
 void				ft_condition_ray(t_ray *ray, t_move *move, t_pos *posi);
 void				ft_move_square(t_move *move);
 
@@ -212,8 +212,8 @@ void				ft_move_square(t_move *move);
 ** VISUAL/INIT_STRUCT.C
 */
 
-void				ft_init_pos_vec(t_pos *posi);
-void				ft_init_move(t_move *move, t_pos *posi, t_ray *ray);
+void				ft_init_pos_vec(t_pos *pos);
+void				ft_init_move(t_move *move, t_ray *ray, t_map *map);
 
 /*
 ** PARSING/EVENT.C
