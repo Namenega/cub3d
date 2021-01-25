@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 17:54:10 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/25 20:46:47 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,13 @@ typedef struct	s_vec
 
 typedef struct	s_pos
 {
+	int			i;
 	t_vec		dir;
 	t_vec		plane_cam;
 	t_vec		camera;
 	double		ttime;
 	double		oldtime;
+	double		newtime;
 }				t_pos;
 
 typedef struct	s_ray
@@ -204,7 +206,7 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 */
 
 int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
-void				ft_start_position(t_ray *ray, t_map *map, t_data *data);
+void				ft_start_position(t_ray *ray, t_map *map, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_ray *ray, t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
 void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
@@ -216,6 +218,12 @@ void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
 void				ft_init_pos_vec(t_pos *pos);
 void				ft_init_move(t_move *move, t_ray *ray, t_map *map);
 void				ft_color_asign(t_map *map, t_move *move);
+
+/*
+** VISUALS/TIME.C
+*/
+
+void				ft_time_diff(t_pos *pos);
 
 /*
 ** PARSING/EVENT.C
