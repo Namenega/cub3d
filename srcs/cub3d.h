@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 14:31:02 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/25 17:54:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ void				ft_error_exit(char *s);
 ** PARSING/PARSING.C
 */
 
-t_data				*ft_data(char *file, int ac, t_map *map);
-int					ft_get_data(t_data *data, char *file, t_map *map);
-int					ft_gnl(int fd, char *line, t_data *data, t_map *map);
-int					ft_parsing_data(t_list *el, t_data *data, t_map *map);
+t_data				*ft_data(char *file, int ac, t_map *map, t_pos *pos);
+int					ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos);
+int					ft_gnl(int fd, char *line, t_data *data, t_map *map, t_pos *pos);
+int					ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos);
 
 /*
 ** PARSING/SPRITES_PATH/RESOLUTION.C
@@ -183,11 +183,11 @@ int					ft_east(t_data *data, char *line);
 ** PARSING/MAP_PARSING/MAP.C
 */
 
-int					ft_map(t_list *el, t_data *data, t_map *map);
+int					ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos);
 t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
-t_map				*ft_map_data(t_map *map, t_list *el);
-t_map				*ft_map_asign(t_list *el, t_map *map);
-void				ft_position_asign(int c, t_map *map);
+t_map				*ft_map_data(t_map *map, t_list *el, t_pos *pos);
+t_map				*ft_map_asign(t_list *el, t_map *map, t_pos *pos);
+void				ft_position_asign(int c, t_map *map, t_pos *pos);
 
 /*
 ** PARSING/MAP_PARSING/VERIF_MAP.C
@@ -203,10 +203,11 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 ** VISUAL/AFFICHAGE.C
 */
 
-int					ft_affichage(t_map *map, t_data *data);
-void				ft_start_position(/*t_pos *posi, */t_ray *ray, t_map *map/*, t_data *data*/);
-void				ft_condition_ray(t_ray *ray, t_move *move, t_pos *posi);
-void				ft_move_square(t_move *move);
+int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
+void				ft_start_position(t_ray *ray, t_map *map, t_data *data);
+void				ft_condition_ray(t_ray *ray, t_move *move, t_map *map);
+void				ft_move_square(t_move *move, t_map *map);
+void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
 
 /*
 ** VISUAL/INIT_STRUCT.C
@@ -214,6 +215,7 @@ void				ft_move_square(t_move *move);
 
 void				ft_init_pos_vec(t_pos *pos);
 void				ft_init_move(t_move *move, t_ray *ray, t_map *map);
+void				ft_color_asign(t_map *map, t_move *move);
 
 /*
 ** PARSING/EVENT.C

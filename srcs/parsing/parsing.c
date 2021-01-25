@@ -6,13 +6,13 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 16:32:12 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/25 18:15:28 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		ft_parsing_data(t_list *el, t_data *data, t_map *map)
+int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 {
 	char	*line;
 
@@ -37,17 +37,17 @@ int		ft_parsing_data(t_list *el, t_data *data, t_map *map)
 		return (ft_color_ground(data, &line[1]));
 	else if ((line[0] == 'C') && ft_isspace(line[1]))
 		return (ft_color_sky(data, &line[1]));
+	else if (line[0] != '1')
+		ft_error_exit("Error\nA line is wrong.\nExit Program");
 	if (data->parsed == 8)
 	{
 		data->first_token = el;
-		return (ft_map(el, data, map));
+		return (ft_map(el, data, map, pos));
 	}
-	// else
-	// 	ft_error_exit("Error\nA line is wrong in the .cub\nExit Program");
 	return (1);
 }
 
-int		ft_gnl(int fd, char *line, t_data *data, t_map *map)
+int		ft_gnl(int fd, char *line, t_data *data, t_map *map, t_pos *pos)
 {
 	int		res;
 	t_list	*tmp;
@@ -69,13 +69,13 @@ int		ft_gnl(int fd, char *line, t_data *data, t_map *map)
 	each_line = data->lst_line;
 	while (each_line)
 	{
-		ft_parsing_data(each_line, data, map);
+		ft_parsing_data(each_line, data, map, pos);
 		each_line = each_line->next;
 	}
 	return (res);
 }
 
-int		ft_get_data(t_data *data, char *file, t_map *map)
+int		ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos)
 {
 	int		fd;
 	int		res;
@@ -85,11 +85,8 @@ int		ft_get_data(t_data *data, char *file, t_map *map)
 	line = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-	{
-		ft_putstr_fd("Error\nTask - Reading File : Fail_1!", 1);
-		return (0);
-	}
-	res = ft_gnl(fd, line, data, map);
+		ft_error_exit("Error\nWrong File.\nExit Program");
+	res = ft_gnl(fd, line, data, map, pos);
 	free(line);
 	close(fd);
 	if (fd > 0 && res)
@@ -98,7 +95,7 @@ int		ft_get_data(t_data *data, char *file, t_map *map)
 		return (0);
 }
 
-t_data	*ft_data(char *file, int ac, t_map *map)
+t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 {
 	t_data	*data;
 
@@ -109,7 +106,7 @@ t_data	*ft_data(char *file, int ac, t_map *map)
 	if (ac == 1)
 		if ((data->mlx_ptr = mlx_init()) == NULL)
 			return (0);
-	if (!(ft_get_data(data, file, map)))
+	if (!(ft_get_data(data, file, map, pos)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
 		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,

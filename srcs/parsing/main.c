@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 14:13:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/25 16:21:20 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
-	// free(data);
+	//free(data);
 	exit(0);
 }
 
@@ -31,17 +31,21 @@ int		main(int ac, char const **av)
 {
 	t_data		*data;
 	t_map		*map;
+	t_pos		*pos;
 
 	map = malloc(sizeof(t_map));
 	if (!map)
 		return (0);
+	pos = malloc(sizeof(t_pos));
+	if (!pos)
+		return (0);
 	if (!(ac == 2 || ac == 3))
 		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
-	if (!(data = ft_data((char*)av[1], (ac == 2), map)))
+	if (!(data = ft_data((char*)av[1], (ac == 2), map, pos)))
 		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
 	if (ac == 2)
 	{
-		ft_affichage(map, data);
+		ft_affichage(map, data, pos);
 		ft_event(data);
 		ft_free_data(data, "End Of Program");
 	}
