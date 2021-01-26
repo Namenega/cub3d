@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 16:23:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:19:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void		ft_position_asign(int c, t_map *map, t_pos *pos)
 	// 	return ;
 	map->real_map[map->i][map->j] = c;
 	map->stock_c = c;
-	map->y = map->i;
-	map->x = map->j;
+	map->x = map->i;
+	map->y = map->j;
 	ft_dir_to_vec(c, pos);
 	map->position++;
 }

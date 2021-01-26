@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 20:47:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:18:18 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void		ft_color_asign(t_map *map, t_move *move)
 
 void		ft_init_move(t_move *move, t_ray *ray, t_map *map)
 {
-	move->map.x = (double)map->x;
-	move->map.y = (double)map->y;
+	// I SWITCHED MOVE->MAP.Y ET MOVE->MAP.X HERE
+	move->map.y = (double)map->x;
+	move->map.x = (double)map->y;
 	if (ray->dir.y == 0)
 		move->d_dist.x = 0;
 	else

@@ -12,9 +12,9 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/parsing/map_parsing/verif_map.c		\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
+			srcs/utils/utils_2.c						\
 			srcs/visual/affichage.c						\
 			srcs/visual/init_struct.c					\
-			srcs/visual/time.c							\
 
 SRCS	= ${SRCNAME}
 

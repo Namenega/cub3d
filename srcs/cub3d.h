@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 20:46:47 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/26 17:13:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ typedef struct	s_data
 {
 	int			width;
 	int			height;
+	int			bits_per_pxl;
+	int			line_length;
+	int			endian;
 	int			width_verif;
 	int			height_verif;
 	int			r_sky;
@@ -39,6 +42,7 @@ typedef struct	s_data
 	int			r_ground;
 	int			g_ground;
 	int			b_ground;
+	char		*addr;
 	char		*path_sprite;
 	char		*path_north;
 	char		*path_south;
@@ -55,8 +59,10 @@ typedef struct	s_data
 	int			path_south_verif;
 	int			path_east_verif;
 	int			path_west_verif;
+	void		*mlx;
 	void		*mlx_ptr;
 	void		*mlx_win;
+	void		*img;
 	int			**map;
 	int			parsed;
 	int			line_map;
@@ -89,6 +95,13 @@ typedef struct	s_vec
 	double		x;
 	double		y;
 }				t_vec;
+
+typedef struct	s_rgb
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_rgb;
 
 typedef struct	s_pos
 {
@@ -237,5 +250,8 @@ int					ft_exit_hook(void *x);
 */
 
 void				ft_free_data(t_data *data, char *str);
+
+void				ft_verline(t_data *data, t_move *move, t_pos *pos);
+void				ft_mlx_pxl_put(t_data *data, int x, int y, int color);
 
 #endif

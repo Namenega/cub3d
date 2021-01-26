@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   time.c                                             :+:      :+:    :+:   */
+/*   utils_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 19:16:32 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 16:52:11 by namenega         ###   ########.fr       */
+/*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
+/*   Updated: 2021/01/26 17:14:56 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-// void		ft_time_diff(t_pos *pos)
-// {
-// 	// printf("----------\nttime = [%f]\n----------\n", pos->ttime);
-// 	// printf("----------\noldtime = [%f]\n----------\n", pos->oldtime);
-// 	pos->oldtime = pos->ttime;
-// }
+void		ft_verline(t_data *data, t_move *move, t_pos *pos)
+{
+	// int		x;
+
+	// x = move->draw_start
+	printf("pos->i = [%d]\n", pos->i);
+	while (move->draw_start < move->draw_end)
+	{
+		mlx_pixel_put(data->mlx_ptr, data->mlx_win, pos->i, move->draw_start, B);
+		move->draw_start++;
+	}
+}
