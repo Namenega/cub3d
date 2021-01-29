@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 17:19:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:32:59 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,38 @@
 
 void		ft_position_asign(int c, t_map *map, t_pos *pos)
 {
-	// t_pos	*pos;
-
-	// pos = (t_pos*)malloc(sizeof(t_pos));
-	// if (!pos)
-	// 	return ;
-	map->real_map[map->i][map->j] = c;
+	//map->i = y = height but = x = width in tuto lodev -> map->x = map->i
+	map->real_map[map->j][map->i] = c;
 	map->stock_c = c;
-	map->x = map->i;
-	map->y = map->j;
+	map->x = map->j;
+	map->y = map->i;
 	ft_dir_to_vec(c, pos);
 	map->position++;
 }
 
 t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 {
-	while (((char *)el->content)[map->j])
+	while (((char *)el->content)[map->i])
 	{
-		if (((char *)el->content)[map->j] == ' ')
-			map->real_map[map->i][map->j] = -1;
-		else if (((char *)el->content)[map->j] == '0')
-			map->real_map[map->i][map->j] = 7;
-		else if (((char *)el->content)[map->j] == '1')
-			map->real_map[map->i][map->j] = 1;
-		else if (((char *)el->content)[map->j] == '2')
-			map->real_map[map->i][map->j] = 2;
-		else if (((char *)el->content)[map->j] == 'N')
+		if (((char *)el->content)[map->i] == ' ')
+			map->real_map[map->j][map->i] = -1;
+		else if (((char *)el->content)[map->i] == '0')
+			map->real_map[map->j][map->i] = 7;
+		else if (((char *)el->content)[map->i] == '1')
+			map->real_map[map->j][map->i] = 1;
+		else if (((char *)el->content)[map->i] == '2')
+			map->real_map[map->j][map->i] = 2;
+		else if (((char *)el->content)[map->i] == 'N')
 			ft_position_asign(3, map, pos);
-		else if (((char *)el->content)[map->j] == 'S')
+		else if (((char *)el->content)[map->i] == 'S')
 			ft_position_asign(4, map, pos);
-		else if (((char *)el->content)[map->j] == 'E')
+		else if (((char *)el->content)[map->i] == 'E')
 			ft_position_asign(5, map, pos);
-		else if (((char *)el->content)[map->j] == 'W')
+		else if (((char *)el->content)[map->i] == 'W')
 			ft_position_asign(6, map, pos);
 		else
-			map->real_map[map->i][map->j] = 8;
-		map->j++;
+			map->real_map[map->j][map->i] = 8;
+		map->i++;
 	}
 	return (map);
 }
@@ -63,9 +59,9 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 	{
 		map = ft_map_asign(el, map, pos);
 		el = el->next;
-		map->j = 0;
+		map->i = 0;
 		map->height--;
-		map->i++;
+		map->j++;
 	}
 	return (map);
 }

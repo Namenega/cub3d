@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 15:20:48 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 17:23:03 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:44:13 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,33 @@
 
 void	ft_dir_to_vec(int c, t_pos *pos)
 {
-	if (c == 3)
+	if (c == 3) //north
+	{
+		pos->dir.x = -1.0;
+		pos->dir.y = 0;
+		pos->plane_cam.x = 0;
+		pos->plane_cam.y = 0.66;
+	}
+	else if (c == 4) //south
+	{
+		pos->dir.x = 1.0;
+		pos->dir.y = 0;
+		pos->plane_cam.x = 0;
+		pos->plane_cam.y = -0.66;
+	}
+	else if (c == 5) //east
 	{
 		pos->dir.x = 0;
-		pos->dir.y = 1;
+		pos->dir.y = 1.0;
+		pos->plane_cam.x = 0.66;
+		pos->plane_cam.y = 0;
 	}
-	else if (c == 4)
+	else if (c == 6) //west
 	{
 		pos->dir.x = 0;
-		pos->dir.y = -1;
-	}
-	else if (c == 5)
-	{
-		pos->dir.x = -1;
-		pos->dir.y = 0;
-	}
-	else if (c == 6)
-	{
-		pos->dir.x = 1;
-		pos->dir.y = 0;
+		pos->dir.y = -1.0;
+		pos->plane_cam.x = -0.66;
+		pos->plane_cam.y = 0;
 	}
 }
 

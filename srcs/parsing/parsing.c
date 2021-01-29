@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 18:15:28 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:34:29 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 		return (ft_color_ground(data, &line[1]));
 	else if ((line[0] == 'C') && ft_isspace(line[1]))
 		return (ft_color_sky(data, &line[1]));
-	else if (line[0] != '1')
+	else if (line[0] != '1' && !ft_isspace(line[0]))
 		ft_error_exit("Error\nA line is wrong.\nExit Program");
 	if (data->parsed == 8)
 	{
@@ -109,8 +109,15 @@ t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 	if (!(ft_get_data(data, file, map, pos)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
-		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
-			data->height, "CUB3D")) == NULL)
+	{
+		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width, data->height, "CUB3D")) == NULL)
 			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
+		if ((data->img = mlx_new_image(data->mlx_ptr, data->width, data->height)) == NULL)
+			return (0);
+		if ((data->addr = (int *)mlx_get_data_addr(data->img, &data->bits_per_pxl, &data->line_length, &data->endian)) == NULL)
+			return (0);
+		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img, 0, 0);
+		data->pxl_line = data->line_length / (data->bits_per_pxl / 8) ;
+	}
 	return (data);
 }

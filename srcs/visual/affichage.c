@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 17:15:34 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:53:25 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,18 @@
 
 void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map)
 {
-	// printf("----------\nside = [%d]\n", move->side);
 	//calc the distance projected on camera direction (w/o fisheye effect)
 	if (move->side == 0)
-	{
 		move->perp_wall_dist = (move->map.x - map->x + (1 - move->step.x) / 2) / ray->dir.x;
-		// move->perp_wall_dist = move->side_dist.x / ray->dir.x;
-	}
 	else
-	{
 		move->perp_wall_dist = (move->map.y - map->y + (1 - move->step.y) / 2) / ray->dir.y;
-		// move->perp_wall_dist = move->side_dist.y / ray->dir.y;
-	}
-	// printf("----------\nperp_wall_dist = [%f]\n", move->perp_wall_dist);
 	//calc height of line to draw on screen
 	move->line_h = (int)(data->height / move->perp_wall_dist);
 	//calc lowest and highest pixel to fill in current stripe
-	move->draw_start = (-move->line_h / 2) + (data->height / 2);
+	move->draw_start = -move->line_h / 2 + data->height / 2;
 	if (move->draw_start < 0)
 		move->draw_start = 0;
-	move->draw_end = (move->line_h / 2) + (data->height / 2);
+	move->draw_end = move->line_h / 2 + data->height / 2;
 	if (move->draw_end >= data->height)
 		move->draw_end = data->height - 1;
 }
@@ -44,7 +36,8 @@ void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map)
 
 void		ft_move_square(t_move *move, t_map *map)
 {
-	// printf("----------\n[%d]\n----------\n", move->side);
+	move->side = 0;
+
 	//perform DDA
 	while (move->hit == 0)
 	{
@@ -62,7 +55,7 @@ void		ft_move_square(t_move *move, t_map *map)
 			move->side = 1;
 		}
 		//check if ray has hit a wall
-		if (map->real_map[(int)move->map.y][(int)move->map.x] > 0)
+		if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
 			move->hit = 1;
 	}
 }
@@ -95,52 +88,43 @@ void		ft_condition_ray(t_ray *ray, t_move *move, t_map *map)
 	}
 }
 
-void		ft_start_position(t_ray *ray, t_map *map, t_data *data, t_pos *pos)
+void		ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos)
 {
-	t_move		*move;
-
-	move = malloc(sizeof(t_move));
-	if (!move)
-		return ;
 	ft_init_move(move, ray, map);
 	ft_condition_ray(ray, move, map);
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, ray, data, map);
 	ft_color_asign(map, move);
-	// give x/y side different brightness
 	if (move->side == 1)
 	{
-		map->color_r /= 2;
-		map->color_g /= 2;
-		map->color_b /= 2;
+		map->color.r /= 2;
+		map->color.g /= 2;
+		map->color.b /= 2;
 	}
-	ft_verline(data, move, pos);
-	// printf("----------\nmde = [%d]\n", move->draw_end);
-	//Draw a vertical line from position x1, y to x2, y with given color.
-	//It's a bit faster than using drawLine() if you need a vertical line.
-	//A mettre dans srcs/utils/creer utils_2.c
-	// ft_time_diff(pos);
-	
+	ft_verline(data, move, pos, map);	
 }
 
 int			ft_affichage(t_map *map, t_data *data, t_pos *pos)
 {
-	// int			i;
 	t_ray		*ray;
+	t_move		*move;
 
-	// posi = 0;
+	move = malloc(sizeof(t_move));
+	if (!move)
+		return (0);
 	ray = (t_ray*)malloc(sizeof(t_ray));
 	if (!ray)
 		return (0);
 	ft_init_pos_vec(pos);
-	while (pos->i < data->width)
+	while (pos->x < data->width)
 	{
 		// calculate ray position & direction
-		pos->camera.x = 2 * (double)pos->i / (double)data->width - 1;
-		ray->dir.x = pos->dir.x + (pos->plane_cam.x * pos->camera.x);
-		ray->dir.y = pos->dir.y + (pos->plane_cam.y * pos->camera.y);
-		ft_start_position(ray, map, data, pos);
-		pos->i++;
+		pos->camera.x = 2 * (double)pos->x / (double)data->width - 1; //x coordinate in camera space
+		ray->dir.x = pos->dir.x + pos->plane_cam.x * pos->camera.x;
+		ray->dir.y = pos->dir.y + pos->plane_cam.y * pos->camera.x;
+		ft_start_position(ray, map, move, data, pos);
+		pos->x++;
 	}
+	printf("VALEUR  = [%f]\n\n", ray->dir.y);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 17:18:18 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 18:40:58 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,24 @@
 void		ft_color_asign(t_map *map, t_move *move)
 {
 	//choose wall color
-	if (map->real_map[(int)move->map.y][(int)move->map.x] == 1)
+	if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
 	{
-		map->color_r = R;
-		map->color_g = 0;
-		map->color_b = 0;
+		map->color.r = 0x00800000;
+		map->color.g = 0;
+		map->color.b = B;
 	}
-	else if (map->real_map[(int)move->map.y][(int)move->map.x] == 2)
+	else if (map->real_map[(int)move->map.x][(int)move->map.y] == 2)
 	{
-		map->color_r = 0;
-		map->color_g = 0;
-		map->color_b = B;
+		map->color.r = 0;
+		map->color.g = G;
+		map->color.b = 0;
 	}
 }
 
 void		ft_init_move(t_move *move, t_ray *ray, t_map *map)
 {
-	// I SWITCHED MOVE->MAP.Y ET MOVE->MAP.X HERE
-	move->map.y = (double)map->x;
-	move->map.x = (double)map->y;
+	move->map.x = (double)map->x;
+	move->map.y = (double)map->y;
 	if (ray->dir.y == 0)
 		move->d_dist.x = 0;
 	else
@@ -57,9 +56,7 @@ void		ft_init_move(t_move *move, t_ray *ray, t_map *map)
 
 void		ft_init_pos_vec(t_pos *pos)
 {
-	pos->plane_cam.x = 0;
-	pos->plane_cam.y = 0.66;
 	pos->ttime = 0;
 	pos->oldtime = 0;
-	pos->i = 0;
+	pos->x = 0;
 }

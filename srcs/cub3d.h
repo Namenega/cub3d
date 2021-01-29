@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/26 17:13:48 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/29 19:54:41 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct	s_data
 	int			r_ground;
 	int			g_ground;
 	int			b_ground;
-	char		*addr;
+	int			*addr;
 	char		*path_sprite;
 	char		*path_north;
 	char		*path_south;
@@ -64,11 +64,19 @@ typedef struct	s_data
 	void		*mlx_win;
 	void		*img;
 	int			**map;
+	int			pxl_line;
 	int			parsed;
 	int			line_map;
 	t_list		*lst_line;
 	t_list		*first_token;
 }				t_data;
+
+typedef struct	s_rgb
+{
+	unsigned int			r;
+	unsigned int			g;
+	unsigned int			b;
+}				t_rgb;
 
 typedef struct	s_map
 {
@@ -82,9 +90,7 @@ typedef struct	s_map
 	int			height2;
 	int			height_tmp;
 	int			**real_map;
-	int			color_r;
-	int			color_g;
-	int			color_b;
+	t_rgb		color;
 	int			position;
 	int			**actual_pos;
 	int			stock_c;
@@ -96,16 +102,10 @@ typedef struct	s_vec
 	double		y;
 }				t_vec;
 
-typedef struct	s_rgb
-{
-	int			r;
-	int			g;
-	int			b;
-}				t_rgb;
 
 typedef struct	s_pos
 {
-	int			i;
+	int			x;
 	t_vec		dir;
 	t_vec		plane_cam;
 	t_vec		camera;
@@ -219,7 +219,7 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 */
 
 int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
-void				ft_start_position(t_ray *ray, t_map *map, t_data *data, t_pos *pos);
+void				ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_ray *ray, t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
 void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
@@ -251,7 +251,7 @@ int					ft_exit_hook(void *x);
 
 void				ft_free_data(t_data *data, char *str);
 
-void				ft_verline(t_data *data, t_move *move, t_pos *pos);
-void				ft_mlx_pxl_put(t_data *data, int x, int y, int color);
+void				ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map);
+void				ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color);
 
 #endif
