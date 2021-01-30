@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 19:54:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:49:37 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,111 +26,115 @@
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
+# define MS 0.0006
+# define RS 0.0003
 
 typedef struct	s_data
 {
-	int			width;
-	int			height;
-	int			bits_per_pxl;
-	int			line_length;
-	int			endian;
-	int			width_verif;
-	int			height_verif;
-	int			r_sky;
-	int			g_sky;
-	int			b_sky;
-	int			r_ground;
-	int			g_ground;
-	int			b_ground;
-	int			*addr;
-	char		*path_sprite;
-	char		*path_north;
-	char		*path_south;
-	char		*path_east;
-	char		*path_west;
-	int			r_sky_verif;
-	int			g_sky_verif;
-	int			b_sky_verif;
-	int			r_ground_verif;
-	int			g_ground_verif;
-	int			b_ground_verif;
-	int			path_sprite_verif;
-	int			path_north_verif;
-	int			path_south_verif;
-	int			path_east_verif;
-	int			path_west_verif;
-	void		*mlx;
-	void		*mlx_ptr;
-	void		*mlx_win;
-	void		*img;
-	int			**map;
-	int			pxl_line;
-	int			parsed;
-	int			line_map;
-	t_list		*lst_line;
-	t_list		*first_token;
+	int				width;
+	int				height;
+	int				bits_per_pxl;
+	int				line_length;
+	int				endian;
+	int				width_verif;
+	int				height_verif;
+	int				r_sky;
+	int				g_sky;
+	int				b_sky;
+	int				r_ground;
+	int				g_ground;
+	int				b_ground;
+	int				*addr;
+	char			*path_sprite;
+	char			*path_north;
+	char			*path_south;
+	char			*path_east;
+	char			*path_west;
+	int				r_sky_verif;
+	int				g_sky_verif;
+	int				b_sky_verif;
+	int				r_ground_verif;
+	int				g_ground_verif;
+	int				b_ground_verif;
+	int				path_sprite_verif;
+	int				path_north_verif;
+	int				path_south_verif;
+	int				path_east_verif;
+	int				path_west_verif;
+	void			*mlx;
+	void			*mlx_ptr;
+	void			*mlx_win;
+	void			*img;
+	int				**map;
+	int				pxl_line;
+	int				parsed;
+	int				line_map;
+	t_list			*lst_line;
+	t_list			*first_token;
 }				t_data;
 
 typedef struct	s_rgb
 {
-	unsigned int			r;
-	unsigned int			g;
-	unsigned int			b;
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
 }				t_rgb;
 
 typedef struct	s_map
 {
-	int			i;
-	int			j;
-	int			x;
-	int			y;
-	int			width;
-	int			width2;
-	int			height;
-	int			height2;
-	int			height_tmp;
-	int			**real_map;
-	t_rgb		color;
-	int			position;
-	int			**actual_pos;
-	int			stock_c;
+	int				i;
+	int				j;
+	int				x;
+	int				y;
+	int				width;
+	int				width2;
+	int				height;
+	int				height2;
+	int				height_tmp;
+	int				**real_map;
+	t_rgb			color;
+	int				position;
+	int				**actual_pos;
+	int				stock_c;
 }				t_map;
 
 typedef struct	s_vec
 {
-	double		x;
-	double		y;
+	double			x;
+	double			y;
 }				t_vec;
 
 
 typedef struct	s_pos
 {
-	int			x;
-	t_vec		dir;
-	t_vec		plane_cam;
-	t_vec		camera;
-	double		ttime;
-	double		oldtime;
-	double		newtime;
+	int				x;
+	t_vec			dir;
+	t_vec			old_dir;
+	t_vec			plane_cam;
+	t_vec			old_pl_cam;
+	t_vec			camera;
+	double			ttime;
+	double			oldtime;
+	double			newtime;
 }				t_pos;
 
 typedef struct	s_ray
 {
-	t_vec		dir;
+	t_vec			dir;
 }				t_ray;
 
 typedef struct	s_move
 {
-	int			hit; //wall hit?
-	int			side; //hit = N/S or E/W?
-	int			line_h;
-	int			draw_start;
-	int			draw_end;
-	double		perp_wall_dist; //len of ray from one x/y to next x/y
-	t_vec		map; //wich box of the map we're in
-	t_vec		step; //direction of the step (x/y)(+1/-1)
-	t_vec		d_dist; //len of ray from one x/y to next x/y
-	t_vec		side_dist; //len of ray from current pos to next x/y-side
+	int				hit; //wall hit?
+	int				side; //hit = N/S or E/W?
+	int				line_h;
+	int				draw_start;
+	int				draw_end;
+	double			perp_wall_dist; //len of ray from one x/y to next x/y
+	t_vec			map; //wich box of the map we're in
+	t_vec			step; //direction of the step (x/y)(+1/-1)
+	t_vec			d_dist; //len of ray from one x/y to next x/y
+	t_vec			side_dist; //len of ray from current pos to next x/y-side
 }				t_move;
 
 /*
@@ -222,14 +226,13 @@ int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
 void				ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_ray *ray, t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
-void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
+void				ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
 
 /*
 ** VISUAL/INIT_STRUCT.C
 */
 
-void				ft_init_pos_vec(t_pos *pos);
-void				ft_init_move(t_move *move, t_ray *ray, t_map *map);
+void				ft_init_struct(t_move *move, t_ray *ray, t_map *map);
 void				ft_color_asign(t_map *map, t_move *move);
 
 /*

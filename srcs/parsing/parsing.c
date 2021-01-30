@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 19:34:29 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:03:23 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,7 @@ t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 {
 	t_data	*data;
 
-	data = (t_data*)malloc(sizeof(t_data));
-	if (!data)
-		return (0);
-	ft_bzero(data, sizeof(t_data));
+	data = ft_calloc_2(sizeof(t_data));
 	if (ac == 1)
 		if ((data->mlx_ptr = mlx_init()) == NULL)
 			return (0);

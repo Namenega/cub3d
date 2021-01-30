@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   affichage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 19:53:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:10:21 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void		ft_condition_ray(t_ray *ray, t_move *move, t_map *map)
 
 void		ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos)
 {
-	ft_init_move(move, ray, map);
+	ft_init_struct(move, ray, map);
 	ft_condition_ray(ray, move, map);
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, ray, data, map);
@@ -109,13 +109,8 @@ int			ft_affichage(t_map *map, t_data *data, t_pos *pos)
 	t_ray		*ray;
 	t_move		*move;
 
-	move = malloc(sizeof(t_move));
-	if (!move)
-		return (0);
-	ray = (t_ray*)malloc(sizeof(t_ray));
-	if (!ray)
-		return (0);
-	ft_init_pos_vec(pos);
+	move = ft_calloc_2(sizeof(t_move));
+	ray = ft_calloc_2(sizeof(t_ray));
 	while (pos->x < data->width)
 	{
 		// calculate ray position & direction
@@ -125,6 +120,6 @@ int			ft_affichage(t_map *map, t_data *data, t_pos *pos)
 		ft_start_position(ray, map, move, data, pos);
 		pos->x++;
 	}
-	printf("VALEUR  = [%f]\n\n", ray->dir.y);
+	//printf("VALEUR  = [%f]\n\n", ray->dir.y);
 	return (1);
 }

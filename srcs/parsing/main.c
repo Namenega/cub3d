@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/25 16:21:20 by namenega         ###   ########.fr       */
+/*   Updated: 2021/01/30 16:00:16 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,8 @@ int		main(int ac, char const **av)
 	t_map		*map;
 	t_pos		*pos;
 
-	map = malloc(sizeof(t_map));
-	if (!map)
-		return (0);
-	pos = malloc(sizeof(t_pos));
-	if (!pos)
-		return (0);
+	map = ft_calloc_2(sizeof(t_map));
+	pos = ft_calloc_2(sizeof(t_pos));
 	if (!(ac == 2 || ac == 3))
 		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
 	if (!(data = ft_data((char*)av[1], (ac == 2), map, pos)))
