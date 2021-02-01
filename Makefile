@@ -15,6 +15,7 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/utils/utils_2.c						\
 			srcs/visual/affichage.c						\
 			srcs/visual/init_struct.c					\
+			srcs/visual/movement.c					\
 
 SRCS	= ${SRCNAME}
 

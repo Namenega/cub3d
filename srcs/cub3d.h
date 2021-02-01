@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:20:43 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 17:33:05 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,20 @@
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
-# define MS 0.0006
+# define MS 0.11
 # define RS 0.0003
+
+# define XEVENT_KEYPRESS 2
+# define XEVENT_KEYRELEASE 3
+# define XEVENT_EXIT 17
+
+# define KEYCODE_ESC 53
+# define KEYCODE_RIGHTARROW 124
+# define KEYCODE_LEFTARROW 123
+# define KEYCODE_W 13
+# define KEYCODE_A 0
+# define KEYCODE_S 1
+# define KEYCODE_D 2
 
 // typedef struct	s_global
 // {
@@ -93,8 +105,8 @@ typedef struct	s_map
 {
 	int				i;
 	int				j;
-	double				x;
-	double				y;
+	double			x;
+	double			y;
 	int				width;
 	int				width2;
 	int				height;
@@ -105,6 +117,8 @@ typedef struct	s_map
 	int				position;
 	int				**actual_pos;
 	int				stock_c;
+	t_rgb			colorc;
+	t_rgb			colorf;
 }				t_map;
 
 typedef struct	s_vec
@@ -239,7 +253,7 @@ void				ft_pxl_tofill(t_move *move, t_data *data, t_map *map);
 */
 
 void				ft_init_struct(t_move *move, t_map *map);
-void				ft_color_asign(t_map *map, t_move *move);
+void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 
 /*
 ** VISUALS/MOVEMENT.C
@@ -254,8 +268,9 @@ void				ft_mvbackward(t_pos *pos, t_map *map);
 ** PARSING/EVENT.C
 */
 
-int					ft_event(t_data *data);
+int					ft_event(t_data *data, t_pos *pos);
 int					ft_exit_hook(void *x);
+int					ft_keypress_hook(int key, t_pos *pos);
 
 /*
 ** PARSING/FREE.C

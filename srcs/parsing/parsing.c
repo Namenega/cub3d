@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:13:35 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 17:03:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,11 @@ int		ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos)
 	int		fd;
 	int		res;
 
-
 	res = 0;
-
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error_exit("Error\nWrong File.\nExit Program");
 	res = ft_gnl(fd, data, map, pos);
-
 	close(fd);
 	if (fd > 0 && res)
 		return (1);

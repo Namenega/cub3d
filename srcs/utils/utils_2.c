@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:24:15 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 16:55:09 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,17 @@ void		ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map)
 	int		i;
 
 	i = -1;
-	// while (++i < move->draw_start)
-	// 	ft_mlx_pxl_put(data, pos->x, i, map->colorc);
+	while (++i < move->draw_start)
+		ft_mlx_pxl_put(data, pos->x, i, map->colorc);
 	while (move->draw_start < move->draw_end)
 	{
 		ft_mlx_pxl_put(data, pos->x, move->draw_start, map->color);
 		move->draw_start++;
+		i++;
 	}
 	i--;
-	// while(++i < data->height)
-	// 	ft_mlx_pxl_put(data, pos->x, i, map->colorf);
+	while(++i < data->height)
+		ft_mlx_pxl_put(data, pos->x, i, map->colorf);
 }
 
 void		*ft_calloc_2(size_t nmemb)

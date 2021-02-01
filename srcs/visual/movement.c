@@ -6,15 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:12:04 by Nathan            #+#    #+#             */
-/*   Updated: 2021/02/01 14:17:00 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 17:33:35 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/*void		ft_rotate_right(t_pos *pos)
+void		ft_rotate_right(t_pos *pos)
 {
-	if (key_right_arrow) //rotate to the right
+	if (KEYCODE_RIGHTARROW) //rotate to the right
 	{
 		//both cam dir and cam plane must be rotated
 		pos->old_dir.x = pos->dir.x;
@@ -30,7 +30,7 @@
 
 void		ft_rotate_left(t_pos *pos)
 {
-	if (key_left_arrow) //rotate to the left
+	if (KEYCODE_LEFTARROW) //rotate to the left
 	{
 		//both cam dir and cam plane must be rotated
 		pos->old_dir.x = pos->dir.x;
@@ -44,27 +44,27 @@ void		ft_rotate_left(t_pos *pos)
 	}
 }
 
-void		ft_mvforward(t_pos *pos, t_map *map)
-{
-	if(key_W_forward) //move forward if no wall in front of you
-	{
-		if(map->real_map[(int)(map->x + pos->dir.x * MS)][map->y] == false)
-			map->x += pos->dir.x * MS;
-		if(map->real_map[map->x][(int)(map->y + pos->dir.y * MS)] == false)
-			map->y += pos->dir.y * MS;
-	}
-}
+// void		ft_mvforward(t_pos *pos, t_map *map)
+// {
+// 	if(KEYCODE_W) //move forward if no wall in front of you
+// 	{
+// 		if(map->real_map[(int)(map->x + pos->dir.x * MS)][(int)map->y] == 0)
+// 			map->x += pos->dir.x * MS;
+// 		if(map->real_map[(int)map->x][(int)(map->y + pos->dir.y * MS)] == 0)
+// 			map->y += pos->dir.y * MS;
+// 	}
+// }
 
-void		ft_mvbackward(t_pos *pos, t_map *map)
-{
-	if(key_S_backward) //move backward if no wall behind you
-	{
-		if(map->real_map[(int)(map->x - pos->dir.x * MS)][map->y] == false)
-			map->x -= pos->dir.x * MS;
-		if(map->real_map[map->x][(int)(map->y - pos->dir.y * MS)] == false)
-			map->y -= pos->dir.y * MS;
-	}
-}*/
+// void		ft_mvbackward(t_pos *pos, t_map *map)
+// {
+// 	if(KEYCODE_S) //move backward if no wall behind you
+// 	{
+// 		if(map->real_map[(int)(map->x - pos->dir.x * MS)][(int)map->y] == 0)
+// 			map->x -= pos->dir.x * MS;
+// 		if(map->real_map[(int)map->x][(int)(map->y - pos->dir.y * MS)] == 0)
+// 			map->y -= pos->dir.y * MS;
+// 	}
+// }
 
 
 // fleches R/L = rotation camera

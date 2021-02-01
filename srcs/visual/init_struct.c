@@ -6,13 +6,13 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:20:28 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 16:47:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		ft_color_asign(t_map *map, t_move *move)
+void		ft_color_asign(t_map *map, t_move *move, t_data *data)
 {
 	//choose wall color
 	if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
@@ -27,6 +27,12 @@ void		ft_color_asign(t_map *map, t_move *move)
 		map->color.g = G;
 		map->color.b = 0;
 	}
+	map->colorc.b = data->b_sky;
+	map->colorc.g = data->g_sky * 256;
+	map->colorc.r = data->r_sky * 65536;
+	map->colorf.b = data->b_ground;
+	map->colorf.g = data->g_ground * 256;
+	map->colorf.r = data->r_ground * 65536;
 }
 
 void		ft_init_struct(t_move *move, t_map *map)

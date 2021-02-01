@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 14:49:05 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 16:47:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_condition_ray(move, map);
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, data, map);
-	ft_color_asign(map, move);
+	ft_color_asign(map, move, data);
 	if (move->side == 1)
 	{
 		map->color.r /= 2;

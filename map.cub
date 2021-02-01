@@ -7,8 +7,8 @@ SO	../../sprites/colorstone.xpm
 WE	../../sprites/greystone.xpm
 EA	../../sprites/purplestone.xpm
 
-F	101, 102, 103
-C	201, 0, 201
+F	255, 102, 103
+C	151, 0, 201
 
 11111111111
 10E000000001

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 14:51:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/01 17:32:18 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		main(int ac, char const **av)
 	if (ac == 2)
 	{
 		ft_affichage(map, data, pos);
-		ft_event(data);
+		ft_event(data, pos);
 		ft_free_data(data, "End Of Program");
 	}
 	/*if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
