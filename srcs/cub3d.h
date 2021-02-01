@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/30 16:49:37 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/01 15:20:43 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@
 # define B 0x000000FF
 # define MS 0.0006
 # define RS 0.0003
+
+// typedef struct	s_global
+// {
+// 	t_move			*move;
+// 	t_ray			*ray;
+// 	t_pos			*pos;
+// 	t_data			*data;
+// 	t_map			*map;
+// }				t_global;
 
 typedef struct	s_data
 {
@@ -84,8 +93,8 @@ typedef struct	s_map
 {
 	int				i;
 	int				j;
-	int				x;
-	int				y;
+	double				x;
+	double				y;
 	int				width;
 	int				width2;
 	int				height;
@@ -104,7 +113,6 @@ typedef struct	s_vec
 	double			y;
 }				t_vec;
 
-
 typedef struct	s_pos
 {
 	int				x;
@@ -118,13 +126,9 @@ typedef struct	s_pos
 	double			newtime;
 }				t_pos;
 
-typedef struct	s_ray
-{
-	t_vec			dir;
-}				t_ray;
-
 typedef struct	s_move
 {
+	t_vec			dir;
 	int				hit; //wall hit?
 	int				side; //hit = N/S or E/W?
 	int				line_h;
@@ -136,6 +140,8 @@ typedef struct	s_move
 	t_vec			d_dist; //len of ray from one x/y to next x/y
 	t_vec			side_dist; //len of ray from current pos to next x/y-side
 }				t_move;
+
+
 
 /*
 ** PARSING/MAIN.C
@@ -151,7 +157,7 @@ void				ft_error_exit(char *s);
 
 t_data				*ft_data(char *file, int ac, t_map *map, t_pos *pos);
 int					ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos);
-int					ft_gnl(int fd, char *line, t_data *data, t_map *map, t_pos *pos);
+int					ft_gnl(int fd, t_data *data, t_map *map, t_pos *pos);
 int					ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos);
 
 /*
@@ -223,23 +229,26 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 */
 
 int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
-void				ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos);
-void				ft_condition_ray(t_ray *ray, t_move *move, t_map *map);
+void				ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos);
+void				ft_condition_ray(t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
-void				ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map);
+void				ft_pxl_tofill(t_move *move, t_data *data, t_map *map);
 
 /*
 ** VISUAL/INIT_STRUCT.C
 */
 
-void				ft_init_struct(t_move *move, t_ray *ray, t_map *map);
+void				ft_init_struct(t_move *move, t_map *map);
 void				ft_color_asign(t_map *map, t_move *move);
 
 /*
-** VISUALS/TIME.C
+** VISUALS/MOVEMENT.C
 */
 
-void				ft_time_diff(t_pos *pos);
+void				ft_rotate_right(t_pos *pos);
+void				ft_rotate_left(t_pos *pos);
+void				ft_mvforward(t_pos *pos, t_map *map);
+void				ft_mvbackward(t_pos *pos, t_map *map);
 
 /*
 ** PARSING/EVENT.C
@@ -254,7 +263,13 @@ int					ft_exit_hook(void *x);
 
 void				ft_free_data(t_data *data, char *str);
 
+/*
+** UTILS/UTILS_2.C
+*/
+
 void				ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map);
 void				ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color);
+void				*ft_calloc_2(size_t nmemb);
+void				ft_mlx_data(t_data *data);
 
 #endif

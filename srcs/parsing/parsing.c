@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/30 16:03:23 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/01 15:13:35 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,15 @@ int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	return (1);
 }
 
-int		ft_gnl(int fd, char *line, t_data *data, t_map *map, t_pos *pos)
+int		ft_gnl(int fd, t_data *data, t_map *map, t_pos *pos)
 {
 	int		res;
+	char	*line;
 	t_list	*tmp;
 	t_list	*each_line;
 
 	res = 0;
+	line = NULL;
 	while (get_next_line(fd, &line))
 	{
 		tmp = ft_lstnew(line);
@@ -79,15 +81,15 @@ int		ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos)
 {
 	int		fd;
 	int		res;
-	char	*line;
+
 
 	res = 0;
-	line = NULL;
+
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
 		ft_error_exit("Error\nWrong File.\nExit Program");
-	res = ft_gnl(fd, line, data, map, pos);
-	free(line);
+	res = ft_gnl(fd, data, map, pos);
+
 	close(fd);
 	if (fd > 0 && res)
 		return (1);
@@ -106,15 +108,6 @@ t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 	if (!(ft_get_data(data, file, map, pos)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
 	if (ac == 1)
-	{
-		if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width, data->height, "CUB3D")) == NULL)
-			ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
-		if ((data->img = mlx_new_image(data->mlx_ptr, data->width, data->height)) == NULL)
-			return (0);
-		if ((data->addr = (int *)mlx_get_data_addr(data->img, &data->bits_per_pxl, &data->line_length, &data->endian)) == NULL)
-			return (0);
-		mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img, 0, 0);
-		data->pxl_line = data->line_length / (data->bits_per_pxl / 8) ;
-	}
+		ft_mlx_data(data);
 	return (data);
 }

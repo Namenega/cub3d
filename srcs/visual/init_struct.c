@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/30 16:10:14 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/01 15:20:28 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,27 @@ void		ft_color_asign(t_map *map, t_move *move)
 	}
 }
 
-void		ft_init_struct(t_move *move, t_ray *ray, t_map *map)
+void		ft_init_struct(t_move *move, t_map *map)
 {
-	move->map.x = (double)map->x;
-	move->map.y = (double)map->y;
-	if (ray->dir.y == 0)
+	move->map.x = (int)map->x;
+	move->map.y = (int)map->y;
+	if (move->dir.y == 0)
 		move->d_dist.x = 0;
 	else
 	{
-		if (ray->dir.x == 0)
+		if (move->dir.x == 0)
 			move->d_dist.x = 1;
 		else
-			move->d_dist.x = fabs(1 / ray->dir.x);
+			move->d_dist.x = fabs(1 / move->dir.x);
 	}
-	if (ray->dir.x == 0)
+	if (move->dir.x == 0)
 		move->d_dist.y = 0;
 	else
 	{
-		if (ray->dir.y == 0)
+		if (move->dir.y == 0)
 			move->d_dist.y = 1;
 		else
-			move->d_dist.y = fabs(1 / ray->dir.y);
+			move->d_dist.y = fabs(1 / move->dir.y);
 	}
 	move->hit = 0;
 }

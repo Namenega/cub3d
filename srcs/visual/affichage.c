@@ -3,22 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   affichage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/30 16:10:21 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/01 14:49:05 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map)
+void		ft_pxl_tofill(t_move *move, t_data *data, t_map *map)
 {
 	//calc the distance projected on camera direction (w/o fisheye effect)
 	if (move->side == 0)
-		move->perp_wall_dist = (move->map.x - map->x + (1 - move->step.x) / 2) / ray->dir.x;
+		move->perp_wall_dist = (move->map.x - map->x + (1 - move->step.x) / 2)
+			/ move->dir.x;
 	else
-		move->perp_wall_dist = (move->map.y - map->y + (1 - move->step.y) / 2) / ray->dir.y;
+		move->perp_wall_dist = (move->map.y - map->y + (1 - move->step.y) / 2)
+			/ move->dir.y;
 	//calc height of line to draw on screen
 	move->line_h = (int)(data->height / move->perp_wall_dist);
 	//calc lowest and highest pixel to fill in current stripe
@@ -37,7 +39,6 @@ void	ft_pxl_tofill(t_move *move, t_ray *ray, t_data *data, t_map *map)
 void		ft_move_square(t_move *move, t_map *map)
 {
 	move->side = 0;
-
 	//perform DDA
 	while (move->hit == 0)
 	{
@@ -64,9 +65,9 @@ void		ft_move_square(t_move *move, t_map *map)
 ** Calculate step and initial side_dist
 */
 
-void		ft_condition_ray(t_ray *ray, t_move *move, t_map *map)
+void		ft_condition_ray(t_move *move, t_map *map)
 {
-	if (ray->dir.x < 0)
+	if (move->dir.x < 0)
 	{
 		move->step.x = -1;
 		move->side_dist.x = ((double)map->x - move->map.x) * move->d_dist.x;
@@ -74,9 +75,10 @@ void		ft_condition_ray(t_ray *ray, t_move *move, t_map *map)
 	else
 	{
 		move->step.x = 1;
-		move->side_dist.x = (move->map.x + 1.0 - (double)map->x) * move->d_dist.x;
+		move->side_dist.x = (move->map.x + 1.0 - (double)map->x) *
+			move->d_dist.x;
 	}
-	if (ray->dir.y < 0)
+	if (move->dir.y < 0)
 	{
 		move->step.y = -1;
 		move->side_dist.y = ((double)map->y - move->map.y) * move->d_dist.y;
@@ -84,16 +86,17 @@ void		ft_condition_ray(t_ray *ray, t_move *move, t_map *map)
 	else
 	{
 		move->step.y = 1;
-		move->side_dist.y = (move->map.y + 1.0 - (double)map->y) * move->d_dist.y;
+		move->side_dist.y = (move->map.y + 1.0 - (double)map->y) *
+			move->d_dist.y;
 	}
 }
 
-void		ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_pos *pos)
+void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 {
-	ft_init_struct(move, ray, map);
-	ft_condition_ray(ray, move, map);
+	ft_init_struct(move, map);
+	ft_condition_ray(move, map);
 	ft_move_square(move, map);
-	ft_pxl_tofill(move, ray, data, map);
+	ft_pxl_tofill(move, data, map);
 	ft_color_asign(map, move);
 	if (move->side == 1)
 	{
@@ -101,23 +104,21 @@ void		ft_start_position(t_ray *ray, t_map *map, t_move *move, t_data *data, t_po
 		map->color.g /= 2;
 		map->color.b /= 2;
 	}
-	ft_verline(data, move, pos, map);	
+	ft_verline(data, move, pos, map);
 }
 
 int			ft_affichage(t_map *map, t_data *data, t_pos *pos)
 {
-	t_ray		*ray;
 	t_move		*move;
 
 	move = ft_calloc_2(sizeof(t_move));
-	ray = ft_calloc_2(sizeof(t_ray));
 	while (pos->x < data->width)
 	{
 		// calculate ray position & direction
 		pos->camera.x = 2 * (double)pos->x / (double)data->width - 1; //x coordinate in camera space
-		ray->dir.x = pos->dir.x + pos->plane_cam.x * pos->camera.x;
-		ray->dir.y = pos->dir.y + pos->plane_cam.y * pos->camera.x;
-		ft_start_position(ray, map, move, data, pos);
+		move->dir.x = pos->dir.x + pos->plane_cam.x * pos->camera.x;
+		move->dir.y = pos->dir.y + pos->plane_cam.y * pos->camera.x;
+		ft_s_p(map, move, data, pos);
 		pos->x++;
 	}
 	//printf("VALEUR  = [%f]\n\n", ray->dir.y);
