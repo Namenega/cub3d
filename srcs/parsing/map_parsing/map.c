@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:19:31 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:24:41 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ void		ft_position_asign(int c, t_map *map, t_pos *pos)
 	map->x = map->j + 0.5;
 	map->y = map->i + 0.5;
 	ft_dir_to_vec(c, pos);
+	map->real_map[map->j][map->i] = 7;
+	// map->i == 0
 	map->position++;
 }
 
 t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 {
+	int		i;
+
+	i = 0;
 	while (((char *)el->content)[map->i])
 	{
 		if (((char *)el->content)[map->i] == ' ')
@@ -46,7 +51,10 @@ t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 		else
 			map->real_map[map->j][map->i] = 8;
 		map->i++;
+		i++;
 	}
+	if(i < map->height3)
+		ft_error_exit("Error\ntoo many maps.\nExit Program.");
 	return (map);
 }
 
@@ -79,6 +87,7 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 	}
 	el = data->first_token;
 	map->height_tmp = map->height;
+	map->height3 = map->height;
 	map->i = 0;
 	return (map);
 }

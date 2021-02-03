@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib_functions_1.c                                  :+:      :+:    :+:   */
+/*   lib_functions_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 16:52:41 by namenega         ###   ########.fr       */
+/*   Created: 2021/02/03 17:04:46 by namenega          #+#    #+#             */
+/*   Updated: 2021/02/03 17:06:03 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int			ft_isspace(int c)
-{
-	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
-		|| c == '\r')
-		return (1);
-	return (0);
-}
-
-int			ft_atoi_2(const char *s)
+int			ft_atoi_3(const char *s)
 {
 	int					i;
 	int					compteur;
@@ -33,7 +25,7 @@ int			ft_atoi_2(const char *s)
 			s[i] == '\r' || s[i] == ' ' || s[i] == '\v')
 		i++;
 	result = ft_uli_error(s + i);
-	if (result > 2147483647 /*|| result < 1*/)
+	if (result > 2147483647 || result < 1)
 	{
 		if (compteur == -1)
 			return (0);
@@ -41,39 +33,4 @@ int			ft_atoi_2(const char *s)
 			ft_error_exit("Error\nNumber too big/too low(R).\nMaximum is 2147483647");
 	}
 	return (result * compteur);
-}
-
-int			ft_inset(int c, char *set)
-{
-	while (set && *set)
-	{
-		if (c == *set)
-			return (1);
-		set++;
-	}
-	return (0);
-}
-
-int			ft_next_arg(char *l)
-{
-	int	i;
-
-	i = 0;
-	while (l && ft_isspace(l[i]))
-		i++;
-	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".,-")))
-		i++;
-	return (i);
-}
-
-int			ft_next_arg_2(char *l)
-{
-	int	i;
-
-	i = 0;
-	while (l && ft_isspace(l[i]))
-		i++;
-	while (l && (ft_isdigit(l[i]) || ft_inset(l[i], ".-")))
-		i++;
-	return (i);
 }

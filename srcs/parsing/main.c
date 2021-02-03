@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 17:32:18 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 19:20:06 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,21 +29,23 @@ int		ft_error_msg(char *s)
 
 int		main(int ac, char const **av)
 {
-	t_data		*data;
-	t_map		*map;
-	t_pos		*pos;
+	t_global	*glb;
 
-	map = ft_calloc_2(sizeof(t_map));
-	pos = ft_calloc_2(sizeof(t_pos));
+	glb = ft_calloc_2(sizeof(t_global));
+	// glb = ft_init_struct_0(glb);
+	glb->map = ft_calloc_2(sizeof(t_map));
+	glb->pos = ft_calloc_2(sizeof(t_pos));
+	glb->move = ft_calloc_2(sizeof(t_move));
 	if (!(ac == 2 || ac == 3))
 		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
-	if (!(data = ft_data((char*)av[1], (ac == 2), map, pos)))
+	if (!(glb->data = ft_data((char*)av[1], (ac == 2), glb->map, glb->pos)))
 		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
+	ft_mlx_data(glb->data);
 	if (ac == 2)
 	{
-		ft_affichage(map, data, pos);
-		ft_event(data, pos);
-		ft_free_data(data, "End Of Program");
+		// ft_affichage(/*glb->map, glb->data, glb->pos*/glb);
+		hook_loop(glb);
+		ft_free_data(glb->data, "End Of Program");
 	}
 	/*if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
 		ft_save(data, (char*)av[1]);*/

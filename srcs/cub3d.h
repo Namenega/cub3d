@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 17:33:05 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 16:54:30 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
-# define MS 0.11
-# define RS 0.0003
+# define MS 0.2
+# define RS 0.17
 
 # define XEVENT_KEYPRESS 2
 # define XEVENT_KEYRELEASE 3
@@ -40,15 +40,6 @@
 # define KEYCODE_A 0
 # define KEYCODE_S 1
 # define KEYCODE_D 2
-
-// typedef struct	s_global
-// {
-// 	t_move			*move;
-// 	t_ray			*ray;
-// 	t_pos			*pos;
-// 	t_data			*data;
-// 	t_map			*map;
-// }				t_global;
 
 typedef struct	s_data
 {
@@ -111,6 +102,7 @@ typedef struct	s_map
 	int				width2;
 	int				height;
 	int				height2;
+	int				height3;
 	int				height_tmp;
 	int				**real_map;
 	t_rgb			color;
@@ -155,7 +147,13 @@ typedef struct	s_move
 	t_vec			side_dist; //len of ray from current pos to next x/y-side
 }				t_move;
 
-
+typedef struct	s_global
+{
+	t_move			*move;
+	t_pos			*pos;
+	t_data			*data;
+	t_map			*map;
+}				t_global;
 
 /*
 ** PARSING/MAIN.C
@@ -242,7 +240,7 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 ** VISUAL/AFFICHAGE.C
 */
 
-int					ft_affichage(t_map *map, t_data *data, t_pos *pos);
+int					ft_affichage(/*t_map *map, t_data *data, t_pos *pos*/t_global *glb);
 void				ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
@@ -259,18 +257,27 @@ void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 ** VISUALS/MOVEMENT.C
 */
 
-void				ft_rotate_right(t_pos *pos);
+void				ft_rotate_right(t_pos *pos, t_global *glb);
 void				ft_rotate_left(t_pos *pos);
 void				ft_mvforward(t_pos *pos, t_map *map);
 void				ft_mvbackward(t_pos *pos, t_map *map);
 
 /*
+** VISUALS/MOVEMENT_2.C
+*/
+
+void				ft_mvright(t_pos *pos, t_map *map);
+void				ft_mvleft(t_pos *pos, t_map *map);
+
+/*
 ** PARSING/EVENT.C
 */
 
-int					ft_event(t_data *data, t_pos *pos);
+int					ft_event(t_global *glb);
 int					ft_exit_hook(void *x);
-int					ft_keypress_hook(int key, t_pos *pos);
+int					ft_keypress_hook(int key, t_global *glb);
+int					ft_keyrelease_hook(int key, t_global *glb);
+int					hook_loop(t_global *glb);
 
 /*
 ** PARSING/FREE.C

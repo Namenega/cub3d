@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 16:11:39 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:01:38 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 /*
 ** We get here the string of obstacle_sprite's path
 */
+
+// void		ft_error_nostr(char *line)
+// {
+// 	int		i;
+
+// 	i = 0;
+// 	while(line[i] != '\0')
+// 	{
+// 		if (line[i])
+// 		i++;
+// 	}
+// }
 
 int			ft_sprite(t_data *data, char *line)
 {
@@ -33,6 +45,8 @@ Exit Program");
 			ft_error_exit("Error\nToo many arguments(S).\nExit Program");
 		i++;
 	}
+	if (i < 1)
+		ft_error_exit("Error\nMissing path(S).\nExit Program");
 	if (data->path_sprite == NULL)
 		return (0);
 	else

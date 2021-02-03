@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:06:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 15:51:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:02:07 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ Exit Program");
 			ft_error_exit("Error\nToo many arguments(NO).\nExit Program");
 		i++;
 	}
+	if (i < 1)
+		ft_error_exit("Error\nMissing path(NO).\nExit Program");
 	if (data->path_north == NULL)
 		return (0);
 	else
@@ -60,6 +62,8 @@ Exit Program");
 			ft_error_exit("Error\nToo many arguments(SO).\nExit Program");
 		i++;
 	}
+	if (i < 1)
+		ft_error_exit("Error\nMissing path(SO).\nExit Program");
 	if (data->path_south == NULL)
 		return (0);
 	else
@@ -87,6 +91,8 @@ Exit Program");
 			ft_error_exit("Error\nToo many arguments(WE).\nExit Program");
 		i++;
 	}
+	if (i < 1)
+		ft_error_exit("Error\nMissing path(WE).\nExit Program");
 	if (data->path_west == NULL)
 		return (0);
 	else
@@ -114,6 +120,8 @@ Exit Program");
 			ft_error_exit("Error\nToo many arguments(EA).\nExit Program");
 		i++;
 	}
+	if (i < 1)
+		ft_error_exit("Error\nMissing path(EA).\nExit Program");
 	if (data->path_east == NULL)
 		return (0);
 	else

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:42:59 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/29 15:51:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:06:20 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,12 @@ int					ft_resolution(t_data *data, char *line)
 Exit Program");
 	data->width_verif++;
 	data->height_verif++;
-	data->width = ft_atoi_2(line);
+	data->width = ft_atoi_3(line);
 	if (data->width > x)
 		data->width = x;
 	line += ft_next_arg(line);
 	ft_error_resolution_3(line);
-	data->height = ft_atoi_2(line);
+	data->height = ft_atoi_3(line);
 	if (data->height > y)
 		data->height = y;
 	line += ft_next_arg(line);

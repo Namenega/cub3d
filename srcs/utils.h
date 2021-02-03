@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/01 15:00:34 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/03 17:06:38 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,7 @@ int			ft_atoi_2(const char *s);
 int			ft_inset(int c, char *set);
 int			ft_next_arg(char *l);
 int			ft_next_arg_2(char *l);
+
+int			ft_atoi_3(const char *s);
 
 #endif

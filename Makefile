@@ -12,10 +12,12 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/parsing/map_parsing/verif_map.c		\
 			srcs/parsing/free.c							\
 			srcs/utils/lib_functions_1.c				\
+			srcs/utils/lib_functions_2.c				\
 			srcs/utils/utils_2.c						\
 			srcs/visual/affichage.c						\
 			srcs/visual/init_struct.c					\
 			srcs/visual/movement.c					\
+			srcs/visual/movement_2.c					\
 
 SRCS	= ${SRCNAME}
 
@@ -23,7 +25,7 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= cub3D
 
-CC		= gcc -g -fsanitize=address
+CC		= gcc -g3 -fsanitize=address
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -I. -I./includes/libft
 
