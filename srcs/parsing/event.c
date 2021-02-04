@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 17:28:35 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 19:14:34 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 14:35:51 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,32 +17,37 @@ int		ft_keyrelease_hook(int key, t_global *glb)
 	(void)glb;
 	if(key == KEYCODE_ESC)
 		ft_error_exit(" ------------------------ \n|Merci pour les services.|\n ------------------------ ");
-	// if(key == KEYCODE_RIGHTARROW)
-	// 	ft_rotate_right(glb->pos, glb);
-	// if(key == KEYCODE_LEFTARROW)
-	// 	ft_rotate_left(glb->pos);
+	if(key == KEYCODE_W)
+		ft_mvforward(glb->pos, glb->map);
+	if(key == KEYCODE_S)
+		ft_mvbackward(glb->pos, glb->map);
+	if(key == KEYCODE_A)
+		ft_mvleft(glb->pos, glb->map);
+	if(key == KEYCODE_D)
+		ft_mvright(glb->pos, glb->map);
+	if(key == KEYCODE_RIGHTARROW)
+		ft_rotate_right(glb->pos);
+	if(key == KEYCODE_LEFTARROW)
+		ft_rotate_left(glb->pos);
 	return (0);
 }
 
 int		ft_keypress_hook(int key, t_global *glb)
 {
 	if(key == KEYCODE_ESC)
-	{
 		ft_error_exit(" ------------------------ \n|Merci pour les services.|\n ------------------------ ");
-	}
-	if (key == KEYCODE_W)
-	{
-		// printf("dvv\n");
+	if(key == KEYCODE_W)
 		ft_mvforward(glb->pos, glb->map);
-		// ft_affichage(glb);
-		mlx_put_image_to_window(glb->data->mlx_ptr, glb->data->mlx_win, glb->data->img, 0, 0);
-	}
-	// if(key == KEYCODE_RIGHTARROW)
-	// {
-	// 	ft_rotate_right(glb->pos, glb);
-	// }
-	// if(key == KEYCODE_LEFTARROW)
-	// 	ft_rotate_left(glb->pos);
+	if(key == KEYCODE_S)
+		ft_mvbackward(glb->pos, glb->map);
+	if(key == KEYCODE_A)
+		ft_mvleft(glb->pos, glb->map);
+	if(key == KEYCODE_D)
+		ft_mvright(glb->pos, glb->map);
+	if(key == KEYCODE_RIGHTARROW)
+		ft_rotate_right(glb->pos);
+	if(key == KEYCODE_LEFTARROW)
+		ft_rotate_left(glb->pos);
 	return (0);
 }
 
@@ -58,14 +63,10 @@ int		ft_test(t_global *glb)
 	int key;
 
 	key = 0;
-	// ft_mlx_data(glb->data);
 	ft_keypress_hook(key, glb);
 	ft_keyrelease_hook(key, glb);
 	ft_affichage(glb);
-	//printf("_____[%p]\n", glb->data->img);
 	mlx_put_image_to_window(glb->data->mlx_ptr, glb->data->mlx_win, glb->data->img, 0, 0);
-	// ft_affichage(glb);
-	// mlx_put_image_to_window(glb->data->mlx_ptr, glb->data->mlx_win, glb->data->img, 0, 0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 16:54:30 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:11:33 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
-# define MS 0.2
-# define RS 0.17
+# define MS 0.1
+# define RS 0.1
 
 # define XEVENT_KEYPRESS 2
 # define XEVENT_KEYRELEASE 3
@@ -257,7 +257,7 @@ void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 ** VISUALS/MOVEMENT.C
 */
 
-void				ft_rotate_right(t_pos *pos, t_global *glb);
+void				ft_rotate_right(t_pos *pos);
 void				ft_rotate_left(t_pos *pos);
 void				ft_mvforward(t_pos *pos, t_map *map);
 void				ft_mvbackward(t_pos *pos, t_map *map);

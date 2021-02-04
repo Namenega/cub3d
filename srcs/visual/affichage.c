@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 19:26:44 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 13:06:30 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,6 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 
 int			ft_affichage(/*t_map *map, t_data *data, t_pos *pos*/t_global *glb)
 {
-	// t_move		*move;
-
-	//printf("test_[%p]\n", glb->data->img);
-	//move = ft_calloc_2(sizeof(t_move));
-	// printf("test_map->x = [%p] - [%d]\t", &(glb->map->x), glb->map->x);
-	// printf("test_map->y = [%p]\n", &(glb->map->y));
-	printf("testestest\n");
 	glb->pos->x = 0;
 	while (glb->pos->x < glb->data->width)
 	{
@@ -126,6 +119,5 @@ int			ft_affichage(/*t_map *map, t_data *data, t_pos *pos*/t_global *glb)
 		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
 		glb->pos->x++;
 	}
-	//printf("VALEUR  = [%f]\n\n", ray->dir.y);
 	return (1);
 }

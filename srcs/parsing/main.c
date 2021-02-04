@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 19:20:06 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:17:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
-	//free(data);
+	// free();
 	exit(0);
 }
 
@@ -43,7 +43,6 @@ int		main(int ac, char const **av)
 	ft_mlx_data(glb->data);
 	if (ac == 2)
 	{
-		// ft_affichage(/*glb->map, glb->data, glb->pos*/glb);
 		hook_loop(glb);
 		ft_free_data(glb->data, "End Of Program");
 	}
