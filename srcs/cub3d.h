@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 16:11:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 19:28:58 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
-# define MS 0.1
+# define MS 0.4
 # define RS 0.1
 
 # define XEVENT_KEYPRESS 2
@@ -127,9 +127,6 @@ typedef struct	s_pos
 	t_vec			plane_cam;
 	t_vec			old_pl_cam;
 	t_vec			camera;
-	double			ttime;
-	double			oldtime;
-	double			newtime;
 }				t_pos;
 
 typedef struct	s_move

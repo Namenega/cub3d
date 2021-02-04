@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 17:28:35 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 14:35:51 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:06:50 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_keypress_hook(int key, t_global *glb)
 		ft_mvforward(glb->pos, glb->map);
 	if(key == KEYCODE_S)
 		ft_mvbackward(glb->pos, glb->map);
-	if(key == KEYCODE_A)
+	if(key == 0)
 		ft_mvleft(glb->pos, glb->map);
 	if(key == KEYCODE_D)
 		ft_mvright(glb->pos, glb->map);
@@ -62,7 +62,7 @@ int		ft_test(t_global *glb)
 {
 	int key;
 
-	key = 0;
+	key = 36;
 	ft_keypress_hook(key, glb);
 	ft_keyrelease_hook(key, glb);
 	ft_affichage(glb);
