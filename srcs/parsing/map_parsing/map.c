@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 17:24:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/05 20:18:04 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void		ft_position_asign(int c, t_map *map, t_pos *pos)
 {
-	//map->i = y = height but = x = width in tuto lodev -> map->x = map->i
 	map->real_map[map->j][map->i] = c;
 	map->stock_c = c;
 	map->x = map->j + 0.5;
 	map->y = map->i + 0.5;
 	ft_dir_to_vec(c, pos);
 	map->real_map[map->j][map->i] = 7;
-	// map->i == 0
 	map->position++;
 }
 

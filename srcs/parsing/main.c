@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 16:17:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:43:39 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		main(int ac, char const **av)
 		hook_loop(glb);
 		ft_free_data(glb->data, "End Of Program");
 	}
-	/*if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
-		ft_save(data, (char*)av[1]);*/
+	if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
+		ft_save(glb->data, (char*)av[1], glb);
 	return (0);
 }
 

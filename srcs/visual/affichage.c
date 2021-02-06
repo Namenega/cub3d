@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 18:53:51 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:43:17 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void		ft_move_square(t_move *move, t_map *map)
 			move->side = 1;
 		}
 		//check if ray has hit a wall
-		if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
+		if (map->real_map[(int)move->map.x][(int)move->map.y] != 7)
 			move->hit = 1;
 	}
 }
@@ -70,23 +70,23 @@ void		ft_condition_ray(t_move *move, t_map *map)
 	if (move->dir.x < 0)
 	{
 		move->step.x = -1;
-		move->side_dist.x = ((double)map->x - move->map.x) * move->d_dist.x;
+		move->side_dist.x = (map->x - move->map.x) * move->d_dist.x;
 	}
 	else
 	{
 		move->step.x = 1;
-		move->side_dist.x = (move->map.x + 1.0 - (double)map->x) *
+		move->side_dist.x = (move->map.x + 1.0 - map->x) *
 			move->d_dist.x;
 	}
 	if (move->dir.y < 0)
 	{
 		move->step.y = -1;
-		move->side_dist.y = ((double)map->y - move->map.y) * move->d_dist.y;
+		move->side_dist.y = (map->y - move->map.y) * move->d_dist.y;
 	}
 	else
 	{
 		move->step.y = 1;
-		move->side_dist.y = (move->map.y + 1.0 - (double)map->y) *
+		move->side_dist.y = (move->map.y + 1.0 - map->y) *
 			move->d_dist.y;
 	}
 }
@@ -107,7 +107,7 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_verline(data, move, pos, map);
 }
 
-int			ft_affichage(/*t_map *map, t_data *data, t_pos *pos*/t_global *glb)
+int			ft_affichage(t_global *glb)
 {
 	glb->pos->x = 0;
 	while (glb->pos->x < glb->data->width)

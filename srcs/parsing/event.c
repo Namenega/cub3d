@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 17:28:35 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 17:06:50 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:33:37 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_keypress_hook(int key, t_global *glb)
 		ft_mvforward(glb->pos, glb->map);
 	if(key == KEYCODE_S)
 		ft_mvbackward(glb->pos, glb->map);
-	if(key == 0)
+	if(key == KEYCODE_A)
 		ft_mvleft(glb->pos, glb->map);
 	if(key == KEYCODE_D)
 		ft_mvright(glb->pos, glb->map);
@@ -81,15 +81,3 @@ int		hook_loop(t_global *glb)
 	return (1);
 }
 
-// int		ft_event(t_global *glb)
-// {
-// 	// mlx_hook(data->mlx_win, 17, 0, ft_exit_hook, (void*)data);
-// 	// mlx_key_hook(data->mlx_win, ft_key, (void*)data);
-// 	printf("evbesv\n");
-
-// 	// mlx_hook(glb->data->mlx_win, XEVENT_KEYPRESS, 0, &ft_keypress_hook, (void *)glb);
-// 	// mlx_hook(glb->data->mlx_win, XEVENT_KEYRELEASE, 0, &ft_keyrelease_hook, (void *)glb);
-// 	// mlx_hook(glb->data->mlx_win, XEVENT_EXIT, 0, &ft_exit_hook, (void *)glb);
-// 	// mlx_loop(glb->data->mlx_ptr);
-// 	return (0);
-// }
