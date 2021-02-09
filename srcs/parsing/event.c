@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 17:28:35 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/06 15:33:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:27:56 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		ft_keyrelease_hook(int key, t_global *glb)
 {
-	(void)glb;
 	if(key == KEYCODE_ESC)
 		ft_error_exit(" ------------------------ \n|Merci pour les services.|\n ------------------------ ");
 	if(key == KEYCODE_W)
@@ -70,14 +69,26 @@ int		ft_test(t_global *glb)
 	return (1);
 }
 
-int		hook_loop(t_global *glb)
+int		hook_loop(t_global *glb, int ac)
 {
-	// if (ac == 1)
-	mlx_hook(glb->data->mlx_win, XEVENT_KEYPRESS, 0, &ft_keypress_hook, (void *)glb);
-	mlx_hook(glb->data->mlx_win, XEVENT_KEYRELEASE, 0, &ft_keyrelease_hook, (void *)glb);
-	mlx_hook(glb->data->mlx_win, XEVENT_EXIT, 0, &ft_exit_hook, (void *)glb);
-	mlx_loop_hook(glb->data->mlx_ptr, &ft_test, (void *)glb);
-	mlx_loop(glb->data->mlx_ptr);
+	int		argc;
+
+	argc = ac;
+	if (argc == 2)
+	{
+		ft_mlx_data(glb->data);
+		mlx_hook(glb->data->mlx_win, XEVENT_KEYPRESS, 0, &ft_keypress_hook, (void *)glb);
+		mlx_hook(glb->data->mlx_win, XEVENT_KEYRELEASE, 0, &ft_keyrelease_hook, (void *)glb);
+		mlx_hook(glb->data->mlx_win, XEVENT_EXIT, 0, &ft_exit_hook, (void *)glb);
+		mlx_loop_hook(glb->data->mlx_ptr, &ft_test, (void *)glb);
+		mlx_loop(glb->data->mlx_ptr);
+	}
+	if (argc == 3)
+	{
+		ft_mlx_data(glb->data);
+		ft_affichage(glb);
+		ft_save(glb);
+	}
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 13:14:35 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:33:18 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,12 @@ t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 {
 	t_data	*data;
 
+	ac = 1;
 	data = ft_calloc_2(sizeof(t_data));
-	if (ac == 1)
-		if ((data->mlx_ptr = mlx_init()) == NULL)
-			return (0);
+	//if (ac == 1)
+	if ((data->mlx_ptr = mlx_init()) == NULL)
+		return (0);
 	if (!(ft_get_data(data, file, map, pos)))
 		ft_free_data(data, "Error\nTask - parsing : Fail_2 !");
-	// if (ac == 1)
-	// 	ft_mlx_data(data);
 	return (data);
 }

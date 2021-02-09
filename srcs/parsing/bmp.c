@@ -6,81 +6,65 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:40:42 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/06 17:44:16 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:27:20 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		ft_puttab_fd(t_global *glb, int width, int height, int fd)
-{
-	int		i;
-	int		j;
+//-----------------------------
 
-	j = height;
-	while (j--)
-	{
-		i = -1;
-		while (++i < width)
-			ft_putbuf_fd((mlx_pxl_put(glb->data, i, j, glb->map->color)), 3, fd);
-	}
-}
-
-void		ft_putbuf(unsigned int nb, int max, int fd)
+static void	bmp_data(t_global *glb, int fd)
 {
-	int		i;
+	int			i;
+	int			j;
+	uint32_t	pxl;
 
 	i = 0;
-	while (i < max)
-		ft_putchar_fd(nb >> (i++ * 8), fd);
-}
-
-char		*ft_save_name(char *file)
-{
-	char	*name;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	name = ft_strdup(file);
-	while (strchr(name, '/'))
+	while (i < glb->data->height)
 	{
-		tmp = ft_strdup(ft_strchr(name, '/') + 1);
-		free(name);
-		name = tmp;
-	}
-	while (name[i] && name[i] != '.')
+		j = 0;
+		while (j < glb->data->width)
+		{
+			pxl = glb->data->addr[i * glb->data->line_length / 4 + j];
+			if ((write(fd, &pxl, 4)) != 4)
+				ft_error_exit("BMP_3");
+			j++;
+		}
 		i++;
-	tmp= ft_substr(name, 0, i);
-	free(name);
-	name = ft_strjoin(tmp, ".bmp");
-	free(tmp);
-	tmp = ft_strjoin("bmps/", name);
-	free(name);
-	return (tmp);
+	}
 }
 
-int			ft_save(t_data *data, char *file, t_global *glb)
+static void	bmp_header(t_global *glb, int imgsize, int fd)
 {
-	int		fd;
-	char	*name;
+	uint8_t		header[54];
+	int			filesize;
 
-	ft_affichage(glb);
-	name = ft_save_name(file);
-	if ((fd = open(name, O_WRONLY | O_CREAT | O_TRUNC, 0644)) < 0)
-	{
-		free(name);
-		ft_free_data(data, "Error/nOpening file in WR mode failed.");
-	}
-	free(name);
-	ft_putstr_fd("BM", fd);
-	ft_putbuf(3 * data->width * data->height + 54, 8, fd);
-	ft_putbuf_fd(26, 4, fd);
-	ft_putbuf_fd(12, 4, fd);
-	ft_putbuf_fd(data->width + (data->height << 16), 4, fd);
-	ft_putbuf_fd(1 + ((8 * 3) << 16), 4, fd);
-	ft_puttab_fd(glb, data->width, data->height, fd);
+	filesize = imgsize + 54;
+	ft_bzero(header, 54);
+	ft_memcpy(header, "BM", 2);
+	ft_memcpy(header + 2, &filesize, 4);
+	ft_memcpy(header + 10, &(int){54}, 4);
+	ft_memcpy(header + 14, &(int){40}, 4);
+	ft_memcpy(header + 18, &glb->data->width, 4);
+	ft_memcpy(header + 22, &glb->data->height, 4);
+	ft_memcpy(header + 26, &(int){1}, 2);
+	ft_memcpy(header + 28, &(int){32}, 2);
+	ft_memcpy(header + 34, &imgsize, 4);
+	if ((write(fd, header, 54)) != 54)
+		ft_error_exit("bmp");
+}
+
+void		ft_save(t_global *glb)
+{
+	int			fd;
+	int			imgsize;
+
+	imgsize = glb->data->height * glb->data->width * 4;
+	if ((fd = open("screen.bmp", O_WRONLY | O_CREAT, S_IRWXU)) < 0)
+		ft_error_exit("BMP");
+	bmp_header(glb, imgsize, fd);
+	bmp_data(glb, fd);
 	close(fd);
-	ft_free_data(data, "Save Succed");
-	return (0);
+	fd = -1;
 }

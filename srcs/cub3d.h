@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/05 15:44:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 17:19:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct	s_data
 	int				line_map;
 	t_list			*lst_line;
 	t_list			*first_token;
+
 }				t_data;
 
 typedef struct	s_rgb
@@ -146,6 +147,7 @@ typedef struct	s_move
 
 typedef struct	s_global
 {
+	const char		*argv;
 	t_move			*move;
 	t_pos			*pos;
 	t_data			*data;
@@ -237,7 +239,8 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 ** VISUAL/AFFICHAGE.C
 */
 
-int					ft_affichage(/*t_map *map, t_data *data, t_pos *pos*/t_global *glb);
+int					ft_affichage(t_global *glb);
+int					ft_affichage2(t_global *glb, int ac);
 void				ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
@@ -270,11 +273,22 @@ void				ft_mvleft(t_pos *pos, t_map *map);
 ** PARSING/EVENT.C
 */
 
-int					ft_event(t_global *glb);
+int					ft_test_2(t_global *glb, int ac);
+int					ft_test(t_global *glb);
 int					ft_exit_hook(void *x);
 int					ft_keypress_hook(int key, t_global *glb);
 int					ft_keyrelease_hook(int key, t_global *glb);
-int					hook_loop(t_global *glb);
+int					hook_loop(t_global *glb, int ac);
+
+/*
+** PARSING/BMP.C
+*/
+
+void				ft_save(t_global *glb);
+// unsigned char		*bmp_info_header(t_global *glb);
+// unsigned char		*ft_bmpfileheader(int size);
+// void				data_to_img(int fd, t_global *glb);
+// void				ft_binar(int fd, int tmp, int size, t_global *glb);
 
 /*
 ** PARSING/FREE.C

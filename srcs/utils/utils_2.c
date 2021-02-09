@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 13:14:16 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 14:24:26 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,5 @@ void		ft_mlx_data(t_data *data)
 	if ((data->addr = (int *)mlx_get_data_addr(data->img,
 		&data->bits_per_pxl, &data->line_length, &data->endian)) == NULL)
 		return ;
-	// mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->img, 0, 0);
 	data->pxl_line = data->line_length / (data->bits_per_pxl / 8);
 }

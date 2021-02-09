@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/06 15:43:17 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 16:10:37 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,28 @@ int			ft_affichage(t_global *glb)
 		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
 		glb->pos->x++;
 	}
+	return (1);
+}
+
+int			ft_affichage2(t_global *glb, int ac)
+{
+	ac = 3;
+	glb->pos->x = 0;
+	printf("[test-5]\n");
+	while (glb->pos->x < glb->data->width)
+	{
+		// calculate ray position & direction
+		glb->pos->camera.x = 2 * (double)glb->pos->x / (double)glb->data->width - 1; //x coordinate in camera space
+		glb->move->dir.x = glb->pos->dir.x + glb->pos->plane_cam.x * glb->pos->camera.x;
+		glb->move->dir.y = glb->pos->dir.y + glb->pos->plane_cam.y * glb->pos->camera.x;
+		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
+		glb->pos->x++;
+	}
+	printf("[test-6]\n");
+	/*if (ac == 3)
+	{
+		ft_save(glb);
+		exit(0);
+	}*/
 	return (1);
 }

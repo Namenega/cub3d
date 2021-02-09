@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/06 15:43:39 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/09 18:38:44 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		main(int ac, char const **av)
 	t_global	*glb;
 
 	glb = ft_calloc_2(sizeof(t_global));
-	// glb = ft_init_struct_0(glb);
 	glb->map = ft_calloc_2(sizeof(t_map));
 	glb->pos = ft_calloc_2(sizeof(t_pos));
 	glb->move = ft_calloc_2(sizeof(t_move));
@@ -40,17 +39,15 @@ int		main(int ac, char const **av)
 		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
 	if (!(glb->data = ft_data((char*)av[1], (ac == 2), glb->map, glb->pos)))
 		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
-	ft_mlx_data(glb->data);
-	if (ac == 2)
+	if (av[2])
+		glb->argv = av[2];
+	if (ac == 2 || (ac == 3 && !ft_strncmp((char*)av[2], "--save", 7)))
 	{
-		hook_loop(glb);
-		ft_free_data(glb->data, "End Of Program");
+		hook_loop(glb, ac);
+		ft_free_data(glb->data, "Merci pour les services.");
 	}
-	if (ac == 3 && !ft_strncmp((char*)av[2], "-save", 6))
-		ft_save(glb->data, (char*)av[1], glb);
 	return (0);
 }
-
 
 
 /*
