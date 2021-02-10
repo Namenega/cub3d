@@ -6,11 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 16:52:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:56:42 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+** all whitespaces
+*/
 
 int			ft_isspace(int c)
 {
@@ -19,6 +23,10 @@ int			ft_isspace(int c)
 		return (1);
 	return (0);
 }
+
+/*
+** atoi for overflow
+*/
 
 int			ft_atoi_2(const char *s)
 {
@@ -33,12 +41,13 @@ int			ft_atoi_2(const char *s)
 			s[i] == '\r' || s[i] == ' ' || s[i] == '\v')
 		i++;
 	result = ft_uli_error(s + i);
-	if (result > 2147483647 /*|| result < 1*/)
+	if (result > 2147483647)
 	{
 		if (compteur == -1)
 			return (0);
 		else
-			ft_error_exit("Error\nNumber too big/too low(R).\nMaximum is 2147483647");
+			ft_error_exit("Error\nNumber too big(R).\n\
+Maximum is 2147483647");
 	}
 	return (result * compteur);
 }
@@ -54,6 +63,10 @@ int			ft_inset(int c, char *set)
 	return (0);
 }
 
+/*
+** Skip what is already done + whitespaces + ',.-'
+*/
+
 int			ft_next_arg(char *l)
 {
 	int	i;
@@ -65,6 +78,10 @@ int			ft_next_arg(char *l)
 		i++;
 	return (i);
 }
+
+/*
+** Skip what is already done + whitespaces + '.-'
+*/
 
 int			ft_next_arg_2(char *l)
 {

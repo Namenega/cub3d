@@ -6,15 +6,18 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/05 19:59:03 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:04:16 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/*
+** Choose wall color
+*/
+
 void		ft_color_asign(t_map *map, t_move *move, t_data *data)
 {
-	//choose wall color
 	if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
 	{
 		map->color.r = 0x00800000;
@@ -34,6 +37,10 @@ void		ft_color_asign(t_map *map, t_move *move, t_data *data)
 	map->colorf.g = data->g_ground * 256;
 	map->colorf.r = data->r_ground * 65536;
 }
+
+/*
+** Initie delta_dist, hit et position
+*/
 
 void		ft_init_struct(t_move *move, t_map *map)
 {

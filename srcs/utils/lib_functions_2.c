@@ -6,11 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:04:46 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 17:06:03 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:54:53 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+** atoi for overflow and 0
+*/
 
 int			ft_atoi_3(const char *s)
 {
@@ -30,7 +34,8 @@ int			ft_atoi_3(const char *s)
 		if (compteur == -1)
 			return (0);
 		else
-			ft_error_exit("Error\nNumber too big/too low(R).\nMaximum is 2147483647");
+			ft_error_exit("Error\nNumber too big/too low(R).\n\
+Maximum is 2147483647");
 	}
 	return (result * compteur);
 }

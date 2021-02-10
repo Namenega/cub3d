@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 17:19:23 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:15:15 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define KEYCODE_S 1
 # define KEYCODE_D 2
 
-typedef struct	s_data
+typedef struct		s_data
 {
 	int				width;
 	int				height;
@@ -84,16 +84,16 @@ typedef struct	s_data
 	t_list			*lst_line;
 	t_list			*first_token;
 
-}				t_data;
+}					t_data;
 
-typedef struct	s_rgb
+typedef struct		s_rgb
 {
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
-}				t_rgb;
+}					t_rgb;
 
-typedef struct	s_map
+typedef struct		s_map
 {
 	int				i;
 	int				j;
@@ -112,15 +112,15 @@ typedef struct	s_map
 	int				stock_c;
 	t_rgb			colorc;
 	t_rgb			colorf;
-}				t_map;
+}					t_map;
 
-typedef struct	s_vec
+typedef struct		s_vec
 {
 	double			x;
 	double			y;
-}				t_vec;
+}					t_vec;
 
-typedef struct	s_pos
+typedef struct		s_pos
 {
 	int				x;
 	t_vec			dir;
@@ -128,31 +128,31 @@ typedef struct	s_pos
 	t_vec			plane_cam;
 	t_vec			old_pl_cam;
 	t_vec			camera;
-}				t_pos;
+}					t_pos;
 
-typedef struct	s_move
+typedef struct		s_move
 {
 	t_vec			dir;
-	int				hit; //wall hit?
-	int				side; //hit = N/S or E/W?
+	int				hit;
+	int				side;
 	int				line_h;
 	int				draw_start;
 	int				draw_end;
-	double			perp_wall_dist; //len of ray from one x/y to next x/y
-	t_vec			map; //wich box of the map we're in
-	t_vec			step; //direction of the step (x/y)(+1/-1)
-	t_vec			d_dist; //len of ray from one x/y to next x/y
-	t_vec			side_dist; //len of ray from current pos to next x/y-side
-}				t_move;
+	double			perp_wall_dist;
+	t_vec			map;
+	t_vec			step;
+	t_vec			d_dist;
+	t_vec			side_dist;
+}					t_move;
 
-typedef struct	s_global
+typedef struct		s_global
 {
 	const char		*argv;
 	t_move			*move;
 	t_pos			*pos;
 	t_data			*data;
 	t_map			*map;
-}				t_global;
+}					t_global;
 
 /*
 ** PARSING/MAIN.C
@@ -167,9 +167,21 @@ void				ft_error_exit(char *s);
 */
 
 t_data				*ft_data(char *file, int ac, t_map *map, t_pos *pos);
-int					ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos);
+int					ft_get_data(t_data *data, char *file, t_map *map,
+						t_pos *pos);
 int					ft_gnl(int fd, t_data *data, t_map *map, t_pos *pos);
-int					ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos);
+void				ft_loop_parse(t_list *each_line, t_data *data,
+						t_map *map, t_pos *pos);
+int					ft_parsing_data(t_list *el, t_data *data,
+						t_map *map, t_pos *pos);
+
+/*
+** PARSING/PARSING2.C
+*/
+
+int					ft_data_parsed(t_data *data, t_pos *pos,
+						t_map *map, t_list *el);
+int					ft_parsing_begin(char *line, t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/RESOLUTION.C
@@ -223,7 +235,7 @@ int					ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos);
 t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
 t_map				*ft_map_data(t_map *map, t_list *el, t_pos *pos);
 t_map				*ft_map_asign(t_list *el, t_map *map, t_pos *pos);
-void				ft_position_asign(int c, t_map *map, t_pos *pos);
+void				ft_char_to_int(t_pos *pos, t_map *map, t_list *el);
 
 /*
 ** PARSING/MAP_PARSING/VERIF_MAP.C
@@ -240,7 +252,6 @@ void				ft_dir_to_vec(int c, t_pos *pos);
 */
 
 int					ft_affichage(t_global *glb);
-int					ft_affichage2(t_global *glb, int ac);
 void				ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos);
 void				ft_condition_ray(t_move *move, t_map *map);
 void				ft_move_square(t_move *move, t_map *map);
@@ -273,7 +284,6 @@ void				ft_mvleft(t_pos *pos, t_map *map);
 ** PARSING/EVENT.C
 */
 
-int					ft_test_2(t_global *glb, int ac);
 int					ft_test(t_global *glb);
 int					ft_exit_hook(void *x);
 int					ft_keypress_hook(int key, t_global *glb);
@@ -285,10 +295,6 @@ int					hook_loop(t_global *glb, int ac);
 */
 
 void				ft_save(t_global *glb);
-// unsigned char		*bmp_info_header(t_global *glb);
-// unsigned char		*ft_bmpfileheader(int size);
-// void				data_to_img(int fd, t_global *glb);
-// void				ft_binar(int fd, int tmp, int size, t_global *glb);
 
 /*
 ** PARSING/FREE.C
@@ -300,9 +306,11 @@ void				ft_free_data(t_data *data, char *str);
 ** UTILS/UTILS_2.C
 */
 
-void				ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map);
+void				ft_verline(t_data *data, t_move *move, t_pos *pos,
+						t_map *map);
 void				ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color);
 void				*ft_calloc_2(size_t nmemb);
 void				ft_mlx_data(t_data *data);
+void				ft_position_asign(int c, t_map *map, t_pos *pos);
 
 #endif

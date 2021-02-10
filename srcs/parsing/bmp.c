@@ -6,13 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:40:42 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 18:27:20 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:48:24 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-//-----------------------------
+/*
+** writing every pixel
+*/
 
 static void	bmp_data(t_global *glb, int fd)
 {
@@ -35,6 +37,10 @@ static void	bmp_data(t_global *glb, int fd)
 	}
 }
 
+/*
+** Header data
+*/
+
 static void	bmp_header(t_global *glb, int imgsize, int fd)
 {
 	uint8_t		header[54];
@@ -54,6 +60,10 @@ static void	bmp_header(t_global *glb, int imgsize, int fd)
 	if ((write(fd, header, 54)) != 54)
 		ft_error_exit("bmp");
 }
+
+/*
+** starting bmp
+*/
 
 void		ft_save(t_global *glb)
 {

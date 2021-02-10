@@ -6,11 +6,15 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:42:59 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/03 17:06:20 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:43:09 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+** Checking overflow
+*/
 
 unsigned long int	ft_uli_error(const char *line)
 {
@@ -35,6 +39,10 @@ unsigned long int	ft_uli_error(const char *line)
 	return (result);
 }
 
+/*
+** Error if too many arguments
+*/
+
 void				ft_error_resolution_4(char *line)
 {
 	int	i;
@@ -51,6 +59,10 @@ void				ft_error_resolution_4(char *line)
 	}
 }
 
+/*
+** Error if missing argument
+*/
+
 void				ft_error_resolution_3(char *line)
 {
 	if (!(*line))
@@ -60,6 +72,10 @@ void				ft_error_resolution_3(char *line)
 	if (!ft_isdigit(*line))
 		ft_error_exit("Error\nMissing an argument(R).\nExit Program");
 }
+
+/*
+** Error si char differents de digit/spaces
+*/
 
 void				ft_error_resolution_1(char *line)
 {

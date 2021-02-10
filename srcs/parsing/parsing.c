@@ -6,46 +6,48 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 18:33:18 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:41:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/*
+** parsing each character of the line until map
+*/
+
 int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 {
 	char	*line;
+	int		i;
 
 	line = (char *)(el->content);
-	if (!line)
+	if (!(line))
 		return (0);
-	else if (line[0] == 0)
+	else if ((line)[0] == 0)
 		return (1);
-	else if (line[0] == 'R' && ft_isspace(line[1]))
-		return (ft_resolution(data, &line[1]));
-	else if (line[0] == 'N' && line[1] == 'O' && ft_isspace(line[2]))
-		return (ft_north(data, &line[2]));
-	else if (line[0] == 'S' && line[1] == 'O' && ft_isspace(line[2]))
-		return (ft_south(data, &line[2]));
-	else if (line[0] == 'W' && line[1] == 'E' && ft_isspace(line[2]))
-		return (ft_west(data, &line[2]));
-	else if (line[0] == 'E' && line[1] == 'A' && ft_isspace(line[2]))
-		return (ft_east(data, &line[2]));
-	else if (line[0] == 'S' && ft_isspace(line[1]))
-		return (ft_sprite(data, &line[1]));
-	else if ((line[0] == 'F') && ft_isspace(line[1]))
-		return (ft_color_ground(data, &line[1]));
-	else if ((line[0] == 'C') && ft_isspace(line[1]))
-		return (ft_color_sky(data, &line[1]));
-	else if (line[0] != '1' && !ft_isspace(line[0]))
-		ft_error_exit("Error\nA line is wrong.\nExit Program");
-	if (data->parsed == 8)
-	{
-		data->first_token = el;
-		return (ft_map(el, data, map, pos));
-	}
+	if ((i = ft_parsing_begin(line, data)))
+		return (i);
+	ft_data_parsed(data, pos, map, el);
 	return (1);
 }
+
+/*
+** parsing each line
+*/
+
+void	ft_loop_parse(t_list *each_line, t_data *data, t_map *map, t_pos *pos)
+{
+	while (each_line)
+	{
+		ft_parsing_data(each_line, data, map, pos);
+		each_line = each_line->next;
+	}
+}
+
+/*
+** get_next_line -> line in t_list
+*/
 
 int		ft_gnl(int fd, t_data *data, t_map *map, t_pos *pos)
 {
@@ -69,13 +71,13 @@ int		ft_gnl(int fd, t_data *data, t_map *map, t_pos *pos)
 		return (0);
 	ft_lstadd_back(&data->lst_line, tmp);
 	each_line = data->lst_line;
-	while (each_line)
-	{
-		ft_parsing_data(each_line, data, map, pos);
-		each_line = each_line->next;
-	}
+	ft_loop_parse(each_line, data, map, pos);
 	return (res);
 }
+
+/*
+** opening .cub
+*/
 
 int		ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos)
 {
@@ -94,13 +96,16 @@ int		ft_get_data(t_data *data, char *file, t_map *map, t_pos *pos)
 		return (0);
 }
 
+/*
+** mlx_init
+*/
+
 t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 {
 	t_data	*data;
 
 	ac = 1;
 	data = ft_calloc_2(sizeof(t_data));
-	//if (ac == 1)
 	if ((data->mlx_ptr = mlx_init()) == NULL)
 		return (0);
 	if (!(ft_get_data(data, file, map, pos)))

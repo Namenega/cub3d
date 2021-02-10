@@ -6,41 +6,41 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 15:20:48 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/05 19:51:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:50:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
 
+/*
+** Vector if N/S/W/E
+*/
+
 void	ft_dir_to_vec(int c, t_pos *pos)
 {
-	if (c == 3) //north
+	pos->dir.x = 0.0;
+	pos->dir.y = 0.0;
+	pos->plane_cam.x = 0.0;
+	pos->plane_cam.y = 0.0;
+	if (c == 3)
 	{
 		pos->dir.x = -1.0;
-		pos->dir.y = 0;
-		pos->plane_cam.x = 0;
 		pos->plane_cam.y = 0.66;
 	}
-	else if (c == 4) //south
+	else if (c == 4)
 	{
 		pos->dir.x = 1.0;
-		pos->dir.y = 0;
-		pos->plane_cam.x = 0;
 		pos->plane_cam.y = -0.66;
 	}
-	else if (c == 5) //east
+	else if (c == 5)
 	{
-		pos->dir.x = 0;
 		pos->dir.y = 1.0;
 		pos->plane_cam.x = 0.66;
-		pos->plane_cam.y = 0;
 	}
-	else if (c == 6) //west
+	else if (c == 6)
 	{
-		pos->dir.x = 0;
 		pos->dir.y = -1.0;
 		pos->plane_cam.x = -0.66;
-		pos->plane_cam.y = 0;
 	}
 }
 
@@ -63,6 +63,10 @@ void	ft_verif_holes_2(t_map *map, int i, int j)
 	}
 }
 
+/*
+** Check holes in map
+*/
+
 int		ft_verif_holes(t_map *map)
 {
 	int		i;
@@ -81,6 +85,10 @@ int		ft_verif_holes(t_map *map)
 	}
 	return (1);
 }
+
+/*
+** Check char in map
+*/
 
 int		ft_verif_char(t_map *map)
 {

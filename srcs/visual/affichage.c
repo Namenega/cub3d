@@ -6,24 +6,27 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 16:10:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:09:25 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/*
+** calc the distance projected on camera direction (w/o fisheye effect)
+** calc height of line to draw on screen
+** calc lowest and highest pixel to fill in current stripe
+*/
+
 void		ft_pxl_tofill(t_move *move, t_data *data, t_map *map)
 {
-	//calc the distance projected on camera direction (w/o fisheye effect)
 	if (move->side == 0)
 		move->perp_wall_dist = (move->map.x - map->x + (1 - move->step.x) / 2)
 			/ move->dir.x;
 	else
 		move->perp_wall_dist = (move->map.y - map->y + (1 - move->step.y) / 2)
 			/ move->dir.y;
-	//calc height of line to draw on screen
 	move->line_h = (int)(data->height / move->perp_wall_dist);
-	//calc lowest and highest pixel to fill in current stripe
 	move->draw_start = -move->line_h / 2 + data->height / 2;
 	if (move->draw_start < 0)
 		move->draw_start = 0;
@@ -33,16 +36,16 @@ void		ft_pxl_tofill(t_move *move, t_data *data, t_map *map)
 }
 
 /*
+** Perform DDA
 ** Jumping to next square (or x/y direction)
+** Check if ray has hit a wall
 */
 
 void		ft_move_square(t_move *move, t_map *map)
 {
 	move->side = 0;
-	//perform DDA
 	while (move->hit == 0)
 	{
-		//jump next map square (x/y direction)
 		if (move->side_dist.x < move->side_dist.y)
 		{
 			move->side_dist.x += move->d_dist.x;
@@ -55,7 +58,6 @@ void		ft_move_square(t_move *move, t_map *map)
 			move->map.y += move->step.y;
 			move->side = 1;
 		}
-		//check if ray has hit a wall
 		if (map->real_map[(int)move->map.x][(int)move->map.y] != 7)
 			move->hit = 1;
 	}
@@ -107,40 +109,24 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_verline(data, move, pos, map);
 }
 
+/*
+** Main algorythm
+** calculate ray position & direction
+*/
+
 int			ft_affichage(t_global *glb)
 {
 	glb->pos->x = 0;
 	while (glb->pos->x < glb->data->width)
 	{
-		// calculate ray position & direction
-		glb->pos->camera.x = 2 * (double)glb->pos->x / (double)glb->data->width - 1; //x coordinate in camera space
-		glb->move->dir.x = glb->pos->dir.x + glb->pos->plane_cam.x * glb->pos->camera.x;
-		glb->move->dir.y = glb->pos->dir.y + glb->pos->plane_cam.y * glb->pos->camera.x;
+		glb->pos->camera.x = 2 * (double)glb->pos->x /
+			(double)glb->data->width - 1;
+		glb->move->dir.x = glb->pos->dir.x + glb->pos->plane_cam.x *
+			glb->pos->camera.x;
+		glb->move->dir.y = glb->pos->dir.y + glb->pos->plane_cam.y *
+			glb->pos->camera.x;
 		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
 		glb->pos->x++;
 	}
-	return (1);
-}
-
-int			ft_affichage2(t_global *glb, int ac)
-{
-	ac = 3;
-	glb->pos->x = 0;
-	printf("[test-5]\n");
-	while (glb->pos->x < glb->data->width)
-	{
-		// calculate ray position & direction
-		glb->pos->camera.x = 2 * (double)glb->pos->x / (double)glb->data->width - 1; //x coordinate in camera space
-		glb->move->dir.x = glb->pos->dir.x + glb->pos->plane_cam.x * glb->pos->camera.x;
-		glb->move->dir.y = glb->pos->dir.y + glb->pos->plane_cam.y * glb->pos->camera.x;
-		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
-		glb->pos->x++;
-	}
-	printf("[test-6]\n");
-	/*if (ac == 3)
-	{
-		ft_save(glb);
-		exit(0);
-	}*/
 	return (1);
 }

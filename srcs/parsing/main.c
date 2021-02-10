@@ -6,17 +6,20 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 18:38:44 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 15:55:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/*
+** Exit Function
+*/
+
 void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
-	// free();
 	exit(0);
 }
 
@@ -27,6 +30,10 @@ int		ft_error_msg(char *s)
 	return (0);
 }
 
+/*
+** Starting project
+*/
+
 int		main(int ac, char const **av)
 {
 	t_global	*glb;
@@ -36,9 +43,9 @@ int		main(int ac, char const **av)
 	glb->pos = ft_calloc_2(sizeof(t_pos));
 	glb->move = ft_calloc_2(sizeof(t_move));
 	if (!(ac == 2 || ac == 3))
-		return (ft_error_msg("Error\nToo many/few arguments.\nExit Program"));
+		ft_error_exit("Error\nToo many/few arguments.\nExit Program");
 	if (!(glb->data = ft_data((char*)av[1], (ac == 2), glb->map, glb->pos)))
-		return (ft_error_msg("Error\nParsing : Fail\nExit Program"));
+		ft_error_exit("Error\nParsing : Fail\nExit Program");
 	if (av[2])
 		glb->argv = av[2];
 	if (ac == 2 || (ac == 3 && !ft_strncmp((char*)av[2], "--save", 7)))
@@ -46,10 +53,7 @@ int		main(int ac, char const **av)
 		hook_loop(glb, ac);
 		ft_free_data(glb->data, "Merci pour les services.");
 	}
+	if (ac == 3 && ft_strncmp((char*)av[2], "--save", 7))
+		ft_error_exit("Error\nargc[3] must be '--save'\nExit Program");
 	return (0);
 }
-
-
-/*
-** Mettre error si ligne random
-*/

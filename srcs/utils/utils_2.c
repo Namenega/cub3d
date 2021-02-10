@@ -6,17 +6,40 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/09 14:24:26 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:57:29 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+/*
+** Centering spawn position
+*/
+
+void		ft_position_asign(int c, t_map *map, t_pos *pos)
+{
+	map->real_map[map->j][map->i] = c;
+	map->stock_c = c;
+	map->x = map->j + 0.5;
+	map->y = map->i + 0.5;
+	ft_dir_to_vec(c, pos);
+	map->real_map[map->j][map->i] = 7;
+	map->position++;
+}
+
+/*
+** Pixel's color
+*/
 
 void		ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color)
 {
 	(void)color;
 	(data->addr)[y * (data->pxl_line) + x] = color.r + color.g + color.b;
 }
+
+/*
+** Drawing Walls (top-bottom)
+*/
 
 void		ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map)
 {
@@ -32,9 +55,13 @@ void		ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map)
 		i++;
 	}
 	i--;
-	while(++i < data->height)
+	while (++i < data->height)
 		ft_mlx_pxl_put(data, pos->x, i, map->colorf);
 }
+
+/*
+** Calloc without length
+*/
 
 void		*ft_calloc_2(size_t nmemb)
 {
@@ -46,6 +73,10 @@ void		*ft_calloc_2(size_t nmemb)
 	ft_bzero(tab, nmemb);
 	return (tab);
 }
+
+/*
+** Mlx settings
+*/
 
 void		ft_mlx_data(t_data *data)
 {

@@ -2,6 +2,7 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/get_next_line/get_next_line_utils.c	\
 			srcs/parsing/main.c							\
 			srcs/parsing/parsing.c						\
+			srcs/parsing/parsing2.c						\
 			srcs/parsing/event.c						\
 			srcs/parsing/resolution.c					\
 			srcs/parsing/sprites_path/obstacle.c		\
@@ -11,6 +12,7 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/parsing/map_parsing/map.c				\
 			srcs/parsing/map_parsing/verif_map.c		\
 			srcs/parsing/free.c							\
+			srcs/parsing/bmp.c							\
 			srcs/utils/lib_functions_1.c				\
 			srcs/utils/lib_functions_2.c				\
 			srcs/utils/utils_2.c						\
@@ -18,7 +20,6 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/visual/init_struct.c					\
 			srcs/visual/movement.c						\
 			srcs/visual/movement_2.c					\
-			srcs/parsing/bmp.c							\
 
 SRCS	= ${SRCNAME}
 
@@ -26,7 +27,7 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= cub3D
 
-CC		= gcc -g -fsanitize=address
+CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -I. -I./includes/libft
 
