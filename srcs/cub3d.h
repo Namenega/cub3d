@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 18:15:15 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/11 16:18:21 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # define B 0x000000FF
 # define MS 0.1
 # define RS 0.1
+# define TXW 64
+# define TXH 64
 
 # define XEVENT_KEYPRESS 2
 # define XEVENT_KEYRELEASE 3
@@ -123,11 +125,19 @@ typedef struct		s_vec
 typedef struct		s_pos
 {
 	int				x;
+	int				y;
 	t_vec			dir;
 	t_vec			old_dir;
 	t_vec			plane_cam;
 	t_vec			old_pl_cam;
 	t_vec			camera;
+	int				txnum;
+	t_vec			wall;
+	t_vec			tex;
+	double			stept;
+	double			texpos;
+	u_int32_t		color;
+	
 }					t_pos;
 
 typedef struct		s_move
@@ -145,9 +155,27 @@ typedef struct		s_move
 	t_vec			side_dist;
 }					t_move;
 
+typedef struct		s_spr
+{
+	t_vec			raydir0;
+	t_vec			raydir1;
+	int				p;
+	double			posz;
+	double			rowdist;
+	t_vec			floorstep;
+	t_vec			floor;
+	t_vec			cell;
+	t_vec			t;
+	int				checkbp;
+	int				floor_tx;
+	int				ceil_tx;
+	u_int32_t		color;
+}					t_spr;
+
 typedef struct		s_global
 {
 	const char		*argv;
+	t_spr			*spr;
 	t_move			*move;
 	t_pos			*pos;
 	t_data			*data;
