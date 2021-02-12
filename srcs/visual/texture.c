@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 14:17:52 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:54:04 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void		ft_img(t_data *data)
 {
-	printf("[%s]\n", data->path_north);
 	if (!(data->north.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_north,
 		&data->north.w, &data->north.h)))
 		ft_error_exit("Error\nError in texture pathN\nExit program.");
@@ -47,7 +46,6 @@ void		ft_img(t_data *data)
 
 void		ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex)
 {
-	printf("%f\n", pos->dir.x);
 	if (move->side == 0)
 		pos->wall.x = map->y + (move->perp_wall_dist * move->dir.y);
 	else

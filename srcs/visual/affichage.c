@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 19:38:22 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:56:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void		ft_move_square(t_move *move, t_map *map)
 			move->map.y += move->step.y;
 			move->side = 1;
 		}
-		if (map->real_map[(int)move->map.x][(int)move->map.y] != 7)
+		if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
 			move->hit = 1;
 	}
 }

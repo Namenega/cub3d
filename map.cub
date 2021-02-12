@@ -1,23 +1,23 @@
 R	800	800
 
-S	srcs/sprites/pillar.xpm
+S	srcs/sprites/barrel.xpm
 
-NO	srcs/sprites/eagle.xpm
+NO	srcs/sprites/mossy.xpm
 SO	srcs/sprites/colorstone.xpm
 WE	srcs/sprites/greystone.xpm
-EA	srcs/sprites/purplestone.xpm
+EA	srcs/sprites/redbrick.xpm
   
 F	0, 102, 103
 C	151, 0, 201
 
 111111111111111
-100000000000001
+100000000020001
 100000000000011
-100000000000011
+100200000000011
 100000000001111
 100000000001111
 100000000001111
-100000000000001
+100000020000001
 100000000000001
 101000000N00001
 111111111111111

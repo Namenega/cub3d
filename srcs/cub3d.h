@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 20:51:31 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:50:58 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct		s_map
 	int				stock_c;
 	u_int32_t		colorc;
 	u_int32_t		colorf;
+	int				numsprite;
 }					t_map;
 
 typedef struct		s_vec

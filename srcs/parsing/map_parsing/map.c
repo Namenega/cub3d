@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 18:38:39 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:03:18 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 	else if (((char *)el->content)[map->i] == '1')
 		map->real_map[map->j][map->i] = 1;
 	else if (((char *)el->content)[map->i] == '2')
+	{
 		map->real_map[map->j][map->i] = 2;
+		map->numsprite++;
+	}
 	else if (((char *)el->content)[map->i] == 'N')
 		ft_position_asign(3, map, pos);
 	else if (((char *)el->content)[map->i] == 'S')
