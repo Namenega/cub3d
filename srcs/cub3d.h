@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 14:50:58 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 19:01:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include "../includes/mlx/mlx.h"
 # include "../includes/libft/libft.h"
 # include "get_next_line.h"
+
 # define R 0x00FF0000
 # define G 0x0000FF00
 # define B 0x000000FF
@@ -43,6 +44,9 @@
 # define KEYCODE_S 1
 # define KEYCODE_D 2
 
+# define UDIV 1
+# define VDIV 1
+
 typedef struct		s_tex
 {
 	void			*img;
@@ -53,7 +57,6 @@ typedef struct		s_tex
 	int				bit;
 	int				endian;
 }					t_tex;
-
 
 typedef struct		s_data
 {
@@ -101,6 +104,7 @@ typedef struct		s_data
 	t_tex			south;
 	t_tex			west;
 	t_tex			east;
+	t_tex			sprite;
 }					t_data;
 
 typedef struct		s_rgb
@@ -130,6 +134,9 @@ typedef struct		s_map
 	u_int32_t		colorc;
 	u_int32_t		colorf;
 	int				numsprite;
+	int				a;
+	double			*spr_x;
+	double			*spr_y;
 }					t_map;
 
 typedef struct		s_vec
@@ -154,7 +161,6 @@ typedef struct		s_pos
 	double			texpos;
 	u_int32_t		color;
 	int				*color_2;
-	
 }					t_pos;
 
 typedef struct		s_move
@@ -187,6 +193,18 @@ typedef struct		s_spr
 	int				floor_tx;
 	int				ceil_tx;
 	u_int32_t		color;
+
+	int				*sp_order;
+	double			*sp_dist;
+	t_vec			spr;
+	double			invdir;
+	t_vec			transform;
+	int				spr_screenx;
+	int				vmovesc;
+	int				spr_w;
+	int				spr_h;
+	t_vec			dwstart;
+	t_vec			dwend;
 }					t_spr;
 
 typedef struct		s_global
@@ -243,6 +261,7 @@ void				ft_error_resolution_4(char *line);
 */
 
 int					ft_sprite(t_data *data, char *line);
+void				ft_sprite2(t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/SKY.C

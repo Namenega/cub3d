@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 14:54:04 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 16:11:38 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void		ft_img(t_data *data)
 {
 	if (!(data->north.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_north,
 		&data->north.w, &data->north.h)))
-		ft_error_exit("Error\nError in texture pathN\nExit program.");
+		ft_error_exit("Error\nError in texture path (NO)\nExit Program.");
 	if (!(data->south.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_south,
 		&data->south.w, &data->south.h)))
-		ft_error_exit("Error\nError in texture pathS\nExit program.");
+		ft_error_exit("Error\nError in texture path (SO)\nExit Program.");
 	if (!(data->west.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_west,
 		&data->west.w, &data->west.h)))
-		ft_error_exit("Error\nError in texture pathW\nExit program.");;
+		ft_error_exit("Error\nError in texture path (WE)\nExit Program.");;
 	if (!(data->east.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_east,
 		&data->east.w, &data->east.h)))
-		ft_error_exit("Error\nError in texture pathE\nExit program.");
+		ft_error_exit("Error\nError in texture path (EA)\nExit Program.");
 	data->north.addr = (int *)mlx_get_data_addr(data->north.img, &data->north.bit,
 		&data->north.line_length, &data->north.endian);
 	data->south.addr = (int *)mlx_get_data_addr(data->south.img, &data->south.bit,
