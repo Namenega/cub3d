@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   affichage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 14:56:45 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:19:03 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,6 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_condition_ray(move, map);
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, data, map);
-	// texturing calculations
-	// ft_texture(pos, map, move, data);
 	ft_color_asign(map, move, data);
 	if (move->side == 1)
 	{

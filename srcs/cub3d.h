@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 19:01:10 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:24:42 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,6 +205,9 @@ typedef struct		s_spr
 	int				spr_h;
 	t_vec			dwstart;
 	t_vec			dwend;
+	int				stripe;
+	int				texx;
+	int				texy;
 }					t_spr;
 
 typedef struct		s_global
@@ -335,6 +338,12 @@ void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 void				ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data);
 void				ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex);
 void				ft_img(t_data *data);
+
+/*
+** VISUAL/SPRITE.C
+*/
+
+void				ft_malloc_sprite(t_map *map);
 
 /*
 ** VISUALS/MOVEMENT.C

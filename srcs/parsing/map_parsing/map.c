@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 17:31:27 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 20:40:06 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 {
-	ft_malloc_sprite(map);
+	//ft_malloc_sprite(map);
 	if (((char *)el->content)[map->i] == ' ')
 		map->real_map[map->j][map->i] = -1;
 	else if (((char *)el->content)[map->i] == '0')
@@ -28,8 +28,8 @@ void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 	else if (((char *)el->content)[map->i] == '2')
 	{
 		map->real_map[map->j][map->i] = 2;
-		map->spr_x[(int)map->a] = map->j + 0.5;
-		map->spr_y[(int)map->a] = map->i + 0.5;
+		/*map->spr_x[(int)map->a] = map->j + 0.5;
+		map->spr_y[(int)map->a] = map->i + 0.5;*/
 		map->numsprite++;
 	}
 	else if (((char *)el->content)[map->i] == 'N')

@@ -3,14 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 19:04:56 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 21:39:54 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+void		ft_malloc_sprite(t_map *map)
+{
+	map->spr_x = malloc(sizeof(int *) * map->numsprite + 1);
+	if (!map->spr_x)
+		ft_error_exit("Error\nMalloc spr_x failed.\nExit Program");
+	map->spr_y = malloc(sizeof(int *) * map->numsprite + 1);
+	if (!map->spr_y)
+		ft_error_exit("Error\nMalloc spr_y failed.\nExit Program");
+}
+
+void		ft_draw_stripe(t_spr *spr, t_data *data)
+{
+	spr->texx = (int)((spr->stripe - (-spr->spr_w / 2 + spr->spr_screenx)) *
+		TXW / spr->spr_w);
+	if (spr->transform.y > 0 && spr->stripe && spr->stripe < data->width &&
+		spr->transform.y/* < */)
+		spr++;
+}
+
+void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
+{
+	spr->spr.x = map->spr_x[i] - map->x;
+	spr->spr.y = map->spr_y[i] - map->y;
+	spr->invdir = 1.0 / (glb->pos->plane_cam.x * glb->pos->dir.y -
+		glb->pos->dir.x * glb->pos->plane_cam.y);
+	spr->transform.x = spr->invdir * (glb->pos->dir.y * spr->spr.x -
+		glb->pos->dir.x * spr->spr.y);
+	spr->transform.y = spr->invdir * (-glb->pos->plane_cam.y * spr->spr.x +
+		glb->pos->plane_cam.x * spr->spr.y);
+	spr->spr_screenx = (int)((glb->data->width / 2) * (1 + spr->transform.x /
+		spr->transform.y));
+	spr->vmovesc = (94 / spr->transform.y);
+	spr->spr_h = (int)fabs((double)(glb->data->height / (int)spr->transform.y)) / VDIV;
+	spr->dwstart.y = -spr->spr_h / 2 + glb->data->height / 2 + spr->vmovesc;
+	if (spr->dwstart.y < 0)
+		spr->dwstart.y = 0;
+	spr->dwend.y = spr->spr_h / 2 + glb->data->height / 2 + spr->vmovesc;
+	if (spr->dwend.y >= spr->spr_h)
+		spr->dwend.y = spr->spr_h - 1;
+	spr->spr_w = (int)fabs((double)(glb->data->height / spr->transform.y)) / UDIV;
+	spr->dwstart.x = -spr->spr_w / 2 + spr->spr_screenx;
+	if (spr->dwstart.x < 0)
+		spr->dwstart.x = 0;
+	spr->dwend.x = spr->spr_w / 2 + spr->spr_screenx;
+	if (spr->dwend.x > glb->data->width)
+		spr->dwend.x = glb->data->width - 1;
+}
 
 void		tmp(t_map *map, int i, int j, char coord)
 {
@@ -64,44 +112,7 @@ void		ft_sort_sprite(t_spr *spr, t_map *map)
 	}
 }
 
-void		ft_malloc_sprite(t_map *map)
-{
-	map->spr_x = malloc(sizeof(int *) * map->numsprite + 1);
-	if (!map->spr_x)
-		ft_error_exit("Error\nMalloc spr_x failed.\nExit Program");
-	map->spr_y = malloc(sizeof(int *) * map->numsprite + 1);
-	if (!map->spr_y)
-		ft_error_exit("Error\nMalloc spr_y failed.\nExit Program");
-}
-
-void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
-{
-	//translate sprite pos to relative camera;
-	spr->spr.x = map->spr_x[i] - map->x;
-	spr->spr.y = map->spr_y[i] - map->y;
-	// required for correct matrix multiplication
-	spr->invdir = 1.0 / (glb->pos->plane_cam.x * glb->pos->dir.y -
-		glb->pos->dir.x * glb->pos->plane_cam.y);
-	// depth inside the screen
-	spr->transform.x = spr->invdir * (glb->pos->dir.y * spr->spr.x -
-		glb->pos->dir.x * spr->spr.y);
-	spr->transform.y = spr->invdir * (-glb->pos->plane_cam.y * spr->spr.x +
-		glb->pos->plane_cam.x * spr->spr.y);
-	spr->spr_screenx = (int)((glb->data->width / 2) * (1 + spr->transform.x /
-		spr->transform.y));
-	spr->vmovesc = (94 / spr->transform.y);
-	//height of sprite on screen
-	spr->spr_h = fabs((glb->data->height / (int)spr->transform.y)) / VDIV;
-	//calculate highest & lowest pxl to fill in current stripe
-	spr->dwstart.y = -spr->spr_h / 2 + glb->data->height / 2 + spr->vmovesc;
-	if (spr->dwstart.y < 0)
-		spr->dwstart.y = 0;
-	spr->dwend.y = spr->spr_h / 2 + glb->data->height / 2 + spr->vmovesc;
-	if (spr->dwend.y >= spr->spr_h)
-		spr->dwend.y = spr->spr_h - 1;
-}
-
-void		ft_img_sprite(t_map *map, t_data *data, t_global *glb)
+void		ft_img_sprite(t_map *map, t_global *glb)
 {
 	int		i;
 	
@@ -111,5 +122,11 @@ void		ft_img_sprite(t_map *map, t_data *data, t_global *glb)
 	while (i < map->numsprite)
 	{
 		ft_init_sprite(glb->spr, map, glb, i);
+		glb->spr->stripe = glb->spr->dwstart.x;
+		while (glb->spr->stripe < glb->spr->dwend.x)
+		{
+			ft_draw_stripe(glb->spr, glb->data);
+			glb->spr->stripe++;
+		}
 	}
 }
