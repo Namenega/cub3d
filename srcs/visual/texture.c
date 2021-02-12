@@ -6,50 +6,87 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 16:22:44 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:17:52 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-void		ft_wallx_texx(t_move *move, t_pos *pos, t_map *map)
+/*
+** path parsing (NO/SO/EA/WE) to usefull data
+*/
+
+void		ft_img(t_data *data)
 {
-	// calc value of wallX
-	if (move->side == 0)
-		pos->wall.x = map->y + move->perp_wall_dist * pos->dir.y;
-	else
-		pos->wall.x = map->x + move->perp_wall_dist * pos->dir.x;
-	pos->wall.x -= floor((pos->wall.x));
-	//X coord on the txture
-	pos->tex.x = (int)(pos->wall.x * (double)TXW);
-	if (move->side == 0 && pos->dir.x > 0)
-		pos->tex.x = TXW - pos->tex.x - 1;
-	if (move->side == 1 && pos->dir.y < 0)
-		pos->tex.x = TXW - pos->tex.x - 1;
+	printf("[%s]\n", data->path_north);
+	if (!(data->north.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_north,
+		&data->north.w, &data->north.h)))
+		ft_error_exit("Error\nError in texture pathN\nExit program.");
+	if (!(data->south.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_south,
+		&data->south.w, &data->south.h)))
+		ft_error_exit("Error\nError in texture pathS\nExit program.");
+	if (!(data->west.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_west,
+		&data->west.w, &data->west.h)))
+		ft_error_exit("Error\nError in texture pathW\nExit program.");;
+	if (!(data->east.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_east,
+		&data->east.w, &data->east.h)))
+		ft_error_exit("Error\nError in texture pathE\nExit program.");
+	data->north.addr = (int *)mlx_get_data_addr(data->north.img, &data->north.bit,
+		&data->north.line_length, &data->north.endian);
+	data->south.addr = (int *)mlx_get_data_addr(data->south.img, &data->south.bit,
+		&data->south.line_length, &data->south.endian);
+	data->west.addr = (int *)mlx_get_data_addr(data->west.img, &data->west.bit,
+		&data->west.line_length, &data->west.endian);
+	data->east.addr = (int *)mlx_get_data_addr(data->east.img, &data->east.bit,
+		&data->east.line_length, &data->east.endian);
 }
+
+/*
+** calculate value of wallX (exactly where the wall was hit)
+*/
+
+void		ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex)
+{
+	printf("%f\n", pos->dir.x);
+	if (move->side == 0)
+		pos->wall.x = map->y + (move->perp_wall_dist * move->dir.y);
+	else
+		pos->wall.x = map->x + (move->perp_wall_dist * move->dir.x);
+	pos->wall.x -= floor(pos->wall.x);
+	pos->tex.x = (int)(pos->wall.x * (double)tex.w);
+	if (move->side == 0 && move->dir.x > 0)
+		pos->tex.x = tex.w - pos->tex.x - 1;
+	if (move->side == 1 && move->dir.y < 0)
+		pos->tex.x = tex.w - pos->tex.x - 1;
+}
+
+/*
+** Wall texture
+*/
 
 void		ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data)
 {
-	u_int32_t	buffer[data->height][data->width];
-	double		zbuffer[data->width];
+	t_tex	tex;
 
-	// txturing calulations
-	pos->txnum = map->real_map[(int)move->map.x][(int)move->map.y]/* - 1?*/;
-	ft_wallx_texx(move, pos, map);
-	// how much to increase the texture coord per pxl
-	pos->stept = 1.0 * TXH / move->line_h;
+	if (move->side == 1 && move->dir.y < 0)
+		tex = data->north;
+	if (move->side == 1 && move->dir.y > 0)
+		tex = data->south;
+	if (move->side == 0 && move->dir.x < 0)
+		tex = data->west;
+	if (move->side == 0 && move->dir.x > 0)
+		tex = data->east;
+	ft_wallx_texx(move, pos, map, tex);
+	pos->stept = (double)tex.h / (double)move->line_h;
 	pos->texpos = (move->draw_start - data->height / 2 + move->line_h / 2)
 		* pos->stept;
 	pos->y = move->draw_start;
+	pos->tex.y = (int)pos->texpos & (tex.h - 1);
 	while (pos->y < move->draw_end)
 	{
-		pos->tex.y = (int)pos->texpos & (TXH - 1);
+		pos->color = tex.addr[data->east.w * (int)pos->tex.y + (int)pos->tex.x];
+		ft_mlx_pxl_put(data, pos->x, pos->y, pos->color);
 		pos->tex.y += pos->stept;
-		//pos->color = truc[pos->txnum][TXH * pos->tex.y + pos->tex.x];
-		if (move->side == 1)
-			pos->color = (pos->color >> 1) & 8355711;
-		buffer[pos->y][pos->x] = pos->color;
 		pos->y++;
 	}
-	zbuffer[pos->x] = move->perp_wall_dist;
 }

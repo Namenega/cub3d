@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 17:57:29 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:18:52 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void		ft_position_asign(int c, t_map *map, t_pos *pos)
 ** Pixel's color
 */
 
-void		ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color)
+void		ft_mlx_pxl_put(t_data *data, int x, int y, u_int32_t color)
 {
 	(void)color;
-	(data->addr)[y * (data->pxl_line) + x] = color.r + color.g + color.b;
+	(data->addr)[y * (data->pxl_line) + x] = color;
 }
 
 /*
@@ -48,13 +48,8 @@ void		ft_verline(t_data *data, t_move *move, t_pos *pos, t_map *map)
 	i = -1;
 	while (++i < move->draw_start)
 		ft_mlx_pxl_put(data, pos->x, i, map->colorc);
-	while (move->draw_start < move->draw_end)
-	{
-		ft_mlx_pxl_put(data, pos->x, move->draw_start, map->color);
-		move->draw_start++;
-		i++;
-	}
-	i--;
+	ft_texture(pos, map, move, data);
+	i = pos->y - 1;
 	while (++i < data->height)
 		ft_mlx_pxl_put(data, pos->x, i, map->colorf);
 }

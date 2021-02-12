@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 18:04:16 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:25:03 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,8 @@ void		ft_color_asign(t_map *map, t_move *move, t_data *data)
 		map->color.g = G;
 		map->color.b = 0;
 	}
-	map->colorc.b = data->b_sky;
-	map->colorc.g = data->g_sky * 256;
-	map->colorc.r = data->r_sky * 65536;
-	map->colorf.b = data->b_ground;
-	map->colorf.g = data->g_ground * 256;
-	map->colorf.r = data->r_ground * 65536;
+	map->colorc = data->b_sky + data->g_sky * 256 + data->r_sky * 65536;
+	map->colorf = data->b_ground + data->g_ground * 256 + data->r_ground * 65536;
 }
 
 /*

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 16:16:31 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/11 19:38:22 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, data, map);
 	// texturing calculations
-	ft_texture(pos, map, move, data);
+	// ft_texture(pos, map, move, data);
 	ft_color_asign(map, move, data);
 	if (move->side == 1)
 	{
@@ -118,7 +118,7 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 
 int			ft_affichage(t_global *glb)
 {
-	ft_floorcast(glb);
+	//ft_floorcast(glb);
 	glb->pos->x = 0;
 	while (glb->pos->x < glb->data->width)
 	{

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 16:18:21 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/11 20:51:31 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,18 @@
 # define KEYCODE_A 0
 # define KEYCODE_S 1
 # define KEYCODE_D 2
+
+typedef struct		s_tex
+{
+	void			*img;
+	int				*addr;
+	int				w;
+	int				h;
+	int				line_length;
+	int				bit;
+	int				endian;
+}					t_tex;
+
 
 typedef struct		s_data
 {
@@ -85,7 +97,10 @@ typedef struct		s_data
 	int				line_map;
 	t_list			*lst_line;
 	t_list			*first_token;
-
+	t_tex			north;
+	t_tex			south;
+	t_tex			west;
+	t_tex			east;
 }					t_data;
 
 typedef struct		s_rgb
@@ -112,8 +127,8 @@ typedef struct		s_map
 	int				position;
 	int				**actual_pos;
 	int				stock_c;
-	t_rgb			colorc;
-	t_rgb			colorf;
+	u_int32_t		colorc;
+	u_int32_t		colorf;
 }					t_map;
 
 typedef struct		s_vec
@@ -137,6 +152,7 @@ typedef struct		s_pos
 	double			stept;
 	double			texpos;
 	u_int32_t		color;
+	int				*color_2;
 	
 }					t_pos;
 
@@ -293,6 +309,14 @@ void				ft_init_struct(t_move *move, t_map *map);
 void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 
 /*
+** VISUAL/TEXTURE.C
+*/
+
+void				ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data);
+void				ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex);
+void				ft_img(t_data *data);
+
+/*
 ** VISUALS/MOVEMENT.C
 */
 
@@ -336,7 +360,7 @@ void				ft_free_data(t_data *data, char *str);
 
 void				ft_verline(t_data *data, t_move *move, t_pos *pos,
 						t_map *map);
-void				ft_mlx_pxl_put(t_data *data, int x, int y, t_rgb color);
+void				ft_mlx_pxl_put(t_data *data, int x, int y, u_int32_t color);
 void				*ft_calloc_2(size_t nmemb);
 void				ft_mlx_data(t_data *data);
 void				ft_position_asign(int c, t_map *map, t_pos *pos);
