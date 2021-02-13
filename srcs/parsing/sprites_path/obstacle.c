@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 16:13:45 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/13 16:19:46 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void		ft_sprite2(t_data *data)
 {
-	printf("sprite = [%s]\n", data->path_sprite);
 	if (!(data->sprite.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_sprite,
 		&data->sprite.w, &data->sprite.h)))
 		ft_error_exit("Error\nError in texture path (S)\nExit Program.");

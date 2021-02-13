@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 21:24:42 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/13 16:18:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct		s_data
 	t_tex			west;
 	t_tex			east;
 	t_tex			sprite;
+	double			*zbuff;
 }					t_data;
 
 typedef struct		s_rgb
@@ -208,6 +209,8 @@ typedef struct		s_spr
 	int				stripe;
 	int				texx;
 	int				texy;
+	int				y;
+	int				d;
 }					t_spr;
 
 typedef struct		s_global
@@ -343,6 +346,11 @@ void				ft_img(t_data *data);
 ** VISUAL/SPRITE.C
 */
 
+void				ft_img_sprite(t_map *map, t_global *glb);
+void				ft_sort_sprite(t_spr *spr, t_map *map);
+void				tmp(t_map *map, int i, int j, char coord);
+void				ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i);
+void				ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos);
 void				ft_malloc_sprite(t_map *map);
 
 /*

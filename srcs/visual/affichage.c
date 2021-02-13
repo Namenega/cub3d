@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   affichage.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 20:19:03 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/13 17:49:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ int			ft_affichage(t_global *glb)
 {
 	//ft_floorcast(glb);
 	glb->pos->x = 0;
+	glb->data->zbuff = ft_calloc(sizeof(double), glb->data->width);
 	while (glb->pos->x < glb->data->width)
 	{
 		glb->pos->camera.x = 2 * (double)glb->pos->x /
@@ -127,7 +128,10 @@ int			ft_affichage(t_global *glb)
 		glb->move->dir.y = glb->pos->dir.y + glb->pos->plane_cam.y *
 			glb->pos->camera.x;
 		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
+		glb->data->zbuff[glb->pos->x] = glb->move->perp_wall_dist;
+		// printf("zbuf[stripe] = [%f]\n", glb->data->zbuff[glb->pos->x]);
 		glb->pos->x++;
 	}
+	ft_img_sprite(glb->map, glb);
 	return (1);
 }
