@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/13 16:18:23 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/15 15:00:17 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -267,7 +267,6 @@ void				ft_error_resolution_4(char *line);
 */
 
 int					ft_sprite(t_data *data, char *line);
-void				ft_sprite2(t_data *data);
 
 /*
 ** PARSING/SPRITES_PATH/SKY.C

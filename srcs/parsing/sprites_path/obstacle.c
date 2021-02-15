@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   obstacle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/13 16:19:46 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:58:30 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../cub3d.h"
-
-/*
-** path parsing (sprite) to usefull data
-*/
-
-void		ft_sprite2(t_data *data)
-{
-	if (!(data->sprite.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_sprite,
-		&data->sprite.w, &data->sprite.h)))
-		ft_error_exit("Error\nError in texture path (S)\nExit Program.");
-	data->sprite.addr = (int *)mlx_get_data_addr(data->sprite.img, &data->sprite.bit,
-		&data->sprite.line_length, &data->sprite.endian);
-}
 
 /*
 ** We get here the string of obstacle_sprite's path

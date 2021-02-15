@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/13 17:56:52 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:52:22 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 		glb->pos->dir.x * spr->spr.y);
 	spr->transform.y = spr->invdir * (-glb->pos->plane_cam.y * spr->spr.x +
 		glb->pos->plane_cam.x * spr->spr.y);
-	printf("trans.y = [%f]\n", spr->transform.y);
+	//printf("trans.y = [%f]\n", spr->transform.y);
 	spr->spr_screenx = (int)((glb->data->width / 2) * (1 + spr->transform.x /
 		spr->transform.y));
 	spr->vmovesc = (94 / spr->transform.y);

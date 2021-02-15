@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
+/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/13 16:35:15 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/15 14:58:33 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /*
-** path parsing (NO/SO/EA/WE) to usefull data
+** path parsing (NO/SO/EA/WE/S) to usefull data
 */
 
 void		ft_img(t_data *data)
@@ -30,6 +30,9 @@ void		ft_img(t_data *data)
 	if (!(data->east.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_east,
 		&data->east.w, &data->east.h)))
 		ft_error_exit("Error\nError in texture path (EA)\nExit Program.");
+	if (!(data->sprite.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_sprite,
+		&data->sprite.w, &data->sprite.h)))
+		ft_error_exit("Error\nError in texture path (S)\nExit Program.");
 	data->north.addr = (int *)mlx_get_data_addr(data->north.img, &data->north.bit,
 		&data->north.line_length, &data->north.endian);
 	data->south.addr = (int *)mlx_get_data_addr(data->south.img, &data->south.bit,
@@ -38,6 +41,8 @@ void		ft_img(t_data *data)
 		&data->west.line_length, &data->west.endian);
 	data->east.addr = (int *)mlx_get_data_addr(data->east.img, &data->east.bit,
 		&data->east.line_length, &data->east.endian);
+	data->sprite.addr = (int *)mlx_get_data_addr(data->sprite.img, &data->sprite.bit,
+		&data->sprite.line_length, &data->sprite.endian);
 }
 
 /*
