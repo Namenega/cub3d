@@ -6,7 +6,7 @@
 /*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/15 14:58:30 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/15 16:05:14 by Nathan           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ Exit Program");
 	}
 	if (i < 1)
 		ft_error_exit("Error\nMissing path(S).\nExit Program");
-	ft_sprite2(data);
 	if (data->path_sprite == NULL)
 		return (0);
 	else
