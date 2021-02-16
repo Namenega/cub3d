@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 18:51:22 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:12:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,10 @@ void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos)
 {
 	spr->texx = (int)((spr->stripe - (-spr->spr_w / 2 + spr->spr_screenx)) *
 		TXW / spr->spr_w);
-	// printf("trans.y_2 = [%f]\n", spr->transform.y);
-	// printf("zbuf[stripe] = [%f]\n", data->zbuff[spr->stripe]);
-	// printf("spr->stripe= [%d]\n", spr->stripe);
-	// printf("data->width = [%d]\n", data->width);
 	if (spr->transform.y > 0 && spr->stripe > 0 && spr->stripe < data->width &&
 		spr->transform.y < data->zbuff[spr->stripe])
 	{
 		spr->y = spr->dwstart.y;
-		// printf("dws : [%f]\t", spr->dwstart.y);
-		// printf("dwe : [%f]\n\n", spr->dwend.y);
 		while (spr->y < spr->dwend.y)
 		{
 			spr->d = (spr->y - spr->vmovesc) * 256 - data->height * 128 +
@@ -47,20 +41,15 @@ void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos)
 void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 {
 	spr->spr.x = map->spr_x[i] - map->x;
-	// printf("[%f]\n", map->spr_x[i]);
 	spr->spr.y = map->spr_y[i] - map->y;
-	// printf("[%f]\n", map->spr_y[i]);
 	spr->invdir = 1.0 / (glb->pos->plane_cam.x * glb->pos->dir.y -
 		glb->pos->dir.x * glb->pos->plane_cam.y);
 	spr->transform.x = spr->invdir * (glb->pos->dir.y * spr->spr.x -
 		glb->pos->dir.x * spr->spr.y);
 	spr->transform.y = spr->invdir * (-glb->pos->plane_cam.y * spr->spr.x +
 		glb->pos->plane_cam.x * spr->spr.y);
-	// printf("trasnformy = [%f]\n\n", spr->transform.y);
-	// printf("trans.y_1 = [%f]\n", spr->transform.y);
 	spr->spr_screenx = (int)((glb->data->width / 2) * (1 + spr->transform.x /
 		spr->transform.y));
-	// spr->vmovesc = (glb->data->height / spr->transform.y);
 	spr->spr_h = abs((int)(glb->data->height / spr->transform.y));
 	spr->dwstart.y = -spr->spr_h / 2 + glb->data->height / 2/* + spr->vmovesc*/;
 	if (spr->dwstart.y < 0)
@@ -70,14 +59,11 @@ void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 		spr->dwend.y = glb->data->height - 1;
 	spr->spr_w = abs((int)(glb->data->height / spr->transform.y));
 	spr->dwstart.x = -spr->spr_w / 2 + spr->spr_screenx;
-	// printf("dwstartX = [%f]\n", glb->spr->dwstart.x);
 	if (spr->dwstart.x < 0)
 		spr->dwstart.x = 0;
 	spr->dwend.x = spr->spr_w / 2 + spr->spr_screenx;
-	// printf("dwendX = [%f]\n\n", glb->spr->dwend.x);
 	if (spr->dwend.x >= glb->data->width)
 		spr->dwend.x = glb->data->width - 1;
-	// printf("stripe = [%d]\n", glb->spr->stripe);
 }
 
 void		tmp(t_map *map, int i, int j, char coord)
@@ -139,11 +125,8 @@ void		ft_img_sprite(t_map *map, t_global *glb)
 	int		i;
 	
 	i = 0;
-		// printf("a.[%f]\n", map->spr_y[0]);
-
 	glb->spr = ft_calloc_2(sizeof(t_spr));
 	ft_sort_sprite(glb->spr, map);
-	// printf("[%d]\n", map->numsprite);
 	while (i < map->numsprite)
 	{
 		ft_init_sprite(glb->spr, map, glb, i);

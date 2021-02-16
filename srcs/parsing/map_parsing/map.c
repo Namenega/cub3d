@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 18:56:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/16 19:12:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 
 void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 {
-	ft_malloc_sprite(map);
 	if (((char *)el->content)[map->i] == ' ')
 		map->real_map[map->j][map->i] = -1;
 	else if (((char *)el->content)[map->i] == '0')
@@ -29,10 +28,8 @@ void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 	{
 		map->real_map[map->j][map->i] = 2;
 		map->spr_x[map->numsprite] = (double)map->i + 0.5;
-		// printf("spr.x = [%f]\n", map->spr_x[map->numsprite]);
 		map->spr_y[map->numsprite] = (double)map->j + 0.5;
 		printf("spr.y = [%f]\n\n", map->spr_y[map->numsprite]);
-		// printf("[%d]\n\n", map->numsprite);
 
 		map->numsprite++;
 	}
