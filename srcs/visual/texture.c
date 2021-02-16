@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/15 14:58:33 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/16 18:55:22 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,19 @@ void		ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data)
 	pos->texpos = (move->draw_start - data->height / 2 + move->line_h / 2)
 		* pos->stept;
 	pos->y = move->draw_start;
-	pos->tex.y = (int)pos->texpos & (tex.h - 1);
 	while (pos->y < move->draw_end)
 	{
+		pos->tex.y = (int)pos->texpos & (tex.h - 1);
 		pos->color = tex.addr[data->east.w * (int)pos->tex.y + (int)pos->tex.x];
 		ft_mlx_pxl_put(data, pos->x, pos->y, pos->color);
+		pos->texpos += pos->stept;
 		pos->tex.y += pos->stept;
 		pos->y++;
 	}
 }
+
+/*pos->tex.y = (int)pos->texpos & (tex.h - 1);
+        pos->color = tex.addr[data->east.w * (int)pos->tex.y + (int)pos->tex.x];
+        ft_mlx_pxl_put(data, pos->x, pos->y, pos->color);
+        pos->tex.y += pos->stept;
+        pos->y++;*/

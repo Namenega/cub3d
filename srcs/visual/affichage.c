@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/13 17:49:48 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/16 13:29:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ int			ft_affichage(t_global *glb)
 			glb->pos->camera.x;
 		ft_s_p(glb->map, glb->move, glb->data, glb->pos);
 		glb->data->zbuff[glb->pos->x] = glb->move->perp_wall_dist;
-		// printf("zbuf[stripe] = [%f]\n", glb->data->zbuff[glb->pos->x]);
 		glb->pos->x++;
 	}
 	ft_img_sprite(glb->map, glb);
