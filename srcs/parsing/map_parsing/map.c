@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 19:12:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/17 17:11:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 		map->real_map[map->j][map->i] = 2;
 		map->spr_x[map->numsprite] = (double)map->i + 0.5;
 		map->spr_y[map->numsprite] = (double)map->j + 0.5;
-		printf("spr.y = [%f]\n\n", map->spr_y[map->numsprite]);
-
 		map->numsprite++;
 	}
 	else if (((char *)el->content)[map->i] == 'N')
@@ -71,9 +69,26 @@ t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 
 t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 {
+	int		i;
+	t_list	*spr;
+
+	map->position = 0;
+	spr = el;
+	while (spr->content && spr->next)
+	{
+		i = 0;
+		while (((char*)spr->content)[i])
+		{
+			if (((char*)spr->content)[i] == '2')
+				map->numsprite++;
+			i++;
+		}
+		spr = spr->next;
+	}
+	ft_malloc_sprite(map);
+	// map->numsprite = 0;
 	map->i = 0;
 	map->j = 0;
-	map->position = 0;
 	while (el->content && map->height > 0)
 	{
 		map = ft_map_asign(el, map, pos);

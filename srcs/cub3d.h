@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 18:27:20 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/17 18:19:26 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,6 @@ typedef struct		s_map
 	u_int32_t		colorc;
 	u_int32_t		colorf;
 	int				numsprite;
-	int				a;
-	int				b;
 	double			*spr_x;
 	double			*spr_y;
 }					t_map;
@@ -350,7 +348,7 @@ void				ft_img_sprite(t_map *map, t_global *glb);
 void				ft_sort_sprite(t_spr *spr, t_map *map);
 void				tmp(t_map *map, int i, int j, char coord);
 void				ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i);
-void				ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos);
+void				ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos/*, t_map *map*/);
 void				ft_malloc_sprite(t_map *map);
 
 /*

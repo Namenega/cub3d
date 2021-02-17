@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 19:11:53 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/17 14:36:08 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int		main(int ac, char const **av)
 	glb->map = ft_calloc_2(sizeof(t_map));
 	glb->pos = ft_calloc_2(sizeof(t_pos));
 	glb->move = ft_calloc_2(sizeof(t_move));
-	ft_malloc_sprite(glb->map);
 	if (!(ac == 2 || ac == 3))
 		ft_error_exit("Error\nToo many/few arguments.\nExit Program");
 	if (!(glb->data = ft_data((char*)av[1], (ac == 2), glb->map, glb->pos)))

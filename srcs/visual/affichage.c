@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/16 13:29:19 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/17 16:20:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,5 +132,6 @@ int			ft_affichage(t_global *glb)
 		glb->pos->x++;
 	}
 	ft_img_sprite(glb->map, glb);
+	// printf("------------\n");
 	return (1);
 }
