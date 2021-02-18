@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/17 18:19:26 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/18 17:55:26 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,6 @@ typedef struct		s_pos
 	double			stept;
 	double			texpos;
 	u_int32_t		color;
-	int				*color_2;
 }					t_pos;
 
 typedef struct		s_move
@@ -210,6 +209,7 @@ typedef struct		s_spr
 	int				texy;
 	int				y;
 	int				d;
+	double			tmp;
 }					t_spr;
 
 typedef struct		s_global

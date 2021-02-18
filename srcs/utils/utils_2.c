@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/12 14:18:52 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/18 18:48:51 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void		*ft_calloc_2(size_t nmemb)
 void		ft_mlx_data(t_data *data)
 {
 	if ((data->mlx_win = mlx_new_window(data->mlx_ptr, data->width,
-		data->height, "CUB3D")) == NULL)
+		data->height, "CUB3D 500 x 500")) == NULL)
 		ft_free_data(data, "Error\nTask - parsing : Fail_3 !");
 	if ((data->img = mlx_new_image(data->mlx_ptr, data->width,
 		data->height)) == NULL)
