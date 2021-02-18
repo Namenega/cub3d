@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/17 20:29:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/18 11:45:21 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos/*, t_map *map*/)
 			// printf("texy = [%d]\n", spr->texy);
 			// exit(0);
 			pos->color = data->sprite.addr[data->sprite.w * spr->texy + spr->texx];
+			if (pos->color != 0)
+				ft_mlx_pxl_put(data, spr->stripe, spr->y, pos->color);
 			// printf("pos->color = [%d]\n", pos->color);
-			ft_mlx_pxl_put(data, spr->stripe, spr->y, pos->color);
 			spr->y++;
 		}
 		// printf("test-5\n");
