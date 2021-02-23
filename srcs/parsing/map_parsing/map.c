@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/17 17:11:19 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 20:21:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 		map->i++;
 		i++;
 	}
-	if (i < map->height3)
-		ft_error_exit("Error\ntoo many maps.\nExit Program.");
 	return (map);
 }
 
@@ -86,7 +84,6 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 		spr = spr->next;
 	}
 	ft_malloc_sprite(map);
-	// map->numsprite = 0;
 	map->i = 0;
 	map->j = 0;
 	while (el->content && map->height > 0)
@@ -100,6 +97,21 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 	return (map);
 }
 
+void		ft_endofmap(char *s)
+{
+	int		i;
+
+	i = 0;
+	
+	while (s && s[i] && ft_isspace(s[i]))
+		i++;
+	if (s[i])
+		return ;
+	else
+		ft_error_exit("Error\nLine filled with whitespaces unaccepted\n\
+Exit Program");
+}
+
 /*
 ** Get width and height's map
 */
@@ -107,14 +119,20 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 {
 	map->height = 0;
-	while (el->content && el->next)
+	while (el && !((char*)el->content)[0])
+		el = el->next;
+	while (el->content && el->next && ((char*)el->content)[0] != 0)
 	{
+		if (((char*)el->content)[0] == ' ')
+			ft_endofmap(el->content);
 		map->height++;
+		printf("line = [%s]\tmh = [%d]\n", el->content, map->height);
 		map->i = ft_strlen(el->content);
 		if (map->i > map->width)
 			map->width = map->i;
 		el = el->next;
 	}
+	printf("----------\nmap height = [%d]\n", map->height);
 	el = data->first_token;
 	map->height_tmp = map->height;
 	map->height3 = map->height;
@@ -133,6 +151,7 @@ int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	map->real_map = (int**)malloc(sizeof(int*) * map->height);
 	if (!map->real_map)
 		return (0);
+	printf("----------\nmap->height = [%d]\n", map->height);
 	while (map->i < map->height)
 	{
 		map->real_map[map->i] = (int *)malloc(sizeof(int) * map->width);
