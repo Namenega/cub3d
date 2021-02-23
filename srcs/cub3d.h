@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/18 17:55:26 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:38:08 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,7 +330,7 @@ void				ft_pxl_tofill(t_move *move, t_data *data, t_map *map);
 */
 
 void				ft_init_struct(t_move *move, t_map *map);
-void				ft_color_asign(t_map *map, t_move *move, t_data *data);
+void				ft_color_asign(t_map *map, t_data *data);
 
 /*
 ** VISUAL/TEXTURE.C
@@ -339,6 +339,7 @@ void				ft_color_asign(t_map *map, t_move *move, t_data *data);
 void				ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data);
 void				ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex);
 void				ft_img(t_data *data);
+void				ft_free_things(t_data *data);
 
 /*
 ** VISUAL/SPRITE.C
@@ -371,7 +372,7 @@ void				ft_mvleft(t_pos *pos, t_map *map);
 ** PARSING/EVENT.C
 */
 
-int					ft_test(t_global *glb);
+int					ft_drop_the_cub(t_global *glb);
 int					ft_exit_hook(void *x);
 int					ft_keypress_hook(int key, t_global *glb);
 int					ft_keyrelease_hook(int key, t_global *glb);

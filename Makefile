@@ -20,7 +20,6 @@ SRCNAME =	srcs/get_next_line/get_next_line.c			\
 			srcs/visual/init_struct.c					\
 			srcs/visual/texture.c						\
 			srcs/visual/sprite.c						\
-			srcs/visual/floor.c							\
 			srcs/visual/movement.c						\
 			srcs/visual/movement_2.c					\
 
@@ -30,7 +29,7 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= cub3D
 
-CC		= gcc
+CC		= gcc -g
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -I. -I./includes/libft
 

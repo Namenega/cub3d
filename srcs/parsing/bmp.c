@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:40:42 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 14:48:24 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 13:28:23 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,18 @@ static void	bmp_data(t_global *glb, int fd)
 	int			j;
 	uint32_t	pxl;
 
-	i = 0;
-	while (i < glb->data->height)
+	i = glb->data->height - 1;
+	while (i >= 0)
 	{
 		j = 0;
 		while (j < glb->data->width)
 		{
 			pxl = glb->data->addr[i * glb->data->line_length / 4 + j];
 			if ((write(fd, &pxl, 4)) != 4)
-				ft_error_exit("BMP_3");
+				ft_error_exit("Error\nbmp fail.\nExit Program !");
 			j++;
 		}
-		i++;
+		i--;
 	}
 }
 

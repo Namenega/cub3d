@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/18 18:47:37 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:36:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos)
 	}
 }
 
-/*params->sv->j = params->sv->y * 256 - params->screenheight
-				* 128 + params->sv->sprite_height * 128;*/
-
 void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 {
 	spr->spr.y = map->spr_x[i] - map->y;
@@ -71,24 +68,6 @@ void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 		spr->dwend.x = glb->data->width - 1;
 }
 
-// void		tmp(t_map *map, int i, int j, char coord)
-// {
-// 	double		swap;
-	
-// 	if (coord == 'x')
-// 	{
-// 		swap = map->spr_x[i];
-// 		map->spr_x[i] = map->spr_x[j];
-// 		map->spr_x[j] = swap;
-// 	}
-// 	else
-// 	{
-// 		swap = map->spr_y[i];
-// 		map->spr_y[i] = map->spr_y[j];
-// 		map->spr_y[j] = swap;
-// 	}
-// }
-
 /*
 ** Sorting sprite from far to close
 */
@@ -100,11 +79,8 @@ void		ft_sort_sprite(t_spr *spr, t_map *map)
 	double	second;
 
 	i = 0;
-	spr->sp_order = ft_calloc(sizeof(int), map->numsprite);
-	spr->sp_dist = ft_calloc(sizeof(double), map->numsprite);
 	while (i < map->numsprite && (i + 1 != map->numsprite))
 	{
-		spr->sp_order[i] = i;
 		first = ((map->y - map->spr_x[i]) *
 			(map->y - map->spr_x[i]) +
 			(map->x - map->spr_y[i]) *
@@ -125,6 +101,7 @@ void		ft_sort_sprite(t_spr *spr, t_map *map)
 		else
 			i++;
 	}
+
 }
 
 void		ft_img_sprite(t_map *map, t_global *glb)
@@ -140,9 +117,10 @@ void		ft_img_sprite(t_map *map, t_global *glb)
 		glb->spr->stripe = glb->spr->dwstart.x;
 		while (glb->spr->stripe < glb->spr->dwend.x)
 		{
-			ft_draw_stripe(glb->spr, glb->data, glb->pos/*, glb->map*/);
+			ft_draw_stripe(glb->spr, glb->data, glb->pos);
 			glb->spr->stripe++;
 		}
 		i++;
 	}
+	free(glb->spr);
 }

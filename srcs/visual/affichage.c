@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/17 16:20:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:29:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,7 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 	ft_condition_ray(move, map);
 	ft_move_square(move, map);
 	ft_pxl_tofill(move, data, map);
-	ft_color_asign(map, move, data);
-	if (move->side == 1)
-	{
-		map->color.r /= 2;
-		map->color.g /= 2;
-		map->color.b /= 2;
-	}
+	ft_color_asign(map, data);
 	ft_verline(data, move, pos, map);
 }
 
@@ -116,7 +110,6 @@ void		ft_s_p(t_map *map, t_move *move, t_data *data, t_pos *pos)
 
 int			ft_affichage(t_global *glb)
 {
-	//ft_floorcast(glb);
 	glb->pos->x = 0;
 	glb->data->zbuff = ft_calloc(sizeof(double), glb->data->width);
 	while (glb->pos->x < glb->data->width)
@@ -132,6 +125,6 @@ int			ft_affichage(t_global *glb)
 		glb->pos->x++;
 	}
 	ft_img_sprite(glb->map, glb);
-	// printf("------------\n");
+	free(glb->data->zbuff);
 	return (1);
 }

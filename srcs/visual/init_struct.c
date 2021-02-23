@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 20:25:03 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:09:38 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,11 @@
 ** Choose wall color
 */
 
-void		ft_color_asign(t_map *map, t_move *move, t_data *data)
+void		ft_color_asign(t_map *map, t_data *data)
 {
-	if (map->real_map[(int)move->map.x][(int)move->map.y] == 1)
-	{
-		map->color.r = 0x00800000;
-		map->color.g = 0;
-		map->color.b = B;
-	}
-	else if (map->real_map[(int)move->map.x][(int)move->map.y] == 2)
-	{
-		map->color.r = 0;
-		map->color.g = G;
-		map->color.b = 0;
-	}
 	map->colorc = data->b_sky + data->g_sky * 256 + data->r_sky * 65536;
 	map->colorf = data->b_ground + data->g_ground * 256 + data->r_ground * 65536;
+	// ft_free_things(data);
 }
 
 /*

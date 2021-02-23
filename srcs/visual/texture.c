@@ -6,11 +6,27 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/17 18:53:15 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:09:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
+
+// void		ft_free_things(t_data *data)
+// {
+	// free(&data->r_sky);
+	// free(&data->g_sky);
+	// free(&data->b_sky);
+	// free(&data->r_ground);
+	// free(&data->g_ground);
+	// free(&data->b_ground);
+	
+	// free(&data->path_north);
+	// free(&data->path_south);
+	// free(&data->path_east);
+	// free(&data->path_west);
+	// free(&data->path_sprite);
+// }
 
 /*
 ** path parsing (NO/SO/EA/WE/S) to usefull data
@@ -94,9 +110,3 @@ void		ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data)
 		pos->y++;
 	}
 }
-
-/*pos->tex.y = (int)pos->texpos & (tex.h - 1);
-        pos->color = tex.addr[data->east.w * (int)pos->tex.y + (int)pos->tex.x];
-        ft_mlx_pxl_put(data, pos->x, pos->y, pos->color);
-        pos->tex.y += pos->stept;
-        pos->y++;*/

@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/23 15:56:41 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 14:15:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,18 @@ Exit Program");
 
 void			ft_error_skyground_6(char **strs)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	char	*tmp;
 
 	j = 0;
 	while (strs[j])
 	{
 		ft_empty_line(strs[j]);
 		i = 0;
+		tmp = strs[j];
 		strs[j] = ft_strtrim(strs[j], " \t\v\r\f");
+		free(tmp);
 		while (strs[j][i])
 		{
 			if (ft_isspace(strs[j][i]))
@@ -96,8 +99,10 @@ Exit Program");
 int				ft_color_ground(t_data *data, char *line)
 {
 	char	**strs;
+	int		i;
 
 	data->parsed++;
+	i = 0;
 	ft_error_skyground_1(line);
 	ft_error_ground(data);
 	strs = split_rgb_ground(line);
@@ -105,6 +110,12 @@ int				ft_color_ground(t_data *data, char *line)
 	data->r_ground = ft_atoi_2(strs[0]);
 	data->g_ground = ft_atoi_2(strs[1]);
 	data->b_ground = ft_atoi_2(strs[2]);
+	while (strs[i])
+	{
+		free(strs[i]);
+		i++;
+	}
+	free(strs);
 	ft_error_skyground_5(data);
 	return (1);
 }

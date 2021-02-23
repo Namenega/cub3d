@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/08 17:28:35 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 15:08:06 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/23 15:09:46 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int		ft_keyrelease_hook(int key, t_global *glb)
 int		ft_keypress_hook(int key, t_global *glb)
 {
 	if (key == KEYCODE_ESC)
+	{
+		mlx_destroy_image(glb->data->mlx_ptr, glb->data->img);
 		ft_error_exit("Merci pour les services.");
+	}
 	if (key == KEYCODE_W)
 		ft_mvforward(glb->pos, glb->map);
 	if (key == KEYCODE_S)
@@ -73,16 +76,16 @@ int		ft_exit_hook(void *x)
 ** Algo + key + img_to_window
 */
 
-int		ft_test(t_global *glb)
+int		ft_drop_the_cub(t_global *glb)
 {
 	int key;
 
 	key = 36;
 	ft_keypress_hook(key, glb);
 	ft_keyrelease_hook(key, glb);
-	ft_affichage(glb);
 	mlx_put_image_to_window(glb->data->mlx_ptr, glb->data->mlx_win,
 		glb->data->img, 0, 0);
+	ft_affichage(glb);
 	return (1);
 }
 
@@ -104,7 +107,7 @@ int		hook_loop(t_global *glb, int ac)
 			(void *)glb);
 		mlx_hook(glb->data->mlx_win, XEVENT_EXIT, 0, &ft_exit_hook,
 			(void *)glb);
-		mlx_loop_hook(glb->data->mlx_ptr, &ft_test, (void *)glb);
+		mlx_loop_hook(glb->data->mlx_ptr, &ft_drop_the_cub, (void *)glb);
 		mlx_loop(glb->data->mlx_ptr);
 	}
 	if (argc == 3)
