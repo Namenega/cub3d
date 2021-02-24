@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:16:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 18:17:43 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:14:10 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int		ft_parsing_begin(char *line, t_data *data)
 		return (ft_color_ground(data, &(line)[1]));
 	else if (((line)[0] == 'C') && ft_isspace((line)[1]))
 		return (ft_color_sky(data, &(line)[1]));
-	else if ((line)[0] != '1' && !ft_isspace((line)[0]))
+	else if ((line)[0] && data->parsed < 8)
 		ft_error_exit("Error\nA line is wrong.\nExit Program");
 	return (0);
 }
+
+/*else if (tmp[0] && file->parsed < 8)
+        exit_error("FILE : A line is wrong");*/

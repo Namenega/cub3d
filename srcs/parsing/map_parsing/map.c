@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 20:21:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:11:25 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ Exit Program");
 
 t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 {
+	int		i;
+
 	map->height = 0;
 	while (el && !((char*)el->content)[0])
 		el = el->next;
@@ -126,13 +128,22 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 		if (((char*)el->content)[0] == ' ')
 			ft_endofmap(el->content);
 		map->height++;
-		printf("line = [%s]\tmh = [%d]\n", el->content, map->height);
 		map->i = ft_strlen(el->content);
 		if (map->i > map->width)
 			map->width = map->i;
 		el = el->next;
 	}
-	printf("----------\nmap height = [%d]\n", map->height);
+	while (el && !((char*)el->content)[0] && el->next)
+		el = el->next;
+	if (el->content && el->next && ((char*)el->content)[0] != 0)
+	{
+		i = 0;
+		while (ft_isspace(((char*)el->content)[i]))
+			i++;
+		if (((char*)el->content)[i])
+			ft_error_exit("Error\nToo many maps\nExit Program.");
+		el = el->next;
+	}
 	el = data->first_token;
 	map->height_tmp = map->height;
 	map->height3 = map->height;
@@ -151,7 +162,6 @@ int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	map->real_map = (int**)malloc(sizeof(int*) * map->height);
 	if (!map->real_map)
 		return (0);
-	printf("----------\nmap->height = [%d]\n", map->height);
 	while (map->i < map->height)
 	{
 		map->real_map[map->i] = (int *)malloc(sizeof(int) * map->width);
@@ -162,7 +172,8 @@ int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	}
 	map = ft_map_data(map, el, pos);
 	if (map->position != 1)
-		ft_error_exit("Error\nToo many/few positions\nExit Program");
+		ft_error_exit("Error\nToo many/few positions or\nWhitespaces around map \
+not allowed\nExit Program");
 	ft_verif_map(map);
 	return (1);
 }
