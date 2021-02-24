@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:29:19 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:15:06 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** calc the distance projected on camera direction (w/o fisheye effect)

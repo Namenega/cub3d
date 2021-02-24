@@ -1,20 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/06 16:34:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/04 13:15:33 by namenega         ###   ########.fr       */
+/*   Created: 2021/01/04 17:57:45 by namenega          #+#    #+#             */
+/*   Updated: 2021/02/24 17:51:03 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#ifndef UTILS_H
+# define UTILS_H
 
-void	ft_free_data(t_data *data, char *str)
-{
-	ft_putstr_fd(str, 1);
-	ft_putchar_fd('\n', 1);
-	free(data);
-}
+# include "cub3d.h"
+# include "get_next_line.h"
+# include "../libft/libft.h"
+
+/*
+** UTILS/LIB_FUNCTIONS_1.C
+*/
+
+int			ft_isspace(int c);
+int			ft_atoi_2(const char *s);
+int			ft_inset(int c, char *set);
+int			ft_next_arg(char *l);
+int			ft_next_arg_2(char *l);
+
+int			ft_atoi_3(const char *s);
+
+#endif

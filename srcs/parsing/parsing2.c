@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:16:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 16:33:34 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 17:54:33 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Start parsing map
@@ -19,10 +19,7 @@
 int		ft_data_parsed(t_data *data, t_pos *pos, t_map *map, t_list *el)
 {
 	if (data->parsed == 8)
-	{
-		data->first_token = el;
 		return (ft_map(el, data, map, pos));
-	}
 	return (1);
 }
 

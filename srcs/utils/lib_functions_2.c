@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 17:04:46 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 17:54:53 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:14:46 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** atoi for overflow and 0

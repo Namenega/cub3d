@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 15:49:04 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 17:58:39 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:15:13 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Move left if no wall in front of you

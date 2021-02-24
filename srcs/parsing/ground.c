@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:07 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:15:01 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:11:50 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 void			ft_error_skyground_5(t_data *data)
 {

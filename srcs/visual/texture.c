@@ -6,27 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/11 15:25:37 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:09:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:28:41 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
-
-// void		ft_free_things(t_data *data)
-// {
-	// free(&data->r_sky);
-	// free(&data->g_sky);
-	// free(&data->b_sky);
-	// free(&data->r_ground);
-	// free(&data->g_ground);
-	// free(&data->b_ground);
-	
-	// free(&data->path_north);
-	// free(&data->path_south);
-	// free(&data->path_east);
-	// free(&data->path_west);
-	// free(&data->path_sprite);
-// }
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** path parsing (NO/SO/EA/WE/S) to usefull data
@@ -34,31 +18,31 @@
 
 void		ft_img(t_data *data)
 {
-	if (!(data->north.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_north,
-		&data->north.w, &data->north.h)))
+	if (!(data->north.img = mlx_xpm_file_to_image(data->mlx_ptr,
+		data->path_north, &data->north.w, &data->north.h)))
 		ft_error_exit("Error\nError in texture path (NO)\nExit Program.");
-	if (!(data->south.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_south,
-		&data->south.w, &data->south.h)))
+	if (!(data->south.img = mlx_xpm_file_to_image(data->mlx_ptr,
+		data->path_south, &data->south.w, &data->south.h)))
 		ft_error_exit("Error\nError in texture path (SO)\nExit Program.");
-	if (!(data->west.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_west,
-		&data->west.w, &data->west.h)))
-		ft_error_exit("Error\nError in texture path (WE)\nExit Program.");;
-	if (!(data->east.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_east,
-		&data->east.w, &data->east.h)))
+	if (!(data->west.img = mlx_xpm_file_to_image(data->mlx_ptr,
+		data->path_west, &data->west.w, &data->west.h)))
+		ft_error_exit("Error\nError in texture path (WE)\nExit Program.");
+	if (!(data->east.img = mlx_xpm_file_to_image(data->mlx_ptr,
+		data->path_east, &data->east.w, &data->east.h)))
 		ft_error_exit("Error\nError in texture path (EA)\nExit Program.");
-	if (!(data->sprite.img = mlx_xpm_file_to_image(data->mlx_ptr, data->path_sprite,
-		&data->sprite.w, &data->sprite.h)))
+	if (!(data->sprite.img = mlx_xpm_file_to_image(data->mlx_ptr,
+		data->path_sprite, &data->sprite.w, &data->sprite.h)))
 		ft_error_exit("Error\nError in texture path (S)\nExit Program.");
-	data->north.addr = (int *)mlx_get_data_addr(data->north.img, &data->north.bit,
-		&data->north.line_length, &data->north.endian);
-	data->south.addr = (int *)mlx_get_data_addr(data->south.img, &data->south.bit,
-		&data->south.line_length, &data->south.endian);
-	data->west.addr = (int *)mlx_get_data_addr(data->west.img, &data->west.bit,
-		&data->west.line_length, &data->west.endian);
-	data->east.addr = (int *)mlx_get_data_addr(data->east.img, &data->east.bit,
-		&data->east.line_length, &data->east.endian);
-	data->sprite.addr = (int *)mlx_get_data_addr(data->sprite.img, &data->sprite.bit,
-		&data->sprite.line_length, &data->sprite.endian);
+	data->north.addr = (int *)mlx_get_data_addr(data->north.img,
+		&data->north.bit, &data->north.line_length, &data->north.endian);
+	data->south.addr = (int *)mlx_get_data_addr(data->south.img,
+		&data->south.bit, &data->south.line_length, &data->south.endian);
+	data->west.addr = (int *)mlx_get_data_addr(data->west.img,
+		&data->west.bit, &data->west.line_length, &data->west.endian);
+	data->east.addr = (int *)mlx_get_data_addr(data->east.img,
+		&data->east.bit, &data->east.line_length, &data->east.endian);
+	data->sprite.addr = (int *)mlx_get_data_addr(data->sprite.img,
+		&data->sprite.bit, &data->sprite.line_length, &data->sprite.endian);
 }
 
 /*

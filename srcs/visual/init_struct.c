@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/22 15:35:50 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:09:38 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:26:39 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Choose wall color
@@ -19,8 +19,8 @@
 void		ft_color_asign(t_map *map, t_data *data)
 {
 	map->colorc = data->b_sky + data->g_sky * 256 + data->r_sky * 65536;
-	map->colorf = data->b_ground + data->g_ground * 256 + data->r_ground * 65536;
-	// ft_free_things(data);
+	map->colorf = data->b_ground + data->g_ground * 256 +
+		data->r_ground * 65536;
 }
 
 /*

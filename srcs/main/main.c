@@ -6,21 +6,21 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 15:36:53 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 15:12:38 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 17:52:19 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Exit Function
+** system("leaks cub3D");
 */
 
 void	ft_error_exit(char *s)
 {
 	ft_putstr_fd(s, 1);
 	write(1, "\n", 1);
-	// system("leaks cub3D");
 	exit(0);
 }
 

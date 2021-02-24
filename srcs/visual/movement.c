@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/30 16:12:04 by Nathan            #+#    #+#             */
-/*   Updated: 2021/02/10 18:02:58 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:15:17 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Rotate to the right

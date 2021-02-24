@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 16:33:11 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 17:54:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** parsing each character of the line until map
@@ -24,6 +24,8 @@ int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	line = (char *)(el->content);
 	if (!(line))
 		return (0);
+	else if (!el->next && data->parsed < 8)
+		ft_error_exit("Error\nMissing arguments or map\nExit Program");
 	else if ((line)[0] == 0)
 		el = el->next;
 	if ((i = ft_parsing_begin(line, data)))

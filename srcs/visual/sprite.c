@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:36:48 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:31:34 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 void		ft_malloc_sprite(t_map *map)
 {
@@ -21,10 +21,10 @@ void		ft_malloc_sprite(t_map *map)
 
 void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos)
 {
-	spr->texx = (int)(spr->stripe - (-spr->spr_w / 2 + spr->spr_screenx)) * TXW / spr->spr_w;
-	
-	if (spr->transform.y > 0 && spr->stripe > 0 && spr->stripe < data->width &&
-		spr->transform.y < data->zbuff[spr->stripe])
+	spr->texx = (int)(spr->stripe - (-spr->spr_w / 2 + spr->spr_screenx)) *
+		TXW / spr->spr_w;
+	if (spr->transform.y > 0 && spr->stripe > 0 && spr->stripe <
+		data->width && spr->transform.y < data->zbuff[spr->stripe])
 	{
 		spr->y = spr->dwstart.y;
 		while (spr->y < spr->dwend.y)
@@ -32,7 +32,8 @@ void		ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos)
 			spr->d = spr->y * 256 - data->height * 128 +
 				spr->spr_h * 128;
 			spr->texy = ((spr->d * data->sprite.h) / spr->spr_h) / 256;
-			pos->color = data->sprite.addr[data->sprite.w * spr->texy + spr->texx];
+			pos->color = data->sprite.addr[data->sprite.w * spr->texy +
+				spr->texx];
 			if (pos->color != 0)
 				ft_mlx_pxl_put(data, spr->stripe, spr->y, pos->color);
 			spr->y++;
@@ -60,7 +61,7 @@ void		ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i)
 	if (spr->dwend.y >= glb->data->height)
 		spr->dwend.y = glb->data->height - 1;
 	spr->spr_w = abs((int)(glb->data->height / spr->transform.y));
-;	spr->dwstart.x = -spr->spr_h / 2 + spr->spr_screenx;
+	spr->dwstart.x = -spr->spr_h / 2 + spr->spr_screenx;
 	if (spr->dwstart.x < 0)
 		spr->dwstart.x = 0;
 	spr->dwend.x = spr->spr_w / 2 + spr->spr_screenx;
@@ -81,14 +82,10 @@ void		ft_sort_sprite(t_spr *spr, t_map *map)
 	i = 0;
 	while (i < map->numsprite && (i + 1 != map->numsprite))
 	{
-		first = ((map->y - map->spr_x[i]) *
-			(map->y - map->spr_x[i]) +
-			(map->x - map->spr_y[i]) *
-			(map->x - map->spr_y[i]));
-		second = ((map->y - map->spr_x[i + 1]) *
-			(map->y - map->spr_x[i + 1]) +
-			(map->x - map->spr_y[i + 1]) *
-			(map->x - map->spr_y[i + 1]));
+		first = ((map->y - map->spr_x[i]) * (map->y - map->spr_x[i]) +
+			(map->x - map->spr_y[i]) * (map->x - map->spr_y[i]));
+		second = ((map->y - map->spr_x[i + 1]) * (map->y - map->spr_x[i + 1]) +
+			(map->x - map->spr_y[i + 1]) * (map->x - map->spr_y[i + 1]));
 		if (first < second)
 		{
 			spr->tmp = map->spr_x[i];
@@ -101,13 +98,12 @@ void		ft_sort_sprite(t_spr *spr, t_map *map)
 		else
 			i++;
 	}
-
 }
 
 void		ft_img_sprite(t_map *map, t_global *glb)
 {
 	int		i;
-	
+
 	i = 0;
 	glb->spr = ft_calloc_2(sizeof(t_spr));
 	ft_sort_sprite(glb->spr, map);

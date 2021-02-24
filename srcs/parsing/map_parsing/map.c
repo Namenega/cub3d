@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 16:38:09 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:22:52 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../../includes/libraries/cub3d.h"
 
 /*
 ** Asigning char to int
@@ -49,20 +49,23 @@ void		ft_char_to_int(t_pos *pos, t_map *map, t_list *el)
 
 t_map		*ft_map_asign(t_list *el, t_map *map, t_pos *pos)
 {
-	int		i;
-
-	i = 0;
-	while (((char *)el->content)[map->i])
+	while (el->content && map->height > 0)
 	{
-		ft_char_to_int(pos, map, el);
-		map->i++;
-		i++;
+		while (((char *)el->content)[map->i])
+		{
+			ft_char_to_int(pos, map, el);
+			map->i++;
+		}
+		el = el->next;
+		map->i = 0;
+		map->height--;
+		map->j++;
 	}
 	return (map);
 }
 
 /*
-** Parsing each line of map
+** Parsing each line of map & number of sprites
 */
 
 t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
@@ -86,14 +89,7 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 	ft_malloc_sprite(map);
 	map->i = 0;
 	map->j = 0;
-	while (el->content && map->height > 0)
-	{
-		map = ft_map_asign(el, map, pos);
-		el = el->next;
-		map->i = 0;
-		map->height--;
-		map->j++;
-	}
+	map = ft_map_asign(el, map, pos);
 	return (map);
 }
 
@@ -101,15 +97,10 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 ** Get width and height's map
 */
 
-t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
+t_map		*ft_get_map_hw(t_map *map, t_list *el)
 {
 	int		i;
 
-	map->height = 0;
-	while (el && !((char*)el->content)[0])
-		el = el->next;
-	if (!el)
-		ft_error_exit("Error\nMissing map.\nExit program.");
 	while (el->content && el->next && ((char*)el->content)[0] != 0)
 	{
 		map->height++;
@@ -130,9 +121,7 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 a line is wrong.\nExit Program.");
 		el = el->next;
 	}
-	el = data->first_token;
 	map->height_tmp = map->height;
-	map->height3 = map->height;
 	map->i = 0;
 	return (map);
 }
@@ -144,7 +133,11 @@ a line is wrong.\nExit Program.");
 int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 {
 	data->parsed = 9;
-	map = ft_get_map_hw(map, el, data);
+	while (el && !((char*)el->content)[0])
+		el = el->next;
+	if (!el)
+		ft_error_exit("Error\nMissing map.\nExit program.");
+	map = ft_get_map_hw(map, el);
 	map->real_map = (int**)malloc(sizeof(int*) * map->height);
 	if (!map->real_map)
 		return (0);
@@ -158,7 +151,8 @@ int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	}
 	map = ft_map_data(map, el, pos);
 	if (map->position != 1)
-		ft_error_exit("Error\nToo many/few positions\nExit Program");
+		ft_error_exit("Error\nToo many/few positions or a line is wrong\n\
+Exit Program");
 	ft_verif_map(map);
 	return (1);
 }

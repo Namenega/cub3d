@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 17:56:56 by namenega          #+#    #+#             */
-/*   Updated: 2021/01/06 18:18:42 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:14:01 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line.h"
+#include "../libraries/get_next_line.h"
 
 int		ft_strlen2(char *s)
 {

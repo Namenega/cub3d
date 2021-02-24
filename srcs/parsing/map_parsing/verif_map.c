@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 15:20:48 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/10 17:50:45 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:11:41 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../../includes/libraries/cub3d.h"
 
 /*
 ** Vector if N/S/W/E

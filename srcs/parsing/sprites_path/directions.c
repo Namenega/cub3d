@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 18:06:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/19 15:36:57 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:08:43 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../../includes/libraries/cub3d.h"
 
 /*
 ** We get here the string of north_sprite's path

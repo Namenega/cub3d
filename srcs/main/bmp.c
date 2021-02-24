@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 15:40:42 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 13:28:23 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:12:03 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** writing every pixel

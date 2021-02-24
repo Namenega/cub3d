@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   obstacle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Nathan <Nathan@student.42.fr>              +#+  +:+       +#+        */
+/*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 17:44:57 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/15 16:05:14 by Nathan           ###   ########.fr       */
+/*   Updated: 2021/02/24 18:08:48 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../cub3d.h"
+#include "../../../includes/libraries/cub3d.h"
 
 /*
 ** We get here the string of obstacle_sprite's path

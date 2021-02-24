@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/06 17:55:41 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/11 18:23:54 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:13:57 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line.h"
+#include "../libraries/get_next_line.h"
 
 /*
 ** cpyline = on copie statik dans line

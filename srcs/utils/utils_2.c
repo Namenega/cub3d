@@ -6,11 +6,11 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 13:39:23 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/18 18:48:51 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:15:00 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../../includes/libraries/cub3d.h"
 
 /*
 ** Centering spawn position
@@ -19,7 +19,6 @@
 void		ft_position_asign(int c, t_map *map, t_pos *pos)
 {
 	map->real_map[map->j][map->i] = c;
-	map->stock_c = c;
 	map->x = map->j + 0.5;
 	map->y = map->i + 0.5;
 	ft_dir_to_vec(c, pos);

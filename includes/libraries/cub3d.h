@@ -6,12 +6,16 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:38:08 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 18:33:06 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+/*
+** INCLUDES
+*/
 
 # include <fcntl.h>
 # include <limits.h>
@@ -20,13 +24,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "utils.h"
-# include "../includes/mlx/mlx.h"
-# include "../includes/libft/libft.h"
+# include "../mlx/mlx.h"
+# include "../libft/libft.h"
 # include "get_next_line.h"
 
-# define R 0x00FF0000
-# define G 0x0000FF00
-# define B 0x000000FF
+/*
+** DEFINES
+*/
+
 # define MS 0.1
 # define RS 0.1
 # define TXW 64
@@ -44,8 +49,9 @@
 # define KEYCODE_S 1
 # define KEYCODE_D 2
 
-# define UDIV 1
-# define VDIV 1
+/*
+** Sprite texture's variables
+*/
 
 typedef struct		s_tex
 {
@@ -57,6 +63,10 @@ typedef struct		s_tex
 	int				bit;
 	int				endian;
 }					t_tex;
+
+/*
+** Data's variables
+*/
 
 typedef struct		s_data
 {
@@ -94,12 +104,9 @@ typedef struct		s_data
 	void			*mlx_ptr;
 	void			*mlx_win;
 	void			*img;
-	int				**map;
 	int				pxl_line;
 	int				parsed;
-	int				line_map;
 	t_list			*lst_line;
-	t_list			*first_token;
 	t_tex			north;
 	t_tex			south;
 	t_tex			west;
@@ -108,12 +115,20 @@ typedef struct		s_data
 	double			*zbuff;
 }					t_data;
 
+/*
+** Color's variables
+*/
+
 typedef struct		s_rgb
 {
 	unsigned int	r;
 	unsigned int	g;
 	unsigned int	b;
 }					t_rgb;
+
+/*
+** Map's variables
+*/
 
 typedef struct		s_map
 {
@@ -122,16 +137,11 @@ typedef struct		s_map
 	double			x;
 	double			y;
 	int				width;
-	int				width2;
 	int				height;
-	int				height2;
-	int				height3;
 	int				height_tmp;
 	int				**real_map;
 	t_rgb			color;
 	int				position;
-	int				**actual_pos;
-	int				stock_c;
 	u_int32_t		colorc;
 	u_int32_t		colorf;
 	int				numsprite;
@@ -139,11 +149,19 @@ typedef struct		s_map
 	double			*spr_y;
 }					t_map;
 
+/*
+** Vector's variables
+*/
+
 typedef struct		s_vec
 {
 	double			x;
 	double			y;
 }					t_vec;
+
+/*
+** Position's variables
+*/
 
 typedef struct		s_pos
 {
@@ -154,13 +172,16 @@ typedef struct		s_pos
 	t_vec			plane_cam;
 	t_vec			old_pl_cam;
 	t_vec			camera;
-	int				txnum;
 	t_vec			wall;
 	t_vec			tex;
 	double			stept;
 	double			texpos;
 	u_int32_t		color;
 }					t_pos;
+
+/*
+** Movement's variables
+*/
 
 typedef struct		s_move
 {
@@ -177,22 +198,12 @@ typedef struct		s_move
 	t_vec			side_dist;
 }					t_move;
 
+/*
+** Sprite's variables
+*/
+
 typedef struct		s_spr
 {
-	t_vec			raydir0;
-	t_vec			raydir1;
-	int				p;
-	double			posz;
-	double			rowdist;
-	t_vec			floorstep;
-	t_vec			floor;
-	t_vec			cell;
-	t_vec			t;
-	int				checkbp;
-	int				floor_tx;
-	int				ceil_tx;
-	u_int32_t		color;
-
 	int				*sp_order;
 	double			*sp_dist;
 	t_vec			spr;
@@ -211,6 +222,10 @@ typedef struct		s_spr
 	int				d;
 	double			tmp;
 }					t_spr;
+
+/*
+** Global Struct
+*/
 
 typedef struct		s_global
 {
@@ -300,7 +315,7 @@ int					ft_east(t_data *data, char *line);
 */
 
 int					ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos);
-t_map				*ft_get_map_hw(t_map *map, t_list *el, t_data *data);
+t_map				*ft_get_map_hw(t_map *map, t_list *el);
 t_map				*ft_map_data(t_map *map, t_list *el, t_pos *pos);
 t_map				*ft_map_asign(t_list *el, t_map *map, t_pos *pos);
 void				ft_char_to_int(t_pos *pos, t_map *map, t_list *el);
@@ -336,8 +351,10 @@ void				ft_color_asign(t_map *map, t_data *data);
 ** VISUAL/TEXTURE.C
 */
 
-void				ft_texture(t_pos *pos, t_map *map, t_move *move, t_data *data);
-void				ft_wallx_texx(t_move *move, t_pos *pos, t_map *map, t_tex tex);
+void				ft_texture(t_pos *pos, t_map *map, t_move *move,
+						t_data *data);
+void				ft_wallx_texx(t_move *move, t_pos *pos, t_map *map,
+						t_tex tex);
 void				ft_img(t_data *data);
 void				ft_free_things(t_data *data);
 
@@ -348,8 +365,9 @@ void				ft_free_things(t_data *data);
 void				ft_img_sprite(t_map *map, t_global *glb);
 void				ft_sort_sprite(t_spr *spr, t_map *map);
 void				tmp(t_map *map, int i, int j, char coord);
-void				ft_init_sprite(t_spr *spr, t_map *map, t_global *glb, int i);
-void				ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos/*, t_map *map*/);
+void				ft_init_sprite(t_spr *spr, t_map *map, t_global *glb,
+						int i);
+void				ft_draw_stripe(t_spr *spr, t_data *data, t_pos *pos);
 void				ft_malloc_sprite(t_map *map);
 
 /*
