@@ -4,7 +4,7 @@ NO	srcs/sprites/mossy.xpm
 SO	srcs/sprites/colorstone.xpm
 WE	srcs/sprites/greystone.xpm
 EA	srcs/sprites/redbrick.xpm
-S	srcs/sprites/zombiehand.xpm
+S	srcs/sprites/cara.xpm
 
 F	65, 43, 40
 C	151, 0, 201
