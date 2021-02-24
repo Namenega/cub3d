@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 16:16:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 14:14:10 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:33:34 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,3 @@ int		ft_parsing_begin(char *line, t_data *data)
 		ft_error_exit("Error\nA line is wrong.\nExit Program");
 	return (0);
 }
-
-/*else if (tmp[0] && file->parsed < 8)
-        exit_error("FILE : A line is wrong");*/

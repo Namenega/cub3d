@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 14:59:29 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:38:09 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 	map->height = 0;
 	while (el && !((char*)el->content)[0])
 		el = el->next;
+	if (!el)
+		ft_error_exit("Error\nMissing map.\nExit program.");
 	while (el->content && el->next && ((char*)el->content)[0] != 0)
 	{
 		map->height++;
@@ -156,8 +158,7 @@ int			ft_map(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	}
 	map = ft_map_data(map, el, pos);
 	if (map->position != 1)
-		ft_error_exit("Error\nToo many/few positions or\nWhitespaces around map \
-not allowed\nExit Program");
+		ft_error_exit("Error\nToo many/few positions\nExit Program");
 	ft_verif_map(map);
 	return (1);
 }

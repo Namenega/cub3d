@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/23 14:36:33 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 16:33:11 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_parsing_data(t_list *el, t_data *data, t_map *map, t_pos *pos)
 	if (!(line))
 		return (0);
 	else if ((line)[0] == 0)
-		return (1);
+		el = el->next;
 	if ((i = ft_parsing_begin(line, data)))
 		return (i);
 	ft_data_parsed(data, pos, map, el);
