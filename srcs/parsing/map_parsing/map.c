@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 17:42:01 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 14:11:25 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:59:29 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,6 @@ t_map		*ft_map_data(t_map *map, t_list *el, t_pos *pos)
 	return (map);
 }
 
-void		ft_endofmap(char *s)
-{
-	int		i;
-
-	i = 0;
-	
-	while (s && s[i] && ft_isspace(s[i]))
-		i++;
-	if (s[i])
-		return ;
-	else
-		ft_error_exit("Error\nLine filled with whitespaces unaccepted\n\
-Exit Program");
-}
-
 /*
 ** Get width and height's map
 */
@@ -125,8 +110,6 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 		el = el->next;
 	while (el->content && el->next && ((char*)el->content)[0] != 0)
 	{
-		if (((char*)el->content)[0] == ' ')
-			ft_endofmap(el->content);
 		map->height++;
 		map->i = ft_strlen(el->content);
 		if (map->i > map->width)
@@ -141,7 +124,8 @@ t_map		*ft_get_map_hw(t_map *map, t_list *el, t_data *data)
 		while (ft_isspace(((char*)el->content)[i]))
 			i++;
 		if (((char*)el->content)[i])
-			ft_error_exit("Error\nToo many maps\nExit Program.");
+			ft_error_exit("Error\nToo many maps or \
+a line is wrong.\nExit Program.");
 		el = el->next;
 	}
 	el = data->first_token;
