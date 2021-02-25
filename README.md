@@ -8,10 +8,10 @@ Pour lancer le programme :
 
 ensuite :
 
-<./cub3D maps/map_1.cub>
+"./cub3D maps/map_1.cub"
 
 ou
 
-<./cub3D maps/map_1 --save>
+"./cub3D maps/map_1 --save"
 
-pour créer un fichier <.bmp>
+pour créer un fichier "fichier.bmp"
