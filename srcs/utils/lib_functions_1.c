@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:58:38 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 18:14:42 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/25 13:31:11 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,15 @@ int			ft_atoi_2(const char *s)
 	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\f' ||
 			s[i] == '\r' || s[i] == ' ' || s[i] == '\v')
 		i++;
+	while (s[i] == '0')
+		i++;
 	result = ft_uli_error(s + i);
 	if (result > 2147483647)
 	{
 		if (compteur == -1)
 			return (0);
 		else
-			ft_error_exit("Error\nNumber too big(R).\n\
+			ft_error_exit("Error\nNumber too big(F/C).\n\
 Maximum is 2147483647");
 	}
 	return (result * compteur);

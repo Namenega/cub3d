@@ -1,0 +1,15 @@
+R  800 800
+
+NO	srcs/sprites/mossy.xpm
+SO	srcs/sprites/colorstone.xpm
+WE	srcs/sprites/greystone.xpm
+EA	srcs/sprites/redbrick.xpm
+S	srcs/sprites/zombiehand.xpm
+
+F	1,1,0
+C	151, 0, 201
+
+
+ 11
+1N21
+ 11

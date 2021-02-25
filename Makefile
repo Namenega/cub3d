@@ -29,7 +29,7 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= cub3D
 
-CC		= gcc -g -fsanitize=address
+CC		= gcc
 RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror -I. -I./includes/libft
 
@@ -57,4 +57,4 @@ re:		fclean all
 
 c:		all clean
 
-.PHONY:		clean fclean re all bonus
+.PHONY:		clean fclean re all
