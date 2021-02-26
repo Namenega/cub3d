@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 17:18:13 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 18:15:06 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/26 12:15:45 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int			ft_affichage(t_global *glb)
 {
 	glb->pos->x = 0;
 	glb->data->zbuff = ft_calloc(sizeof(double), glb->data->width);
+	if (!glb->data->zbuff)
+		ft_error_exit("Error\nMalloc fail\nExit Program");
 	while (glb->pos->x < glb->data->width)
 	{
 		glb->pos->camera.x = 2 * (double)glb->pos->x /

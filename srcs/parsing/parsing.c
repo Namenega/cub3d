@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 17:41:39 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 17:54:01 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/26 12:15:12 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ t_data	*ft_data(char *file, int ac, t_map *map, t_pos *pos)
 
 	ac = 1;
 	data = ft_calloc_2(sizeof(t_data));
+	if (!data)
+		ft_error_exit("Error\nMalloc fail\nExit Program");
 	if ((data->mlx_ptr = mlx_init()) == NULL)
 		return (0);
 	if (!(ft_get_data(data, file, map, pos)))

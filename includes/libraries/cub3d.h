@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/04 14:54:17 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 18:33:06 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/25 19:22:54 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -244,6 +244,7 @@ typedef struct		s_global
 int					main(int ac, char const **av);
 int					ft_error_msg(char *s);
 void				ft_error_exit(char *s);
+void				ft_malloc_protect(t_global *glb);
 
 /*
 ** PARSING/PARSING.C

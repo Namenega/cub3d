@@ -6,7 +6,7 @@
 /*   By: namenega <namenega@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:45:52 by namenega          #+#    #+#             */
-/*   Updated: 2021/02/24 18:31:34 by namenega         ###   ########.fr       */
+/*   Updated: 2021/02/26 12:16:49 by namenega         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void		ft_malloc_sprite(t_map *map)
 {
 	map->spr_x = ft_calloc(sizeof(int*), (map->numsprite + 1));
+	if (!map->spr_x)
+		ft_error_exit("Error\nMalloc fail\nExit Program");
 	map->spr_y = ft_calloc(sizeof(int*), (map->numsprite + 1));
+	if (!map->spr_y)
+		ft_error_exit("Error\nMalloc fail\nExit Program");
 	map->numsprite = 0;
 }
 
@@ -106,6 +110,8 @@ void		ft_img_sprite(t_map *map, t_global *glb)
 
 	i = 0;
 	glb->spr = ft_calloc_2(sizeof(t_spr));
+	if (!glb->spr)
+		ft_error_exit("Error\nMalloc fail\nExit Program");
 	ft_sort_sprite(glb->spr, map);
 	while (i < map->numsprite)
 	{
