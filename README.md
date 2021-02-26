@@ -4,7 +4,7 @@ Reproduire le jeu Wolfenstein3D de 1992. Avec quelques options en moins.
 
 Pour lancer le programme :
 
-<make>
+"make"
 
 ensuite :
 
